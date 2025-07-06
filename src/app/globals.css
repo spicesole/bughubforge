@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: system-ui, sans-serif;
+  }
+  
+  /* Исправления для iPad */
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    html {
+      font-size: 16px; /* Предотвращает масштабирование на iPad */
+    }
+  }
+  
+  /* Исправления для мобильных устройств */
+  @media screen and (max-width: 767px) {
+    html {
+      font-size: 16px;
+    }
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6 border border-gray-200 dark:bg-gray-800 dark:border-gray-700;
+  }
+  
+  .input-field {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400;
+  }
+
+  /* Плавные переходы для мультиязычности */
+  .language-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  /* Специальные стили для iPad */
+  .ipad-fix {
+    @apply max-w-full overflow-x-hidden;
+  }
+  
+  /* Исправления для контейнеров на iPad */
+  .container-ipad {
+    @apply px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto;
+  }
+  
+  /* Исправления для кнопок на iPad */
+  .btn-ipad {
+    @apply min-w-[200px] sm:min-w-[180px] md:min-w-[160px] lg:min-w-[140px];
+  }
+  
+  /* Специальные стили для header на iPad */
+  .header-ipad {
+    @apply bg-white shadow-sm border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700;
+  }
+  
+  /* Улучшенные стили для мобильного меню на iPad */
+  .mobile-menu-ipad {
+    @apply bg-white border-t border-gray-200 shadow-lg dark:bg-gray-900 dark:border-gray-700;
+  }
+} 

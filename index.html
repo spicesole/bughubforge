@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>BugHubForge - Платформа для тестировщиков</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Исправления для iPad */
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
+            html {
+                font-size: 16px; /* Предотвращает масштабирование на iPad */
+            }
+        }
+        
+        /* Исправления для мобильных устройств */
+        @media screen and (max-width: 767px) {
+            html {
+                font-size: 16px;
+            }
+        }
+        
+        .ipad-fix {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .container-ipad {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            max-width: 80rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (min-width: 640px) {
+            .container-ipad {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container-ipad {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+        
+        .btn-ipad {
+            min-width: 200px;
+        }
+        
+        @media (min-width: 640px) {
+            .btn-ipad {
+                min-width: 180px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .btn-ipad {
+                min-width: 160px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .btn-ipad {
+                min-width: 140px;
+            }
+        }
+        
+        .language-transition {
+            transition: all 0.3s ease-in-out;
+        }
+        
+        /* Специальные стили для header на iPad */
+        .header-ipad {
+            background-color: white;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        /* Улучшенные стили для мобильного меню на iPad */
+        .mobile-menu-ipad {
+            background-color: white;
+            border-top: 1px solid #e5e7eb;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-white ipad-fix">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 ipad-fix">
+        <div class="container-ipad">
+            <div class="flex justify-between items-center h-14 md:h-16">
+                            <!-- Logo -->
+            <div class="flex items-center">
+                <button onclick="goToHome()" class="text-lg md:text-xl font-bold text-primary-600 hover:text-primary-700 transition-colors cursor-pointer">
+                    BugHubForge
+                </button>
+            </div>
+
+                <!-- Desktop Navigation - скрываем на iPad -->
+                <nav class="hidden lg:flex space-x-6 lg:space-x-8">
+                    <a href="#" onclick="goToHome()" class="text-gray-700 hover:text-primary-600 px-2 md:px-3 py-2 rounded-md text-sm font-medium">Главная</a>
+                    <a href="#" class="text-gray-700 hover:text-primary-600 px-2 md:px-3 py-2 rounded-md text-sm font-medium">Глоссарий</a>
+                    <a href="#" class="text-gray-700 hover:text-primary-600 px-2 md:px-3 py-2 rounded-md text-sm font-medium">Ресурсы</a>
+                    <a href="#" class="text-gray-700 hover:text-primary-600 px-2 md:px-3 py-2 rounded-md text-sm font-medium">Форум</a>
+                </nav>
+
+                <!-- Language Switcher and Auth -->
+                <div class="flex items-center space-x-3 md:space-x-4">
+                                        <!-- Language Switcher -->
+                    <div class="flex items-center space-x-1 md:space-x-2">
+                        <button onclick="setLanguage('ru')" class="px-2 py-1 rounded text-xs md:text-sm font-medium bg-primary-100 text-primary-700 dark:bg-primary-900 dark:text-primary-300" aria-label="Переключить на русский язык">RU</button>
+                        <button onclick="setLanguage('en')" class="px-2 py-1 rounded text-xs md:text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" aria-label="Switch to English">EN</button>
+                    </div>
+
+                    <!-- Theme Toggle -->
+                    <button onclick="toggleDarkMode()" class="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700" aria-label="Переключить тему">
+                        <svg id="darkIcon" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                        <svg id="lightIcon" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Auth Buttons -->
+                    <div class="hidden md:flex space-x-2" id="authButtons">
+                        <button onclick="openAuthModal()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-xs md:text-sm min-w-[50px] md:min-w-[60px]">Войти</button>
+                        <button onclick="openAuthModal()" class="bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-xs md:text-sm min-w-[80px] md:min-w-[100px]">Регистрация</button>
+                    </div>
+
+                    <!-- Mobile/Tablet menu button - показываем на iPad -->
+                    <button onclick="toggleMenu()" class="lg:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100" aria-label="Открыть меню навигации">
+                        <svg class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile/Tablet Navigation - показываем на iPad -->
+            <div id="mobileMenu" class="hidden lg:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#" onclick="goToHome()" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Главная</a>
+                    <a href="#" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Глоссарий</a>
+                    <a href="#" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Ресурсы</a>
+                    <a href="#" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Форум</a>
+                </div>
+                <div class="pt-4 pb-3 border-t border-gray-200" id="mobileAuthButtons">
+                    <div class="flex space-x-2 px-3">
+                        <button onclick="openAuthModal()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm flex-1 min-w-[50px] md:min-w-[60px]">Войти</button>
+                        <button onclick="openAuthModal()" class="bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm flex-1 min-w-[80px] md:min-w-[100px]">Регистрация</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <div class="bg-gradient-to-r from-primary-600 to-primary-800 ipad-fix">
+            <div class="container-ipad py-16 md:py-20 lg:py-24">
+                <div class="text-center">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 language-transition" id="heroTitle">
+                        Добро пожаловать в мир тестирования
+                    </h1>
+                    <p class="text-lg sm:text-xl md:text-2xl text-primary-100 mb-6 md:mb-8 max-w-3xl mx-auto px-4 language-transition" id="heroSubtitle">
+                        Изучайте основы тестирования программного обеспечения с помощью интерактивных материалов и практических примеров
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4">
+                        <button class="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-6 md:px-8 rounded-lg text-base md:text-lg transition-colors duration-200 btn-ipad language-transition" id="startLearning" aria-label="Начать обучение">
+                            Начать обучение
+                        </button>
+                        <button class="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-3 px-6 md:px-8 rounded-lg text-base md:text-lg transition-colors duration-200 btn-ipad language-transition" id="learnMore" aria-label="Узнать больше">
+                            Узнать больше
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <section class="py-12 md:py-16 bg-white">
+            <div class="container-ipad">
+                <div class="text-center mb-8 md:mb-12">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 language-transition" id="featuresTitle">
+                        Что вы получите
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                    <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200 text-center">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-3 md:mb-4">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-base md:text-lg font-semibold text-gray-900 mb-2 language-transition" id="feature1Title">Практические знания</h3>
+                        <p class="text-sm md:text-base text-gray-600 language-transition" id="feature1Desc">Изучайте тестирование на реальных примерах и кейсах</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200 text-center">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-3 md:mb-4">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-base md:text-lg font-semibold text-gray-900 mb-2 language-transition" id="feature2Title">Глоссарий терминов</h3>
+                        <p class="text-sm md:text-base text-gray-600 language-transition" id="feature2Desc">Полный словарь терминов тестирования с объяснениями</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200 text-center">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-3 md:mb-4">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-base md:text-lg font-semibold text-gray-900 mb-2 language-transition" id="feature3Title">Сообщество</h3>
+                        <p class="text-sm md:text-base text-gray-600 language-transition" id="feature3Desc">Общайтесь с другими тестировщиками и делитесь опытом</p>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200 text-center">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-3 md:mb-4">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-base md:text-lg font-semibold text-gray-900 mb-2 language-transition" id="feature4Title">Практические задания</h3>
+                        <p class="text-sm md:text-base text-gray-600 language-transition" id="feature4Desc">Выполняйте упражнения для закрепления знаний</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forum Section -->
+        <section class="py-12 md:py-16 bg-gray-50">
+            <div class="container-ipad">
+                <div class="text-center mb-8 md:mb-12">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 language-transition" id="forumTitle">
+                        Мини-форум
+                    </h2>
+                    <p class="text-lg text-gray-600 language-transition" id="forumSubtitle">
+                        Делитесь находками и планами тестирования
+                    </p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <!-- Форма для нового сообщения -->
+                    <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200 mb-8">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4 language-transition" id="addMessageTitle">
+                            Добавить сообщение
+                        </h3>
+                        <form id="forumForm" class="space-y-4">
+                            <div>
+                                <label for="authorName" class="block text-sm font-medium text-gray-700 mb-1 language-transition" id="yourNameLabel">
+                                    Ваше имя
+                                </label>
+                                <input type="text" id="authorName" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm md:text-base" placeholder="Введите ваше имя" required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1 language-transition" id="messageLabel">
+                                    Сообщение
+                                </label>
+                                <textarea id="message" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent min-h-[100px] resize-y text-sm md:text-base" placeholder="Поделитесь своими находками или планами тестирования..." required></textarea>
+                            </div>
+                            <button type="submit" class="bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm md:text-base px-4 md:px-6 py-2 md:py-3 language-transition" id="sendMessageBtn">
+                                Отправить
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Список сообщений -->
+                    <div class="space-y-4 md:space-y-6">
+                        <h3 class="text-lg font-semibold text-gray-900 language-transition" id="messagesTitle">
+                            Сообщения (<span id="messageCount">0</span>)
+                        </h3>
+                        
+                        <div id="messagesList">
+                            <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200 text-center text-gray-500 language-transition" id="noMessages">
+                                Пока нет сообщений. Будьте первым!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 md:py-12">
+        <div class="container-ipad text-center">
+            <p class="text-sm md:text-base">
+                © 2025 BugHubForge. <span class="language-transition" id="footerRights">Все права защищены.</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        let currentLanguage = 'ru';
+        let isDarkMode = false;
+        
+        const translations = {
+            ru: {
+                hero: {
+                    title: 'Добро пожаловать в мир тестирования',
+                    subtitle: 'Изучайте основы тестирования программного обеспечения с помощью интерактивных материалов и практических примеров',
+                    startLearning: 'Начать обучение',
+                    learnMore: 'Узнать больше'
+                },
+                features: {
+                    title: 'Что вы получите',
+                    items: [
+                        { title: 'Практические знания', description: 'Изучайте тестирование на реальных примерах и кейсах' },
+                        { title: 'Глоссарий терминов', description: 'Полный словарь терминов тестирования с объяснениями' },
+                        { title: 'Сообщество', description: 'Общайтесь с другими тестировщиками и делитесь опытом' },
+                        { title: 'Практические задания', description: 'Выполняйте упражнения для закрепления знаний' }
+                    ]
+                },
+                forum: {
+                    title: 'Мини-форум',
+                    subtitle: 'Делитесь находками и планами тестирования',
+                    addMessage: 'Добавить сообщение',
+                    yourName: 'Ваше имя',
+                    yourNamePlaceholder: 'Введите ваше имя',
+                    message: 'Сообщение',
+                    messagePlaceholder: 'Поделитесь своими находками или планами тестирования...',
+                    sendMessage: 'Отправить',
+                    messages: 'Сообщения',
+                    noMessages: 'Пока нет сообщений. Будьте первым!'
+                },
+                footer: {
+                    rights: 'Все права защищены.'
+                }
+            },
+            en: {
+                hero: {
+                    title: 'Welcome to the World of Testing',
+                    subtitle: 'Learn software testing fundamentals with interactive materials and practical examples',
+                    startLearning: 'Start Learning',
+                    learnMore: 'Learn More'
+                },
+                features: {
+                    title: 'What You\'ll Get',
+                    items: [
+                        { title: 'Practical Knowledge', description: 'Learn testing with real examples and cases' },
+                        { title: 'Terminology Glossary', description: 'Complete dictionary of testing terms with explanations' },
+                        { title: 'Community', description: 'Communicate with other testers and share experience' },
+                        { title: 'Practical Exercises', description: 'Complete exercises to reinforce knowledge' }
+                    ]
+                },
+                forum: {
+                    title: 'Mini Forum',
+                    subtitle: 'Share your findings and testing plans',
+                    addMessage: 'Add Message',
+                    yourName: 'Your Name',
+                    yourNamePlaceholder: 'Enter your name',
+                    message: 'Message',
+                    messagePlaceholder: 'Share your findings or testing plans...',
+                    sendMessage: 'Send',
+                    messages: 'Messages',
+                    noMessages: 'No messages yet. Be the first!'
+                },
+                footer: {
+                    rights: 'All rights reserved.'
+                }
+            }
+        };
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            const t = translations[lang];
+            
+            // Обновляем все тексты
+            document.getElementById('heroTitle').textContent = t.hero.title;
+            document.getElementById('heroSubtitle').textContent = t.hero.subtitle;
+            document.getElementById('startLearning').textContent = t.hero.startLearning;
+            document.getElementById('learnMore').textContent = t.hero.learnMore;
+            
+            document.getElementById('featuresTitle').textContent = t.features.title;
+            document.getElementById('feature1Title').textContent = t.features.items[0].title;
+            document.getElementById('feature1Desc').textContent = t.features.items[0].description;
+            document.getElementById('feature2Title').textContent = t.features.items[1].title;
+            document.getElementById('feature2Desc').textContent = t.features.items[1].description;
+            document.getElementById('feature3Title').textContent = t.features.items[2].title;
+            document.getElementById('feature3Desc').textContent = t.features.items[2].description;
+            document.getElementById('feature4Title').textContent = t.features.items[3].title;
+            document.getElementById('feature4Desc').textContent = t.features.items[3].description;
+            
+            document.getElementById('forumTitle').textContent = t.forum.title;
+            document.getElementById('forumSubtitle').textContent = t.forum.subtitle;
+            document.getElementById('addMessageTitle').textContent = t.forum.addMessage;
+            document.getElementById('yourNameLabel').textContent = t.forum.yourName;
+            document.getElementById('messageLabel').textContent = t.forum.message;
+            document.getElementById('sendMessageBtn').textContent = t.forum.sendMessage;
+            document.getElementById('messagesTitle').textContent = t.forum.messages;
+            document.getElementById('noMessages').textContent = t.forum.noMessages;
+            
+            document.getElementById('footerRights').textContent = t.footer.rights;
+            
+            // Обновляем плейсхолдеры
+            document.getElementById('authorName').placeholder = t.forum.yourNamePlaceholder;
+            document.getElementById('message').placeholder = t.forum.messagePlaceholder;
+            
+            // Обновляем навигацию
+            const navLinks = document.querySelectorAll('nav a');
+            const mobileNavLinks = document.querySelectorAll('#mobileMenu a');
+            
+            if (lang === 'ru') {
+                navLinks[0].textContent = 'Главная';
+                navLinks[1].textContent = 'Глоссарий';
+                navLinks[2].textContent = 'Ресурсы';
+                navLinks[3].textContent = 'Форум';
+                
+                mobileNavLinks[0].textContent = 'Главная';
+                mobileNavLinks[1].textContent = 'Глоссарий';
+                mobileNavLinks[2].textContent = 'Ресурсы';
+                mobileNavLinks[3].textContent = 'Форум';
+            } else {
+                navLinks[0].textContent = 'Home';
+                navLinks[1].textContent = 'Glossary';
+                navLinks[2].textContent = 'Resources';
+                navLinks[3].textContent = 'Forum';
+                
+                mobileNavLinks[0].textContent = 'Home';
+                mobileNavLinks[1].textContent = 'Glossary';
+                mobileNavLinks[2].textContent = 'Resources';
+                mobileNavLinks[3].textContent = 'Forum';
+            }
+            
+            // Обновляем ProfileModal
+            updateProfileModalTexts();
+            
+            // Обновляем UI авторизации
+            updateAuthUI();
+        }
+
+        function updateProfileModalTexts() {
+            const isRu = currentLanguage === 'ru';
+            
+            // Заголовки
+            const profileTitle = document.getElementById('profileTitle');
+            if (profileTitle) {
+                profileTitle.textContent = isRu ? 'Профиль' : 'Profile';
+            }
+            
+            // Основная информация
+            const profileInfoSection = document.getElementById('profileInfoSection');
+            if (profileInfoSection) {
+                const clickToEditHint = document.getElementById('clickToEditHint');
+                
+                if (clickToEditHint) clickToEditHint.textContent = isRu ? '(кликните для редактирования)' : '(click to edit)';
+            }
+            
+            // Секция редактирования
+            const profileEditingSection = document.getElementById('profileEditingSection');
+            if (profileEditingSection) {
+                const h3 = profileEditingSection.querySelector('h3');
+                const labels = profileEditingSection.querySelectorAll('label');
+                const buttons = profileEditingSection.querySelectorAll('button');
+                
+                if (h3) h3.textContent = isRu ? 'Редактировать профиль' : 'Edit Profile';
+                if (labels[0]) labels[0].textContent = isRu ? 'Никнейм' : 'Username';
+                if (labels[1]) labels[1].textContent = 'Email';
+                if (buttons[0]) buttons[0].textContent = isRu ? 'Сохранить' : 'Save';
+                if (buttons[1]) buttons[1].textContent = isRu ? 'Отмена' : 'Cancel';
+            }
+            
+            // Секция смены пароля
+            const passwordChangingSection = document.getElementById('passwordChangingSection');
+            if (passwordChangingSection) {
+                const h3 = passwordChangingSection.querySelector('h3');
+                const labels = passwordChangingSection.querySelectorAll('label');
+                const buttons = passwordChangingSection.querySelectorAll('button');
+                
+                if (h3) h3.textContent = isRu ? 'Изменить пароль' : 'Change Password';
+                if (labels[0]) labels[0].textContent = isRu ? 'Текущий пароль' : 'Current Password';
+                if (labels[1]) labels[1].textContent = isRu ? 'Новый пароль' : 'New Password';
+                if (labels[2]) labels[2].textContent = isRu ? 'Подтвердите новый пароль' : 'Confirm New Password';
+                if (buttons[0]) buttons[0].textContent = isRu ? 'Сохранить' : 'Save';
+                if (buttons[1]) buttons[1].textContent = isRu ? 'Отмена' : 'Cancel';
+            }
+            
+            // Секция подтверждения email
+            const emailConfirmingSection = document.getElementById('emailConfirmingSection');
+            if (emailConfirmingSection) {
+                const h3 = emailConfirmingSection.querySelector('h3');
+                const p = emailConfirmingSection.querySelector('p');
+                const label = emailConfirmingSection.querySelector('label');
+                const input = emailConfirmingSection.querySelector('input');
+                const buttons = emailConfirmingSection.querySelectorAll('button');
+                
+                if (h3) h3.textContent = isRu ? 'Подтверждение email для восстановления' : 'Email Confirmation for Recovery';
+                if (p) p.textContent = isRu ? 'Код подтверждения отправлен на ваш email' : 'Confirmation code sent to your email';
+                if (label) label.textContent = isRu ? 'Код подтверждения' : 'Confirmation Code';
+                if (input) input.placeholder = isRu ? 'Введите код' : 'Enter code';
+                if (buttons[0]) buttons[0].textContent = isRu ? 'Подтвердить' : 'Confirm';
+                if (buttons[1]) buttons[1].textContent = isRu ? 'Отмена' : 'Cancel';
+            }
+            
+            // Кнопки действий
+            const actionButtons = document.querySelectorAll('#profileModal .space-y-4 button');
+            if (actionButtons.length >= 2) {
+                actionButtons[0].textContent = isRu ? 'Изменить пароль' : 'Change Password';
+                actionButtons[1].textContent = isRu ? 'Подтвердить email' : 'Confirm Email';
+            }
+            
+            // Обновляем данные пользователя
+            if (currentUser) {
+                const profileName = document.getElementById('profileName');
+                const profileEmail = document.getElementById('profileEmail');
+                const emailConfirmationText = document.getElementById('emailConfirmationText');
+                
+                if (profileName) profileName.textContent = currentUser.username;
+                if (profileEmail) profileEmail.textContent = currentUser.email;
+                if (emailConfirmationText) {
+                    emailConfirmationText.textContent = isRu ? 
+                        `Код подтверждения отправлен на ${currentUser.email}` : 
+                        `Confirmation code sent to ${currentUser.email}`;
+                }
+            }
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.add('hidden');
+        }
+
+        function goToHome() {
+            // Закрываем модальные окна если они открыты
+            document.getElementById('authModal').classList.add('hidden');
+            document.getElementById('profileModal').classList.add('hidden');
+            
+            // Закрываем мобильное меню
+            closeMobileMenu();
+            
+            // Прокручиваем к началу страницы
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Обработка формы форума
+        document.getElementById('forumForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const message = document.getElementById('message').value;
+            let authorName = '';
+            
+            // Если пользователь авторизован, используем его никнейм
+            if (currentUser) {
+                authorName = currentUser.username;
+            } else {
+                authorName = document.getElementById('authorName').value;
+            }
+            
+            if (authorName && message.trim()) {
+                const newMessage = {
+                    id: Date.now(),
+                    author: authorName,
+                    content: message,
+                    timestamp: new Date().toLocaleString()
+                };
+                
+                // Сохраняем в localStorage
+                const existingMessages = JSON.parse(localStorage.getItem('forumMessages') || '[]');
+                const updatedMessages = [newMessage, ...existingMessages];
+                localStorage.setItem('forumMessages', JSON.stringify(updatedMessages));
+                
+                // Обновляем отображение
+                displayMessages(updatedMessages);
+                
+                // Очищаем форму
+                document.getElementById('message').value = '';
+                if (!currentUser) {
+                    document.getElementById('authorName').value = '';
+                }
+            }
+        });
+
+        function displayMessages(messages) {
+            const messagesList = document.getElementById('messagesList');
+            const messageCount = document.getElementById('messageCount');
+            
+            messageCount.textContent = messages.length;
+            
+            if (messages.length === 0) {
+                const t = translations[currentLanguage];
+                messagesList.innerHTML = `<div class="bg-white rounded-lg shadow-md p-6 border border-gray-200 text-center text-gray-500 language-transition">${t.forum.noMessages}</div>`;
+            } else {
+                messagesList.innerHTML = messages.map(msg => `
+                    <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-semibold text-gray-900 text-sm md:text-base">
+                                <a href="#" onclick="viewUserProfile('${msg.author}')" class="text-blue-600 hover:underline">${msg.author}</a>
+                            </h4>
+                            <span class="text-xs md:text-sm text-gray-500">${msg.timestamp}</span>
+                        </div>
+                        <p class="text-gray-700 text-sm md:text-base whitespace-pre-wrap">${msg.content}</p>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Инициализация тёмной темы
+        function initDarkMode() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                isDarkMode = true;
+                document.documentElement.classList.add('dark');
+                updateThemeIcons();
+            }
+        }
+
+        // Переключение тёмной темы
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+            
+            updateThemeIcons();
+        }
+
+        // Обновление иконок темы
+        function updateThemeIcons() {
+            const darkIcon = document.getElementById('darkIcon');
+            const lightIcon = document.getElementById('lightIcon');
+            
+            if (isDarkMode) {
+                darkIcon.classList.add('hidden');
+                lightIcon.classList.remove('hidden');
+            } else {
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            }
+        }
+
+        // Загружаем сообщения при загрузке страницы
+        window.addEventListener('load', function() {
+            initDarkMode();
+            const savedMessages = JSON.parse(localStorage.getItem('forumMessages') || '[]');
+            displayMessages(savedMessages);
+            updateAuthUI();
+        });
+
+        // Аутентификация
+        let currentUser = null;
+        let users = [];
+
+        function openAuthModal() {
+            document.getElementById('authModal').classList.remove('hidden');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.add('hidden');
+            document.getElementById('authForm').reset();
+            clearAuthErrors();
+        }
+
+        function clearAuthErrors() {
+            const errorElements = document.querySelectorAll('.auth-error');
+            errorElements.forEach(el => el.remove());
+        }
+
+        function showAuthError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'auth-error bg-red-50 border border-red-200 rounded-md p-3 mb-4';
+            errorDiv.innerHTML = `<p class="text-red-600 text-sm">${message}</p>`;
+            
+            const form = document.getElementById('authForm');
+            form.insertBefore(errorDiv, form.firstChild);
+        }
+
+        function switchAuthMode() {
+            const isLogin = document.getElementById('authMode').textContent.includes('Войти') || 
+                           document.getElementById('authMode').textContent.includes('Login');
+            
+            if (isLogin) {
+                // Переключаемся на регистрацию
+                document.getElementById('authMode').textContent = currentLanguage === 'ru' ? 'Регистрация' : 'Register';
+                document.getElementById('authSubmit').textContent = currentLanguage === 'ru' ? 'Зарегистрироваться' : 'Register';
+                document.getElementById('authSwitch').textContent = currentLanguage === 'ru' ? 'Уже есть аккаунт? Войти' : 'Already have an account? Login';
+                document.getElementById('usernameField').classList.remove('hidden');
+                document.getElementById('confirmPasswordField').classList.remove('hidden');
+            } else {
+                // Переключаемся на вход
+                document.getElementById('authMode').textContent = currentLanguage === 'ru' ? 'Войти' : 'Login';
+                document.getElementById('authSubmit').textContent = currentLanguage === 'ru' ? 'Войти' : 'Login';
+                document.getElementById('authSwitch').textContent = currentLanguage === 'ru' ? 'Нет аккаунта? Зарегистрироваться' : "Don't have an account? Register";
+                document.getElementById('usernameField').classList.add('hidden');
+                document.getElementById('confirmPasswordField').classList.add('hidden');
+            }
+        }
+
+        function handleAuthSubmit(e) {
+            e.preventDefault();
+            clearAuthErrors();
+            
+            const isLogin = document.getElementById('authMode').textContent.includes('Войти') || 
+                           document.getElementById('authMode').textContent.includes('Login');
+            
+            const formData = new FormData(e.target);
+            const username = formData.get('username');
+            const emailOrUsername = formData.get('emailOrUsername');
+            const password = formData.get('password');
+            const confirmPassword = formData.get('confirmPassword');
+            
+            // Валидация
+            if (!emailOrUsername || !password) {
+                showAuthError(currentLanguage === 'ru' ? 'Email/никнейм и пароль обязательны' : 'Email/username and password are required');
+                return;
+            }
+            
+            if (!isLogin && !username) {
+                showAuthError(currentLanguage === 'ru' ? 'Никнейм обязателен' : 'Username is required');
+                return;
+            }
+            
+            if (!isLogin && password !== confirmPassword) {
+                showAuthError(currentLanguage === 'ru' ? 'Пароли не совпадают' : 'Passwords do not match');
+                return;
+            }
+            
+            if (password.length < 6) {
+                showAuthError(currentLanguage === 'ru' ? 'Пароль должен содержать минимум 6 символов' : 'Password must be at least 6 characters');
+                return;
+            }
+            
+            try {
+                if (isLogin) {
+                    // Вход по email или username
+                    const user = users.find(u => u.email === emailOrUsername || u.username === emailOrUsername);
+                    if (!user) {
+                        showAuthError(currentLanguage === 'ru' ? 'Пользователь не найден' : 'User not found');
+                        return;
+                    }
+                    currentUser = user;
+                } else {
+                    // Регистрация
+                    const existingUserByEmail = users.find(u => u.email === emailOrUsername);
+                    if (existingUserByEmail) {
+                        showAuthError(currentLanguage === 'ru' ? 'Пользователь с таким email уже существует' : 'User with this email already exists');
+                        return;
+                    }
+                    
+                    const existingUserByUsername = users.find(u => u.username === username);
+                    if (existingUserByUsername) {
+                        showAuthError(currentLanguage === 'ru' ? 'Пользователь с таким никнеймом уже существует' : 'User with this username already exists');
+                        return;
+                    }
+                    
+                    const newUser = {
+                        id: Date.now().toString(),
+                        username,
+                        email: emailOrUsername
+                    };
+                    users.push(newUser);
+                    currentUser = newUser;
+                }
+                
+                // Сохраняем в localStorage
+                localStorage.setItem('auth', JSON.stringify({ user: currentUser, token: 'demo-token' }));
+                
+                closeAuthModal();
+                updateAuthUI();
+                
+            } catch (error) {
+                showAuthError(currentLanguage === 'ru' ? 'Произошла ошибка' : 'An error occurred');
+            }
+        }
+
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('auth');
+            updateAuthUI();
+        }
+
+        function updateAuthUI() {
+            const auth = localStorage.getItem('auth');
+            if (auth) {
+                try {
+                    const authData = JSON.parse(auth);
+                    currentUser = authData.user;
+                } catch {
+                    currentUser = null;
+                }
+            }
+            
+            const authButtons = document.getElementById('authButtons');
+            const mobileAuthButtons = document.getElementById('mobileAuthButtons');
+            
+            if (currentUser) {
+                // Показываем информацию о пользователе
+                authButtons.innerHTML = `
+                    <div class="flex items-center space-x-4">
+                        <button onclick="openProfileModal()" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">
+                            ${currentUser.username}
+                        </button>
+                        <button onclick="logout()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-xs md:text-sm min-w-[50px] md:min-w-[60px]">
+                            ${currentLanguage === 'ru' ? 'Выйти' : 'Logout'}
+                        </button>
+                    </div>
+                `;
+                
+                mobileAuthButtons.innerHTML = `
+                    <div class="space-y-2">
+                        <button onclick="openProfileModal()" class="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors">
+                            ${currentUser.username}
+                        </button>
+                        <button onclick="logout()" class="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors">
+                            ${currentLanguage === 'ru' ? 'Выйти' : 'Logout'}
+                        </button>
+                    </div>
+                `;
+                
+                // Обновляем форму форума для авторизованного пользователя
+                updateForumForm();
+            } else {
+                // Показываем кнопки входа/регистрации
+                authButtons.innerHTML = `
+                    <button onclick="openAuthModal()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-xs md:text-sm min-w-[50px] md:min-w-[60px]">
+                        ${currentLanguage === 'ru' ? 'Войти' : 'Login'}
+                    </button>
+                    <button onclick="openAuthModal()" class="bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-xs md:text-sm min-w-[80px] md:min-w-[100px]">
+                        ${currentLanguage === 'ru' ? 'Регистрация' : 'Register'}
+                    </button>
+                `;
+                
+                mobileAuthButtons.innerHTML = `
+                    <div class="flex space-x-2 px-3">
+                        <button onclick="openAuthModal()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm flex-1 min-w-[50px] md:min-w-[60px]">
+                            ${currentLanguage === 'ru' ? 'Войти' : 'Login'}
+                        </button>
+                        <button onclick="openAuthModal()" class="bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-sm flex-1 min-w-[80px] md:min-w-[100px]">
+                            ${currentLanguage === 'ru' ? 'Регистрация' : 'Register'}
+                        </button>
+                    </div>
+                `;
+                
+                // Возвращаем форму форума к исходному состоянию
+                updateForumForm();
+            }
+        }
+
+        function updateForumForm() {
+            const nameField = document.getElementById('nameField');
+            if (nameField) {
+                if (currentUser) {
+                    nameField.innerHTML = `
+                        <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-md p-3">
+                            <p class="text-blue-700 dark:text-blue-300 text-sm">
+                                ${currentLanguage === 'ru' ? 'Публикуете как' : 'Posting as'}: <span class="font-medium">${currentUser.username}</span>
+                            </p>
+                        </div>
+                    `;
+                } else {
+                    nameField.innerHTML = `
+                        <label for="authorName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" id="nameLabel">
+                            ${currentLanguage === 'ru' ? 'Ваше имя' : 'Your Name'}
+                        </label>
+                        <input type="text" id="authorName" name="authorName" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white text-sm md:text-base" placeholder="${currentLanguage === 'ru' ? 'Введите ваше имя' : 'Enter your name'}" required>
+                    `;
+                }
+            }
+        }
+
+        function viewUserProfile(username) {
+            // В HTML версии просто показываем алерт с информацией о пользователе
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const user = users.find(u => u.username === username);
+            
+            if (user) {
+                const topics = JSON.parse(localStorage.getItem('topics') || '[]');
+                const messages = JSON.parse(localStorage.getItem('messages') || '[]');
+                const userTopics = topics.filter(t => t.author === username);
+                const userMessages = messages.filter(m => m.author === username);
+                
+                const profileInfo = `
+Профиль пользователя: ${username}
+Email: ${user.email}
+Тем создано: ${userTopics.length}
+Сообщений отправлено: ${userMessages.length}
+Дата регистрации: ${new Date(parseInt(user.id)).toLocaleDateString()}
+                `;
+                
+                alert(profileInfo);
+            } else {
+                alert('Пользователь не найден');
+            }
+        }
+
+        // Profile Modal Functions
+        function openProfileModal() {
+            document.getElementById('profileModal').classList.remove('hidden');
+            closeMobileMenu();
+            
+            // Инициализируем данные пользователя
+            if (currentUser) {
+                document.getElementById('profileName').textContent = currentUser.name;
+                document.getElementById('profileEmail').textContent = currentUser.email;
+                document.getElementById('profileEditName').value = currentUser.name;
+                document.getElementById('profileEditEmail').value = currentUser.email;
+                
+                const isRu = currentLanguage === 'ru';
+                const emailConfirmationText = document.getElementById('emailConfirmationText');
+                if (emailConfirmationText) {
+                    emailConfirmationText.textContent = isRu ? 
+                        `Код подтверждения отправлен на ${currentUser.email}` : 
+                        `Confirmation code sent to ${currentUser.email}`;
+                }
+            }
+        }
+
+        function closeProfileModal() {
+            document.getElementById('profileModal').classList.add('hidden');
+            resetProfileForm();
+        }
+
+        function resetProfileForm() {
+            document.getElementById('profileEditName').value = currentUser ? currentUser.name : '';
+            document.getElementById('currentPassword').value = '';
+            document.getElementById('newPassword').value = '';
+            document.getElementById('confirmNewPassword').value = '';
+            document.getElementById('emailConfirmationCode').value = '';
+            
+            // Скрываем все секции редактирования
+            document.getElementById('profileEditingSection').classList.add('hidden');
+            document.getElementById('passwordChangingSection').classList.add('hidden');
+            document.getElementById('emailConfirmingSection').classList.add('hidden');
+            
+            // Показываем основную информацию
+            document.getElementById('profileInfoSection').classList.remove('hidden');
+            
+            // Очищаем сообщения
+            clearProfileMessages();
+        }
+
+        function clearProfileMessages() {
+            const successMsg = document.getElementById('profileSuccessMessage');
+            const errorMsg = document.getElementById('profileErrorMessage');
+            if (successMsg) successMsg.classList.add('hidden');
+            if (errorMsg) errorMsg.classList.add('hidden');
+        }
+
+        function showProfileSuccess(message) {
+            const successMsg = document.getElementById('profileSuccessMessage');
+            if (successMsg) {
+                successMsg.textContent = message;
+                successMsg.classList.remove('hidden');
+                setTimeout(() => successMsg.classList.add('hidden'), 3000);
+            }
+        }
+
+        function showProfileError(message) {
+            const errorMsg = document.getElementById('profileErrorMessage');
+            if (errorMsg) {
+                errorMsg.textContent = message;
+                errorMsg.classList.remove('hidden');
+            }
+        }
+
+        function startProfileEditing() {
+            document.getElementById('profileInfoSection').classList.add('hidden');
+            document.getElementById('profileEditingSection').classList.remove('hidden');
+            clearProfileMessages();
+        }
+
+        function cancelProfileEditing() {
+            document.getElementById('profileEditingSection').classList.add('hidden');
+            document.getElementById('profileInfoSection').classList.remove('hidden');
+            resetProfileForm();
+        }
+
+        function saveProfile() {
+            const name = document.getElementById('profileEditName').value.trim();
+            
+            if (!name) {
+                showProfileError(currentLanguage === 'ru' ? 'Имя обязательно' : 'Name is required');
+                return;
+            }
+            
+            try {
+                // Обновляем пользователя
+                currentUser.name = name;
+                
+                // Сохраняем в localStorage
+                localStorage.setItem('auth', JSON.stringify({ user: currentUser, token: 'demo-token' }));
+                
+                showProfileSuccess(currentLanguage === 'ru' ? 'Профиль обновлен' : 'Profile updated');
+                cancelProfileEditing();
+                
+                // Обновляем UI
+                setTimeout(() => {
+                    updateAuthUI();
+                }, 1500);
+                
+            } catch (error) {
+                showProfileError(currentLanguage === 'ru' ? 'Ошибка при обновлении' : 'Error updating');
+            }
+        }
+
+        function startPasswordChange() {
+            document.getElementById('passwordChangingSection').classList.remove('hidden');
+            clearProfileMessages();
+        }
+
+        function cancelPasswordChange() {
+            document.getElementById('passwordChangingSection').classList.add('hidden');
+            document.getElementById('currentPassword').value = '';
+            document.getElementById('newPassword').value = '';
+            document.getElementById('confirmNewPassword').value = '';
+            clearProfileMessages();
+        }
+
+        function changePassword() {
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+            
+            if (!currentPassword) {
+                showProfileError(currentLanguage === 'ru' ? 'Введите текущий пароль' : 'Enter current password');
+                return;
+            }
+            
+            if (!newPassword) {
+                showProfileError(currentLanguage === 'ru' ? 'Введите новый пароль' : 'Enter new password');
+                return;
+            }
+            
+            if (newPassword.length < 6) {
+                showProfileError(currentLanguage === 'ru' ? 'Пароль должен содержать минимум 6 символов' : 'Password must be at least 6 characters');
+                return;
+            }
+            
+            if (!confirmNewPassword) {
+                showProfileError(currentLanguage === 'ru' ? 'Подтвердите новый пароль' : 'Confirm new password');
+                return;
+            }
+            
+            if (newPassword !== confirmNewPassword) {
+                showProfileError(currentLanguage === 'ru' ? 'Пароли не совпадают' : 'Passwords do not match');
+                return;
+            }
+            
+            try {
+                // В реальном приложении здесь был бы API запрос
+                showProfileSuccess(currentLanguage === 'ru' ? 'Пароль изменен' : 'Password changed');
+                cancelPasswordChange();
+            } catch (error) {
+                showProfileError(currentLanguage === 'ru' ? 'Ошибка при обновлении' : 'Error updating');
+            }
+        }
+
+        function startEmailConfirmation() {
+            // Генерируем демонстрационный код (6 цифр)
+            const code = Math.floor(100000 + Math.random() * 900000).toString();
+            window.generatedEmailCode = code;
+            
+            document.getElementById('emailConfirmingSection').classList.remove('hidden');
+            showProfileSuccess(currentLanguage === 'ru' ? 
+                `Код подтверждения отправлен (Демо код: ${code})` : 
+                `Confirmation code sent (Demo code: ${code})`);
+            clearProfileMessages();
+        }
+
+        function cancelEmailConfirmation() {
+            document.getElementById('emailConfirmingSection').classList.add('hidden');
+            document.getElementById('emailConfirmationCode').value = '';
+            window.generatedEmailCode = null;
+            clearProfileMessages();
+        }
+
+        function confirmEmail() {
+            const code = document.getElementById('emailConfirmationCode').value.trim();
+            
+            if (!code) {
+                showProfileError(currentLanguage === 'ru' ? 'Введите код подтверждения' : 'Enter confirmation code');
+                return;
+            }
+            
+            if (code !== window.generatedEmailCode) {
+                showProfileError(currentLanguage === 'ru' ? 'Неверный код подтверждения' : 'Invalid confirmation code');
+                return;
+            }
+            
+            try {
+                // В реальном приложении здесь был бы API запрос
+                showProfileSuccess(currentLanguage === 'ru' ? 'Email подтвержден' : 'Email confirmed');
+                cancelEmailConfirmation();
+                window.generatedEmailCode = null;
+            } catch (error) {
+                showProfileError(currentLanguage === 'ru' ? 'Ошибка при обновлении' : 'Error updating');
+            }
+        }
+    </script>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white" id="authMode">Войти</h2>
+                <button onclick="closeAuthModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors" aria-label="Закрыть">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <form id="authForm" onsubmit="handleAuthSubmit(event)" class="space-y-4">
+                <div id="usernameField" class="hidden">
+                    <label for="username" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Никнейм</label>
+                    <input type="text" id="username" name="username" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white" placeholder="Никнейм">
+                </div>
+
+                <div>
+                    <label for="emailOrUsername" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email или никнейм</label>
+                    <input type="text" id="emailOrUsername" name="emailOrUsername" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white" placeholder="Email или никнейм">
+                </div>
+
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Пароль</label>
+                    <input type="password" id="password" name="password" required class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white" placeholder="Пароль">
+                </div>
+
+                <div id="confirmPasswordField" class="hidden">
+                    <label for="confirmPassword" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Подтвердите пароль</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white" placeholder="Подтвердите пароль">
+                </div>
+
+                <button type="submit" id="authSubmit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Войти
+                </button>
+            </form>
+
+            <div class="mt-6 text-center">
+                <button onclick="switchAuthMode()" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 text-sm font-medium transition-colors" id="authSwitch">
+                    Нет аккаунта? Зарегистрироваться
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full p-6 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white" id="profileTitle">
+                    Профиль
+                </h2>
+                <button onclick="closeProfileModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors" aria-label="Закрыть">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Success/Error Messages -->
+            <div id="profileSuccessMessage" class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-md p-3 mb-4 hidden">
+                <p class="text-green-600 dark:text-green-400 text-sm"></p>
+            </div>
+
+            <div id="profileErrorMessage" class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md p-3 mb-4 hidden">
+                <p class="text-red-600 dark:text-red-400 text-sm"></p>
+            </div>
+
+            <!-- Profile Information Section -->
+            <div id="profileInfoSection" class="space-y-4 mb-6">
+                
+                <div class="space-y-2">
+                    <div class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded-md transition-colors" onclick="startProfileEditing()">
+                        <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Имя:</span>
+                        <span class="ml-2 text-gray-900 dark:text-white" id="profileName"></span>
+                        <span class="ml-2 text-xs text-gray-500" id="clickToEditHint">(кликните для редактирования)</span>
+                    </div>
+                    <div class="p-2">
+                        <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Email:</span>
+                        <span class="ml-2 text-gray-900 dark:text-white" id="profileEmail"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Editing Section -->
+            <div id="profileEditingSection" class="space-y-4 mb-6 hidden">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Редактировать профиль</h3>
+                
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Имя</label>
+                        <input type="text" id="profileEditName" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white" required>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="saveProfile()" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 text-sm">
+                            Сохранить
+                        </button>
+                        <button onclick="cancelProfileEditing()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-md transition-colors duration-200 text-sm">
+                            Отмена
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Password Change Section -->
+            <div id="passwordChangingSection" class="space-y-4 mb-6 hidden">
+                
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Текущий пароль</label>
+                        <input type="password" id="currentPassword" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Новый пароль</label>
+                        <input type="password" id="newPassword" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Подтвердите новый пароль</label>
+                        <input type="password" id="confirmNewPassword" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white">
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="changePassword()" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 text-sm">
+                            Сохранить
+                        </button>
+                        <button onclick="cancelPasswordChange()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-md transition-colors duration-200 text-sm">
+                            Отмена
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email Confirmation Section -->
+            <div id="emailConfirmingSection" class="space-y-4 hidden">
+                
+                <div class="space-y-3">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-md p-3">
+                        <p class="text-blue-700 dark:text-blue-300 text-sm">
+                            <strong>Демо-версия:</strong> Код подтверждения показан в сообщении выше.
+                        </p>
+                        <p class="text-blue-600 dark:text-blue-400 text-xs mt-1" id="emailConfirmationText">
+                            В реальном приложении код был бы отправлен на ваш email
+                        </p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Код подтверждения</label>
+                        <input type="text" id="emailConfirmationCode" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white" placeholder="Введите код">
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="confirmEmail()" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 text-sm">
+                            Подтвердить
+                        </button>
+                        <button onclick="cancelEmailConfirmation()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-md transition-colors duration-200 text-sm">
+                            Отмена
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="space-y-4">
+                <button onclick="startPasswordChange()" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-md transition-colors duration-200 text-sm">
+                    Изменить пароль
+                </button>
+                <button onclick="startEmailConfirmation()" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-md transition-colors duration-200 text-sm">
+                    Подтвердить email
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
