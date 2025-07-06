@@ -2,6 +2,7 @@ export interface User {
   id: string;
   username: string;
   email: string;
+  name: string;
 }
 
 export interface AuthData {
@@ -30,7 +31,8 @@ export const auth = {
     const newUser: User = {
       id: Date.now().toString(),
       username,
-      email
+      email,
+      name: username
     };
 
     users.push(newUser);

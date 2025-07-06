@@ -198,9 +198,9 @@ export default function Header({ language, setLanguage }: HeaderProps) {
               <a href="#" className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 px-2 md:px-3 py-2 rounded-md text-sm font-medium">
                 {t.resources}
               </a>
-              <a href="/forum" className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 px-2 md:px-3 py-2 rounded-md text-sm font-medium">
+              <Link href="/forum" className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 px-2 md:px-3 py-2 rounded-md text-sm font-medium">
                 {t.forum}
-              </a>
+              </Link>
             </nav>
 
             {/* Language Switcher, Theme Toggle and Auth */}
@@ -314,9 +314,9 @@ export default function Header({ language, setLanguage }: HeaderProps) {
                 <a href="#" className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium">
                   {t.resources}
                 </a>
-                <a href="/forum" className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium">
+                <Link href="/forum" className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium">
                   {t.forum}
-                </a>
+                </Link>
               </div>
               <div className="pt-4 pb-3 border-t border-gray-200 dark:border-gray-700">
                 {currentUser ? (

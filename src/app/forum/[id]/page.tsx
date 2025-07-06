@@ -65,7 +65,7 @@ export default function TopicPage() {
   const router = useRouter();
   const [language, setLanguage] = useState<'ru' | 'en'>("ru");
   const t = translations[language];
-  const topicId = Number(params.id);
+  const topicId = Number(params?.id);
   const [topic, setTopic] = useState<Topic | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState("");
