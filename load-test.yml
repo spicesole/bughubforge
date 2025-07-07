@@ -1,0 +1,74 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    # Разогрев - постепенное увеличение нагрузки
+    - duration: 60
+      arrivalRate: 1
+      name: "Warm up"
+    
+    # Основная нагрузка - стабильная
+    - duration: 120
+      arrivalRate: 10
+      name: "Steady load"
+    
+    # Пиковая нагрузка
+    - duration: 60
+      arrivalRate: 50
+      name: "Peak load"
+    
+    # Снижение нагрузки
+    - duration: 60
+      arrivalRate: 5
+      name: "Cool down"
+
+scenarios:
+  - name: "Homepage load test"
+    weight: 40
+    flow:
+      - get:
+          url: "/"
+          expect:
+            - statusCode: 200
+            - contentType: html
+
+  - name: "Glossary page load test"
+    weight: 20
+    flow:
+      - get:
+          url: "/glossary"
+          expect:
+            - statusCode: 200
+            - contentType: html
+
+  - name: "Resources page load test"
+    weight: 20
+    flow:
+      - get:
+          url: "/resources"
+          expect:
+            - statusCode: 200
+            - contentType: html
+
+  - name: "Tests page load test"
+    weight: 20
+    flow:
+      - get:
+          url: "/tests"
+          expect:
+            - statusCode: 200
+            - contentType: html
+
+  - name: "Navigation flow test"
+    weight: 10
+    flow:
+      - get:
+          url: "/"
+      - think: 2
+      - get:
+          url: "/glossary"
+      - think: 1
+      - get:
+          url: "/resources"
+      - think: 1
+      - get:
+          url: "/tests" 

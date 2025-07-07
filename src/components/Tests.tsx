@@ -1,129 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-
-interface Question {
-  id: number
-  question: string
-  options: string[]
-  correctAnswer: number
-  explanation: string
-}
-
-interface Test {
-  id: string
-  title: string
-  description: string
-  questions: Question[]
-}
-
-const tests: Test[] = [
-  {
-    id: 'basics',
-    title: 'Основы тестирования',
-    description: 'Базовые концепции и термины тестирования ПО',
-    questions: [
-      {
-        id: 1,
-        question: 'Что такое тестирование программного обеспечения?',
-        options: [
-          'Процесс поиска ошибок в коде',
-          'Процесс проверки соответствия программы требованиям',
-          'Процесс написания документации',
-          'Процесс оптимизации производительности'
-        ],
-        correctAnswer: 1,
-        explanation: 'Тестирование - это процесс проверки соответствия программы требованиям и выявления дефектов.'
-      },
-      {
-        id: 2,
-        question: 'Какие основные типы тестирования вы знаете?',
-        options: [
-          'Функциональное тестирование',
-          'Функциональное, нефункциональное и тестирование изменений',
-          'Автоматизированное тестирование',
-          'Ручное тестирование'
-        ],
-        correctAnswer: 1,
-        explanation: 'Основные типы: функциональное (проверка функций), нефункциональное (производительность, безопасность) и тестирование изменений (регрессионное).'
-      },
-      {
-        id: 3,
-        question: 'Что такое баг (дефект)?',
-        options: [
-          'Любая ошибка в программе',
-          'Отклонение от ожидаемого поведения',
-          'Проблема с дизайном',
-          'Все перечисленное'
-        ],
-        correctAnswer: 3,
-        explanation: 'Баг - это отклонение от ожидаемого поведения программы, которое может включать ошибки в коде, дизайне или требованиях.'
-      }
-    ]
-  },
-  {
-    id: 'functional',
-    title: 'Функциональное тестирование',
-    description: 'Тестирование функциональности приложения',
-    questions: [
-      {
-        id: 1,
-        question: 'Что проверяет функциональное тестирование?',
-        options: [
-          'Производительность системы',
-          'Внешний вид интерфейса',
-          'Соответствие функций требованиям',
-          'Безопасность приложения'
-        ],
-        correctAnswer: 2,
-        explanation: 'Функциональное тестирование проверяет, что все функции приложения работают согласно требованиям.'
-      },
-      {
-        id: 2,
-        question: 'Какие техники функционального тестирования вы знаете?',
-        options: [
-          'Эквивалентное разбиение',
-          'Эквивалентное разбиение, граничные значения, анализ причинно-следственных связей',
-          'Тестирование производительности',
-          'Тестирование безопасности'
-        ],
-        correctAnswer: 1,
-        explanation: 'Основные техники: эквивалентное разбиение, граничные значения, анализ причинно-следственных связей.'
-      }
-    ]
-  },
-  {
-    id: 'tools',
-    title: 'Инструменты тестирования',
-    description: 'Популярные инструменты для автоматизации тестирования',
-    questions: [
-      {
-        id: 1,
-        question: 'Какой инструмент используется для автоматизации веб-тестирования?',
-        options: [
-          'Selenium',
-          'Selenium, Cypress, Playwright',
-          'JUnit',
-          'Postman'
-        ],
-        correctAnswer: 1,
-        explanation: 'Для веб-тестирования используются Selenium, Cypress, Playwright и другие инструменты.'
-      },
-      {
-        id: 2,
-        question: 'Что такое API тестирование?',
-        options: [
-          'Тестирование веб-интерфейса',
-          'Тестирование программных интерфейсов',
-          'Тестирование базы данных',
-          'Тестирование мобильных приложений'
-        ],
-        correctAnswer: 1,
-        explanation: 'API тестирование - это тестирование программных интерфейсов для проверки взаимодействия между компонентами.'
-      }
-    ]
-  }
-]
+import { getTests, type Test, type Question, type Difficulty } from '../data/tests'
 
 const translations = {
   ru: {
@@ -143,7 +21,17 @@ const translations = {
     selectAnswer: 'Выберите ответ',
     testCompleted: 'Тест завершен!',
     perfectScore: 'Отлично! Все ответы правильные!',
-    perfectScoreDesc: 'Вы отлично справились с тестом. Продолжайте изучать материалы!'
+    perfectScoreDesc: 'Вы отлично справились с тестом. Продолжайте изучать материалы!',
+    difficulty: 'Сложность',
+    allLevels: 'Все уровни',
+    beginner: 'Нач.',
+    intermediate: 'Сред.',
+    advanced: 'Прод.',
+    beginnerFull: 'Начинающий',
+    intermediateFull: 'Средний',
+    advancedFull: 'Продвинутый',
+    viewMistakes: 'Посмотреть ошибки',
+    questions: 'вопросов'
   },
   en: {
     tests: 'Tests',
@@ -162,7 +50,17 @@ const translations = {
     selectAnswer: 'Select an answer',
     testCompleted: 'Test completed!',
     perfectScore: 'Excellent! All answers are correct!',
-    perfectScoreDesc: 'You did great on the test. Keep studying the materials!'
+    perfectScoreDesc: 'You did great on the test. Keep studying the materials!',
+    difficulty: 'Difficulty',
+    allLevels: 'All levels',
+    beginner: 'Beginner',
+    intermediate: 'Intermediate',
+    advanced: 'Advanced',
+    beginnerFull: 'Beginner',
+    intermediateFull: 'Intermediate',
+    advancedFull: 'Advanced',
+    viewMistakes: 'View mistakes',
+    questions: 'questions'
   }
 }
 
@@ -177,7 +75,8 @@ export default function Tests({ language }: TestsProps) {
   const [answers, setAnswers] = useState<number[]>([])
   const [showResults, setShowResults] = useState(false)
   const [showExplanation, setShowExplanation] = useState(false)
-
+  const [difficultyFilter, setDifficultyFilter] = useState<'' | Difficulty>('')
+  const [showMistakes, setShowMistakes] = useState(false)
   const t = translations[language]
 
   const startTest = (test: Test) => {
@@ -187,6 +86,7 @@ export default function Tests({ language }: TestsProps) {
     setAnswers(new Array(test.questions.length).fill(-1))
     setShowResults(false)
     setShowExplanation(false)
+    setShowMistakes(false)
   }
 
   const handleAnswerSelect = (answerIndex: number) => {
@@ -236,10 +136,16 @@ export default function Tests({ language }: TestsProps) {
     setAnswers([])
     setShowResults(false)
     setShowExplanation(false)
+    setShowMistakes(false)
   }
 
   if (showResults && selectedTest) {
     const score = calculateScore()
+    const incorrectQuestions = selectedTest.questions.filter((question, index) => {
+      const userAnswer = answers[index]
+      return userAnswer !== question.correctAnswer
+    })
+
     return (
       <div className="max-w-4xl mx-auto p-6">
         <div className="text-center mb-8">
@@ -254,102 +160,102 @@ export default function Tests({ language }: TestsProps) {
           </p>
         </div>
 
-        <div className="space-y-6">
-          {(() => {
-            const incorrectQuestions = selectedTest.questions.filter((question, index) => {
-              const userAnswer = answers[index]
-              return userAnswer !== question.correctAnswer
-            })
-            
-            if (incorrectQuestions.length === 0) {
-              return (
-                <div className="text-center py-8">
-                  <div className="text-6xl mb-4">🎉</div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                    {t.perfectScore}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    {t.perfectScoreDesc}
-                  </p>
-                </div>
-              )
-            }
-            
-            return selectedTest.questions.map((question, index) => {
-              const userAnswer = answers[index]
-              const isCorrect = userAnswer === question.correctAnswer
-              
-              // Показываем только неправильно отвеченные вопросы
-              if (isCorrect) return null
-              
-              return (
-                <div key={question.id} className="card">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                      {t.question} {index + 1}
-                    </h3>
-                    <span className="px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
-                      {t.incorrect}
-                    </span>
-                  </div>
-                  
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">
-                    {question.question}
-                  </p>
-
-                  <div className="space-y-2 mb-4">
-                    {question.options.map((option, optionIndex) => (
-                      <div
-                        key={optionIndex}
-                        className={`p-3 rounded-lg border ${
-                          optionIndex === question.correctAnswer
-                            ? 'bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800'
-                            : optionIndex === userAnswer
-                            ? 'bg-red-50 border-red-200 dark:bg-red-900/20 dark:border-red-800'
-                            : 'bg-gray-50 border-gray-200 dark:bg-gray-800 dark:border-gray-700'
-                        }`}
-                      >
-                        <span className={`font-medium ${
-                          optionIndex === question.correctAnswer
-                            ? 'text-green-700 dark:text-green-300'
-                            : optionIndex === userAnswer
-                            ? 'text-red-700 dark:text-red-300'
-                            : 'text-gray-700 dark:text-gray-300'
-                        }`}>
-                          {String.fromCharCode(65 + optionIndex)}. {option}
-                        </span>
+        {incorrectQuestions.length === 0 ? (
+          <div className="text-center py-8">
+            <div className="text-6xl mb-4">🎉</div>
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+              {t.perfectScore}
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              {t.perfectScoreDesc}
+            </p>
+          </div>
+        ) : (
+          <>
+            {!showMistakes && (
+              <div className="flex flex-col items-center gap-4 mt-8">
+                <button
+                  onClick={() => setShowMistakes(true)}
+                  className="btn-primary"
+                >
+                  {t.viewMistakes}
+                </button>
+                <button
+                  onClick={resetTest}
+                  className="btn-secondary"
+                >
+                  {t.tryAgain}
+                </button>
+              </div>
+            )}
+            {showMistakes && (
+              <>
+                <div className="space-y-6 mt-8">
+                  {selectedTest.questions.map((question, index) => {
+                    const userAnswer = answers[index]
+                    const isCorrect = userAnswer === question.correctAnswer
+                    if (isCorrect) return null
+                    return (
+                      <div key={question.id} className="card">
+                        <div className="flex items-center justify-between mb-4">
+                          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                            {t.question} {index + 1}
+                          </h3>
+                          <span className="px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
+                            {t.incorrect}
+                          </span>
+                        </div>
+                        <p className="text-gray-700 dark:text-gray-300 mb-4">
+                          {question.question}
+                        </p>
+                        <div className="space-y-2 mb-4">
+                          {question.options.map((option, optionIndex) => (
+                            <div
+                              key={optionIndex}
+                              className={`p-3 rounded-lg border ${
+                                optionIndex === question.correctAnswer
+                                  ? 'bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800'
+                                  : optionIndex === userAnswer
+                                  ? 'bg-red-50 border-red-200 dark:bg-red-900/20 dark:border-red-800'
+                                  : 'bg-gray-50 border-gray-200 dark:bg-gray-800 dark:border-gray-700'
+                              }`}
+                            >
+                              <span className={`font-medium ${
+                                optionIndex === question.correctAnswer
+                                  ? 'text-green-700 dark:text-green-300'
+                                  : optionIndex === userAnswer
+                                  ? 'text-red-700 dark:text-red-300'
+                                  : 'text-gray-700 dark:text-gray-300'
+                              }`}>
+                                {String.fromCharCode(65 + optionIndex)}. {option}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+                          <h4 className="font-semibold text-blue-800 dark:text-blue-200 mb-2">
+                            {t.explanation}:
+                          </h4>
+                          <p className="text-blue-700 dark:text-blue-300">
+                            {question.explanation}
+                          </p>
+                        </div>
                       </div>
-                    ))}
-                  </div>
-
-                  <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-                    <h4 className="font-semibold text-blue-800 dark:text-blue-200 mb-2">
-                      {t.explanation}:
-                    </h4>
-                    <p className="text-blue-700 dark:text-blue-300">
-                      {question.explanation}
-                    </p>
-                  </div>
+                    )
+                  })}
                 </div>
-              )
-            })
-          })()}
-        </div>
-
-        <div className="flex justify-center space-x-4 mt-8">
-          <button
-            onClick={resetTest}
-            className="btn-primary"
-          >
-            {t.tryAgain}
-          </button>
-          <button
-            onClick={resetTest}
-            className="btn-secondary"
-          >
-            {t.backToTests}
-          </button>
-        </div>
+                <div className="flex justify-center mt-8">
+                  <button
+                    onClick={resetTest}
+                    className="btn-secondary"
+                  >
+                    {t.backToTests}
+                  </button>
+                </div>
+              </>
+            )}
+          </>
+        )}
       </div>
     )
   }
@@ -436,38 +342,130 @@ export default function Tests({ language }: TestsProps) {
     )
   }
 
-  return (
-    <div className="max-w-4xl mx-auto p-6">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-          {t.tests}
-        </h2>
-        <p className="text-lg text-gray-600 dark:text-gray-400">
-          Проверьте свои знания в области тестирования программного обеспечения
-        </p>
-      </div>
+  if (!selectedTest) {
+    // фильтрация тестов по сложности
+    const currentTests = getTests(language)
+    const filteredTests = difficultyFilter
+      ? currentTests.filter((test) => test.difficulty === difficultyFilter)
+      : currentTests
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {tests.map((test) => (
-          <div key={test.id} className="card hover:shadow-lg transition-shadow">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-              {test.title}
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
-              {test.description}
-            </p>
-            <div className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-              {test.questions.length} вопросов
-            </div>
-            <button
-              onClick={() => startTest(test)}
-              className="btn-primary w-full"
-            >
-              {t.startTest}
-            </button>
+    return (
+      <div className="max-w-4xl mx-auto p-6">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            {t.tests}
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400 mb-2">
+            {language === 'ru' 
+              ? 'Проверьте свои знания в области тестирования программного обеспечения'
+              : 'Test your knowledge in software testing'
+            }
+          </p>
+          <div className="inline-flex items-center px-4 py-2 bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-200 rounded-full text-sm font-medium">
+            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            {filteredTests.length} {language === 'ru' ? 'доступных тестов' : 'available tests'}
           </div>
-        ))}
+        </div>
+
+        {/* Фильтр по сложности */}
+        <div className="flex justify-center mb-8">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 border border-gray-200 dark:border-gray-700">
+            <div className="flex items-center space-x-4">
+              <label className="font-medium text-gray-700 dark:text-gray-300">
+                {t.difficulty}:
+              </label>
+                             <div className="flex flex-wrap gap-2">
+                 <button
+                   onClick={() => setDifficultyFilter('')}
+                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap ${
+                     difficultyFilter === ''
+                       ? 'bg-primary-600 text-white shadow-md'
+                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
+                   }`}
+                 >
+                   {t.allLevels}
+                 </button>
+                 <button
+                   onClick={() => setDifficultyFilter('beginner')}
+                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap ${
+                     difficultyFilter === 'beginner'
+                       ? 'bg-green-600 text-white shadow-md'
+                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
+                   }`}
+                 >
+                   {t.beginnerFull}
+                 </button>
+                 <button
+                   onClick={() => setDifficultyFilter('intermediate')}
+                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap ${
+                     difficultyFilter === 'intermediate'
+                       ? 'bg-yellow-600 text-white shadow-md'
+                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
+                   }`}
+                 >
+                   {t.intermediateFull}
+                 </button>
+                 <button
+                   onClick={() => setDifficultyFilter('advanced')}
+                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap ${
+                     difficultyFilter === 'advanced'
+                       ? 'bg-red-600 text-white shadow-md'
+                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
+                   }`}
+                 >
+                   {t.advancedFull}
+                 </button>
+               </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredTests.map((test) => (
+            <div key={test.id} className="card hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full border-2 border-transparent hover:border-primary-200 dark:hover:border-primary-800 min-h-[280px]">
+              <div className="flex-1">
+                <div className="flex items-start justify-between mb-3 gap-2">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white flex-1 leading-tight">
+                    {test.title}
+                  </h3>
+                  <span 
+                    className={`inline-block px-1 py-0.5 rounded-full text-xs font-medium whitespace-nowrap flex-shrink-0 transition-all duration-200 ${
+                      test.difficulty === 'beginner' 
+                        ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                        : test.difficulty === 'intermediate'
+                        ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+                        : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+                    }`}
+                  >
+                    {t[test.difficulty]}
+                  </span>
+                </div>
+                <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">
+                  {test.description}
+                </p>
+                <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {test.questions.length} {t.questions}
+                </div>
+              </div>
+              <div className="mt-6">
+                <button
+                  onClick={() => startTest(test)}
+                  className="w-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+                >
+                  {t.startTest}
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
+
+  return null
 } 

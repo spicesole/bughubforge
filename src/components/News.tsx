@@ -8,7 +8,7 @@ interface NewsItem {
   summary: string
   source: string
   date: string
-  category: 'tools' | 'methodology' | 'industry' | 'learning'
+  category: 'tools' | 'methodology' | 'industry' | 'automation'
   url?: string
 }
 
@@ -26,7 +26,7 @@ export default function News({ language }: NewsProps) {
         tools: 'Инструменты',
         methodology: 'Методологии',
         industry: 'Индустрия',
-        learning: 'Обучение'
+        automation: 'Автоматизация'
       },
       readMore: 'Читать далее',
       source: 'Источник',
@@ -40,7 +40,7 @@ export default function News({ language }: NewsProps) {
         tools: 'Tools',
         methodology: 'Methodology',
         industry: 'Industry',
-        learning: 'Learning'
+        automation: 'Automation'
       },
       readMore: 'Read more',
       source: 'Source',
@@ -181,10 +181,49 @@ export default function News({ language }: NewsProps) {
       date: '2025-06-12',
       category: 'industry',
       url: 'https://metaversetestingweekly.com/testing-paradigms-2025'
+    },
+    {
+      id: 11,
+      title: language === 'ru'
+        ? 'Бесплатный курс по автоматизации тестирования: От новичка до эксперта'
+        : 'Free Test Automation Course: From Beginner to Expert',
+      summary: language === 'ru'
+        ? 'Комплексный курс по автоматизации тестирования с практическими заданиями и реальными проектами.'
+        : 'Comprehensive test automation course with practical assignments and real projects.',
+      source: 'QA Academy',
+      date: '2025-06-10',
+      category: 'automation',
+      url: 'https://qaacademy.com/free-automation-course'
+    },
+    {
+      id: 12,
+      title: language === 'ru'
+        ? 'Мастер-класс: Тестирование API с помощью Postman'
+        : 'Workshop: API Testing with Postman',
+      summary: language === 'ru'
+        ? 'Практический мастер-класс по тестированию API с использованием Postman и современных подходов.'
+        : 'Practical workshop on API testing using Postman and modern approaches.',
+      source: 'Testing Workshops',
+      date: '2025-06-08',
+      category: 'automation',
+      url: 'https://testingworkshops.com/api-testing-postman'
+    },
+    {
+      id: 13,
+      title: language === 'ru'
+        ? 'Онлайн-конференция: Будущее тестирования в 2025 году'
+        : 'Online Conference: Future of Testing in 2025',
+      summary: language === 'ru'
+        ? 'Международная конференция с участием ведущих экспертов в области тестирования программного обеспечения.'
+        : 'International conference with leading software testing experts.',
+      source: 'Testing Conference Hub',
+      date: '2025-06-05',
+      category: 'automation',
+      url: 'https://testingconferencehub.com/future-2025'
     }
   ]
 
-  const [selectedCategory, setSelectedCategory] = useState<'all' | 'tools' | 'methodology' | 'industry' | 'learning'>('all')
+  const [selectedCategory, setSelectedCategory] = useState<'all' | 'tools' | 'methodology' | 'industry' | 'automation'>('all')
 
   const filteredNews = selectedCategory === 'all' 
     ? demoNews 
@@ -203,7 +242,7 @@ export default function News({ language }: NewsProps) {
       tools: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
       methodology: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
       industry: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
-      learning: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300'
+      automation: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300'
     }
     return colors[category as keyof typeof colors] || 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300'
   }
@@ -270,7 +309,7 @@ export default function News({ language }: NewsProps) {
                       rel="noopener noreferrer"
                       className="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 text-sm font-medium transition-colors"
                     >
-                      {t.readMore} →
+                      {t.readMore}
                     </a>
                   )}
                 </div>

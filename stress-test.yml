@@ -1,0 +1,59 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    # Постепенное увеличение нагрузки
+    - duration: 60
+      arrivalRate: 1
+      rampTo: 10
+      name: "Ramp up"
+    
+    # Высокая нагрузка
+    - duration: 120
+      arrivalRate: 20
+      name: "High load"
+    
+    # Пиковая нагрузка
+    - duration: 60
+      arrivalRate: 50
+      name: "Peak load"
+    
+    # Снижение
+    - duration: 60
+      arrivalRate: 5
+      name: "Cool down"
+
+scenarios:
+  - name: "Stress test - Homepage"
+    weight: 50
+    flow:
+      - get:
+          url: "/"
+          expect:
+            - statusCode: 200
+
+  - name: "Stress test - All pages"
+    weight: 30
+    flow:
+      - get:
+          url: "/"
+      - think: 1
+      - get:
+          url: "/glossary"
+      - think: 1
+      - get:
+          url: "/resources"
+      - think: 1
+      - get:
+          url: "/tests"
+
+  - name: "Stress test - Rapid requests"
+    weight: 20
+    flow:
+      - get:
+          url: "/"
+      - get:
+          url: "/glossary"
+      - get:
+          url: "/resources"
+      - get:
+          url: "/tests" 

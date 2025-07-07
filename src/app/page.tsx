@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import Features from '@/components/Features'
@@ -8,6 +8,14 @@ import News from '@/components/News'
 
 export default function Home() {
   const [language, setLanguage] = useState<'ru' | 'en'>('ru')
+
+  // Инициализация языка из localStorage
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('language')
+    if (savedLanguage === 'en' || savedLanguage === 'ru') {
+      setLanguage(savedLanguage)
+    }
+  }, [])
 
   const translations = {
     ru: {

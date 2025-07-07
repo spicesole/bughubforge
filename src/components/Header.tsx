@@ -12,6 +12,14 @@ export default function Header({ language, setLanguage }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(false)
 
+  // Инициализация языка
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('language')
+    if (savedLanguage === 'en' || savedLanguage === 'ru') {
+      setLanguage(savedLanguage)
+    }
+  }, [setLanguage])
+
   // Инициализация тёмной темы
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme')
@@ -122,7 +130,11 @@ export default function Header({ language, setLanguage }: HeaderProps) {
           <div className="flex items-center space-x-2 md:space-x-4">
             {/* Language toggle */}
             <button
-              onClick={() => setLanguage(language === 'ru' ? 'en' : 'ru')}
+              onClick={() => {
+                const newLanguage = language === 'ru' ? 'en' : 'ru'
+                setLanguage(newLanguage)
+                localStorage.setItem('language', newLanguage)
+              }}
               className="px-2 py-1 text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             >
               {language === 'ru' ? 'EN' : 'RU'}

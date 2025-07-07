@@ -45,7 +45,7 @@ export default function Features({ title, features }: FeaturesProps) {
   }
 
   return (
-    <section className="py-12 md:py-16 bg-white dark:bg-gray-900">
+    <section className="py-12 md:py-16 bg-white dark:bg-gray-900" data-section="features">
       <div className="container-ipad">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 language-transition">

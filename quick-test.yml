@@ -1,0 +1,14 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    - duration: 30
+      arrivalRate: 5
+      name: "Quick test"
+
+scenarios:
+  - name: "Quick homepage test"
+    flow:
+      - get:
+          url: "/"
+          expect:
+            - statusCode: 200 

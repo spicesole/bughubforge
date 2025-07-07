@@ -1,11 +1,19 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from '@/components/Header'
 import Tests from '@/components/Tests'
 
 export default function TestsPage() {
   const [language, setLanguage] = useState<'ru' | 'en'>('ru')
+
+  // Инициализация языка из localStorage
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('language')
+    if (savedLanguage === 'en' || savedLanguage === 'ru') {
+      setLanguage(savedLanguage)
+    }
+  }, [])
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 ipad-fix">

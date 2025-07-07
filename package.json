@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:quick": "artillery run quick-test.yml",
+    "test:load": "artillery run load-test.yml",
+    "test:stress": "artillery run stress-test.yml",
+    "monitor": "node monitor.js",
+    "monitor:prod": "node monitor.js https://your-domain.vercel.app"
   },
   "dependencies": {
     "next": "14.0.4",
