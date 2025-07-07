@@ -55,80 +55,132 @@ export default function News({ language }: NewsProps) {
     {
       id: 1,
       title: language === 'ru' 
-        ? 'Selenium 4.20: Новые возможности для автоматизации тестирования'
-        : 'Selenium 4.20: New Features for Test Automation',
+        ? 'Playwright 1.45: Революционные изменения в автоматизации тестирования'
+        : 'Playwright 1.45: Revolutionary Changes in Test Automation',
       summary: language === 'ru'
-        ? 'Вышла новая версия Selenium с улучшенной производительностью и новыми API для работы с современными браузерами.'
-        : 'New Selenium version released with improved performance and new APIs for modern browsers.',
-      source: 'Selenium Official Blog',
-      date: '2024-01-15',
+        ? 'Вышла новая версия Playwright с поддержкой AI-powered тестирования и улучшенной интеграцией с CI/CD.'
+        : 'New Playwright version released with AI-powered testing support and improved CI/CD integration.',
+      source: 'Playwright Official Blog',
+      date: '2025-07-05',
       category: 'tools',
-      url: 'https://selenium.dev/blog/2024/selenium-4-20-released/'
+      url: 'https://playwright.dev/blog/playwright-1-45'
     },
     {
       id: 2,
       title: language === 'ru'
-        ? 'AI в тестировании: Тренды 2024 года'
-        : 'AI in Testing: 2024 Trends',
+        ? 'Claude Sonnet 4 в тестировании: Новые возможности ИИ'
+        : 'Claude Sonnet 4 in Testing: New AI Capabilities',
       summary: language === 'ru'
-        ? 'Обзор основных трендов использования искусственного интеллекта в автоматизации тестирования.'
-        : 'Overview of key trends in using artificial intelligence for test automation.',
-      source: 'Testing Weekly',
-      date: '2024-01-10',
+        ? 'Как использовать Claude Sonnet 4 для генерации тестовых сценариев и автоматизации тестирования.'
+        : 'How to use Claude Sonnet 4 for test scenario generation and test automation.',
+      source: 'AI Testing Weekly',
+      date: '2025-07-03',
       category: 'industry',
-      url: 'https://testingweekly.com/ai-testing-trends-2024'
+      url: 'https://aitestingweekly.com/claude-sonnet-4-testing'
     },
     {
       id: 3,
       title: language === 'ru'
-        ? 'Playwright vs Cypress: Сравнение популярных инструментов'
-        : 'Playwright vs Cypress: Popular Tools Comparison',
+        ? 'Cypress 15.0: Поддержка Web Components и улучшенная отладка'
+        : 'Cypress 15.0: Web Components Support and Enhanced Debugging',
       summary: language === 'ru'
-        ? 'Детальное сравнение двух популярных инструментов для end-to-end тестирования веб-приложений.'
-        : 'Detailed comparison of two popular tools for end-to-end web application testing.',
-      source: 'DevOps.com',
-      date: '2024-01-08',
+        ? 'Новая версия Cypress с поддержкой современных Web Components и улучшенными инструментами отладки.'
+        : 'New Cypress version with modern Web Components support and enhanced debugging tools.',
+      source: 'Cypress Blog',
+      date: '2025-07-01',
       category: 'tools',
-      url: 'https://devops.com/playwright-vs-cypress-comparison'
+      url: 'https://cypress.io/blog/cypress-15-0-release'
     },
     {
       id: 4,
       title: language === 'ru'
-        ? 'Behavior Driven Development (BDD) в 2024: Практическое руководство'
-        : 'Behavior Driven Development (BDD) in 2024: Practical Guide',
+        ? 'DevSecOps в тестировании: Интеграция безопасности в CI/CD'
+        : 'DevSecOps in Testing: Security Integration in CI/CD',
       summary: language === 'ru'
-        ? 'Как эффективно применять BDD в современных проектах разработки программного обеспечения.'
-        : 'How to effectively apply BDD in modern software development projects.',
-      source: 'TechBeacon',
-      date: '2024-01-05',
+        ? 'Как интегрировать тестирование безопасности в процесс непрерывной разработки и развертывания.'
+        : 'How to integrate security testing into continuous development and deployment processes.',
+      source: 'DevSecOps Magazine',
+      date: '2025-06-28',
       category: 'methodology',
-      url: 'https://techbeacon.com/bdd-2024-practical-guide'
+      url: 'https://devsecopsmag.com/security-testing-ci-cd-2025'
     },
     {
       id: 5,
       title: language === 'ru'
-        ? 'Бесплатные курсы по тестированию: Топ-10 ресурсов'
-        : 'Free Testing Courses: Top 10 Resources',
+        ? 'Тестирование AR/VR приложений: Новые вызовы и решения'
+        : 'AR/VR App Testing: New Challenges and Solutions',
       summary: language === 'ru'
-        ? 'Подборка лучших бесплатных курсов и ресурсов для изучения тестирования программного обеспечения.'
-        : 'Collection of the best free courses and resources for learning software testing.',
-      source: 'QA Learning Hub',
-      date: '2024-01-03',
-      category: 'learning',
-      url: 'https://qalearninghub.com/free-testing-courses'
+        ? 'Специфика тестирования приложений дополненной и виртуальной реальности в 2025 году.'
+        : 'Specifics of testing augmented and virtual reality applications in 2025.',
+      source: 'AR/VR Testing Hub',
+      date: '2025-06-25',
+      category: 'industry',
+      url: 'https://arvrtestinghub.com/testing-challenges-2025'
     },
     {
       id: 6,
       title: language === 'ru'
-        ? 'API тестирование: Лучшие практики и инструменты'
-        : 'API Testing: Best Practices and Tools',
+        ? 'Тестирование квантовых приложений: Будущее уже здесь'
+        : 'Quantum App Testing: The Future is Here',
       summary: language === 'ru'
-        ? 'Обзор современных подходов и инструментов для эффективного тестирования API.'
-        : 'Overview of modern approaches and tools for effective API testing.',
-      source: 'API Testing Blog',
-      date: '2024-01-01',
+        ? 'Первые подходы к тестированию квантовых вычислений и квантовых алгоритмов.'
+        : 'First approaches to testing quantum computing and quantum algorithms.',
+      source: 'Quantum Computing Weekly',
+      date: '2025-06-22',
+      category: 'methodology',
+      url: 'https://quantumcomputingweekly.com/testing-quantum-apps'
+    },
+    {
+      id: 7,
+      title: language === 'ru'
+        ? 'Selenium 5.0: Полная переработка архитектуры'
+        : 'Selenium 5.0: Complete Architecture Overhaul',
+      summary: language === 'ru'
+        ? 'Новая мажорная версия Selenium с полностью переработанной архитектурой и улучшенной производительностью.'
+        : 'New major Selenium version with completely redesigned architecture and improved performance.',
+      source: 'Selenium Official Blog',
+      date: '2025-06-20',
       category: 'tools',
-      url: 'https://apitestingblog.com/best-practices-2024'
+      url: 'https://selenium.dev/blog/2025/selenium-5-0-released'
+    },
+    {
+      id: 8,
+      title: language === 'ru'
+        ? 'Тестирование в эпоху Web3: Блокчейн и смарт-контракты'
+        : 'Testing in Web3 Era: Blockchain and Smart Contracts',
+      summary: language === 'ru'
+        ? 'Современные подходы к тестированию блокчейн-приложений и смарт-контрактов.'
+        : 'Modern approaches to testing blockchain applications and smart contracts.',
+      source: 'Web3 Testing Blog',
+      date: '2025-06-18',
+      category: 'methodology',
+      url: 'https://web3testing.blog/blockchain-testing-2025'
+    },
+    {
+      id: 9,
+      title: language === 'ru'
+        ? 'Тестирование с помощью GPT-5: Следующий уровень автоматизации'
+        : 'Testing with GPT-5: Next Level of Automation',
+      summary: language === 'ru'
+        ? 'Как GPT-5 революционизирует процесс тестирования и автоматизации в 2025 году.'
+        : 'How GPT-5 is revolutionizing the testing and automation process in 2025.',
+      source: 'AI Testing Magazine',
+      date: '2025-06-15',
+      category: 'industry',
+      url: 'https://aitestingmag.com/gpt-5-testing-revolution'
+    },
+    {
+      id: 10,
+      title: language === 'ru'
+        ? 'Тестирование в метавселенной: Новые парадигмы'
+        : 'Testing in Metaverse: New Paradigms',
+      summary: language === 'ru'
+        ? 'Специфика тестирования приложений метавселенной и виртуальных миров.'
+        : 'Specifics of testing metaverse applications and virtual worlds.',
+      source: 'Metaverse Testing Weekly',
+      date: '2025-06-12',
+      category: 'industry',
+      url: 'https://metaversetestingweekly.com/testing-paradigms-2025'
     }
   ]
 

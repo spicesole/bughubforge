@@ -21,11 +21,11 @@ export default function Home() {
         title: 'Что вы найдете на нашем сайте',
         glossary: 'Глоссарий терминов',
         resources: 'Полезные ресурсы',
-        news: 'Новости QA',
+        forum: 'Мини-форум',
         tests: 'Тесты и упражнения',
         glossaryDesc: 'Основные термины тестирования с объяснениями',
         resourcesDesc: 'Книги, статьи, видео и другие полезные материалы',
-        newsDesc: 'Актуальные новости из мира тестирования программного обеспечения',
+        forumDesc: 'Обсуждения, вопросы и обмен опытом',
         testsDesc: 'Практические задания для закрепления знаний'
       },
       forum: {
@@ -55,11 +55,11 @@ export default function Home() {
         title: 'What you will find on our site',
         glossary: 'Glossary of terms',
         resources: 'Useful resources',
-        news: 'QA News',
+        forum: 'Mini forum',
         tests: 'Tests and exercises',
         glossaryDesc: 'Basic testing terms with explanations',
         resourcesDesc: 'Books, articles, videos and other useful materials',
-        newsDesc: 'Latest news from the world of software testing',
+        forumDesc: 'Discussions, questions and experience sharing',
         testsDesc: 'Practical tasks to consolidate knowledge'
       },
       forum: {
@@ -96,12 +96,12 @@ export default function Home() {
         
         <Features 
           title={t.features.title}
-          features={[
-            { title: t.features.glossary, description: t.features.glossaryDesc },
-            { title: t.features.resources, description: t.features.resourcesDesc },
-            { title: t.features.news, description: t.features.newsDesc },
-            { title: t.features.tests, description: t.features.testsDesc }
-          ]}
+                  features={[
+          { title: t.features.glossary, description: t.features.glossaryDesc },
+          { title: t.features.resources, description: t.features.resourcesDesc },
+          { title: t.features.forum, description: t.features.forumDesc },
+          { title: t.features.tests, description: t.features.testsDesc }
+        ]}
         />
         
         <News language={language} />
