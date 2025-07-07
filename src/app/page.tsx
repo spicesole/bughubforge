@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import Features from '@/components/Features'
-import Forum from '@/components/Forum'
+import News from '@/components/News'
 
 export default function Home() {
   const [language, setLanguage] = useState<'ru' | 'en'>('ru')
@@ -21,11 +21,11 @@ export default function Home() {
         title: 'Что вы найдете на нашем сайте',
         glossary: 'Глоссарий терминов',
         resources: 'Полезные ресурсы',
-        forum: 'Мини-форум',
+        news: 'Новости QA',
         tests: 'Тесты и упражнения',
         glossaryDesc: 'Основные термины тестирования с объяснениями',
         resourcesDesc: 'Книги, статьи, видео и другие полезные материалы',
-        forumDesc: 'Обсуждения, вопросы и обмен опытом',
+        newsDesc: 'Актуальные новости из мира тестирования программного обеспечения',
         testsDesc: 'Практические задания для закрепления знаний'
       },
       forum: {
@@ -55,11 +55,11 @@ export default function Home() {
         title: 'What you will find on our site',
         glossary: 'Glossary of terms',
         resources: 'Useful resources',
-        forum: 'Mini forum',
+        news: 'QA News',
         tests: 'Tests and exercises',
         glossaryDesc: 'Basic testing terms with explanations',
         resourcesDesc: 'Books, articles, videos and other useful materials',
-        forumDesc: 'Discussions, questions and experience sharing',
+        newsDesc: 'Latest news from the world of software testing',
         testsDesc: 'Practical tasks to consolidate knowledge'
       },
       forum: {
@@ -99,12 +99,12 @@ export default function Home() {
           features={[
             { title: t.features.glossary, description: t.features.glossaryDesc },
             { title: t.features.resources, description: t.features.resourcesDesc },
-            { title: t.features.forum, description: t.features.forumDesc },
+            { title: t.features.news, description: t.features.newsDesc },
             { title: t.features.tests, description: t.features.testsDesc }
           ]}
         />
         
-        <Forum language={language} />
+        <News language={language} />
       </main>
       
       <footer className="bg-gray-800 dark:bg-gray-950 text-white py-8 md:py-12">

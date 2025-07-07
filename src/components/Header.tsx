@@ -52,7 +52,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
       features: 'Возможности',
       glossary: 'Глоссарий',
       resources: 'Ресурсы',
-      forum: 'Форум',
+      news: 'Новости',
       login: 'Войти',
       register: 'Регистрация',
       logout: 'Выйти',
@@ -101,7 +101,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
       features: 'Features',
       glossary: 'Glossary',
       resources: 'Resources',
-      forum: 'Forum',
+      news: 'News',
       login: 'Login',
       register: 'Register',
       logout: 'Logout',
@@ -198,9 +198,9 @@ export default function Header({ language, setLanguage }: HeaderProps) {
               <a href="#" className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 px-2 md:px-3 py-2 rounded-md text-sm font-medium">
                 {t.resources}
               </a>
-              <Link href="/forum" className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 px-2 md:px-3 py-2 rounded-md text-sm font-medium">
-                {t.forum}
-              </Link>
+              <a href="#news" className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 px-2 md:px-3 py-2 rounded-md text-sm font-medium">
+                {t.news}
+              </a>
             </nav>
 
             {/* Language Switcher, Theme Toggle and Auth */}
@@ -314,9 +314,9 @@ export default function Header({ language, setLanguage }: HeaderProps) {
                 <a href="#" className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium">
                   {t.resources}
                 </a>
-                <Link href="/forum" className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium">
-                  {t.forum}
-                </Link>
+                <a href="#news" className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium">
+                  {t.news}
+                </a>
               </div>
               <div className="pt-4 pb-3 border-t border-gray-200 dark:border-gray-700">
                 {currentUser ? (
