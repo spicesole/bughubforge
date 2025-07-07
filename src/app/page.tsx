@@ -21,25 +21,12 @@ export default function Home() {
         title: 'Что вы найдете на нашем сайте',
         glossary: 'Глоссарий терминов',
         resources: 'Полезные ресурсы',
-        forum: 'Мини-форум',
         tests: 'Тесты и упражнения',
         glossaryDesc: 'Основные термины тестирования с объяснениями',
         resourcesDesc: 'Книги, статьи, видео и другие полезные материалы',
-        forumDesc: 'Обсуждения, вопросы и обмен опытом',
         testsDesc: 'Практические задания для закрепления знаний'
       },
-      forum: {
-        title: 'Мини-форум',
-        subtitle: 'Делитесь своими находками, задавайте вопросы и общайтесь с другими тестировщиками',
-        addMessage: 'Добавить сообщение',
-        yourName: 'Ваше имя',
-        yourNamePlaceholder: 'Введите ваше имя',
-        message: 'Сообщение',
-        messagePlaceholder: 'Поделитесь своими находками или задайте вопрос...',
-        sendMessage: 'Отправить сообщение',
-        messages: 'Сообщения',
-        noMessages: 'Пока нет сообщений. Будьте первым!'
-      },
+
       footer: {
         rights: 'Все права защищены.'
       }
@@ -55,25 +42,12 @@ export default function Home() {
         title: 'What you will find on our site',
         glossary: 'Glossary of terms',
         resources: 'Useful resources',
-        forum: 'Mini forum',
         tests: 'Tests and exercises',
         glossaryDesc: 'Basic testing terms with explanations',
         resourcesDesc: 'Books, articles, videos and other useful materials',
-        forumDesc: 'Discussions, questions and experience sharing',
         testsDesc: 'Practical tasks to consolidate knowledge'
       },
-      forum: {
-        title: 'Mini Forum',
-        subtitle: 'Share your findings, ask questions and communicate with other testers',
-        addMessage: 'Add Message',
-        yourName: 'Your Name',
-        yourNamePlaceholder: 'Enter your name',
-        message: 'Message',
-        messagePlaceholder: 'Share your findings or ask a question...',
-        sendMessage: 'Send Message',
-        messages: 'Messages',
-        noMessages: 'No messages yet. Be the first!'
-      },
+
       footer: {
         rights: 'All rights reserved.'
       }
@@ -97,10 +71,9 @@ export default function Home() {
         <Features 
           title={t.features.title}
                   features={[
-          { title: t.features.glossary, description: t.features.glossaryDesc },
-          { title: t.features.resources, description: t.features.resourcesDesc },
-          { title: t.features.forum, description: t.features.forumDesc },
-          { title: t.features.tests, description: t.features.testsDesc }
+          { title: t.features.glossary, description: t.features.glossaryDesc, url: '/glossary', icon: 'glossary' },
+          { title: t.features.resources, description: t.features.resourcesDesc, url: '/resources', icon: 'resources' },
+          { title: t.features.tests, description: t.features.testsDesc, url: '/tests', icon: 'tests' }
         ]}
         />
         
