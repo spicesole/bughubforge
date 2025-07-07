@@ -68,6 +68,35 @@ interface TestsProps {
   language: 'ru' | 'en'
 }
 
+// Функция для перемешивания массива (Fisher-Yates)
+function shuffleArray<T>(array: T[]): T[] {
+  const arr = [...array]
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[arr[i], arr[j]] = [arr[j], arr[i]]
+  }
+  return arr
+}
+
+// Перемешивание вопросов и вариантов ответов
+function prepareTest(test: Test): Test {
+  // Перемешиваем вопросы
+  const shuffledQuestions = shuffleArray(test.questions).map((q) => {
+    // Перемешиваем варианты ответа и пересчитываем индекс правильного ответа
+    const optionsWithIndex = q.options.map((option, idx) => ({ option, idx }))
+    const shuffledOptions = shuffleArray(optionsWithIndex)
+    const newCorrectIndex = shuffledOptions.findIndex(
+      (item) => item.idx === q.correctAnswer
+    )
+    return {
+      ...q,
+      options: shuffledOptions.map((item) => item.option),
+      correctAnswer: newCorrectIndex
+    }
+  })
+  return { ...test, questions: shuffledQuestions }
+}
+
 export default function Tests({ language }: TestsProps) {
   const [selectedTest, setSelectedTest] = useState<Test | null>(null)
   const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -80,10 +109,11 @@ export default function Tests({ language }: TestsProps) {
   const t = translations[language]
 
   const startTest = (test: Test) => {
-    setSelectedTest(test)
+    const randomizedTest = prepareTest(test)
+    setSelectedTest(randomizedTest)
     setCurrentQuestion(0)
     setSelectedAnswer(null)
-    setAnswers(new Array(test.questions.length).fill(-1))
+    setAnswers(new Array(randomizedTest.questions.length).fill(-1))
     setShowResults(false)
     setShowExplanation(false)
     setShowMistakes(false)

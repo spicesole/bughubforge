@@ -1,19 +1,19 @@
 export interface Question {
-  id: number
-  question: string
-  options: string[]
-  correctAnswer: number
-  explanation: string
+  id: number // Уникальный идентификатор вопроса внутри теста
+  question: string // Текст вопроса
+  options: string[] // Варианты ответов
+  correctAnswer: number // Индекс правильного ответа в массиве options
+  explanation: string // Объяснение правильного ответа
 }
 
 export type Difficulty = 'beginner' | 'intermediate' | 'advanced'
 
 export interface Test {
-  id: string
-  title: string
-  description: string
-  difficulty: Difficulty
-  questions: Question[]
+  id: string // Уникальный идентификатор теста
+  title: string // Название теста
+  description: string // Описание теста
+  difficulty: Difficulty // Сложность теста
+  questions: Question[] // Массив вопросов
 }
 
 export const testsData = {
