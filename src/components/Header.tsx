@@ -98,12 +98,18 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             >
               {t.home}
             </button>
-            <a href="#" className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 px-2 md:px-3 py-2 rounded-md text-sm font-medium">
+            <Link
+              href="/glossary"
+              className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 px-2 md:px-3 py-2 rounded-md text-sm font-medium"
+            >
               {t.glossary}
-            </a>
-            <a href="#" className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 px-2 md:px-3 py-2 rounded-md text-sm font-medium">
+            </Link>
+            <Link
+              href="/resources"
+              className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 px-2 md:px-3 py-2 rounded-md text-sm font-medium"
+            >
               {t.resources}
-            </a>
+            </Link>
             <Link
               href="/tests"
               className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 px-2 md:px-3 py-2 rounded-md text-sm font-medium"
@@ -166,12 +172,18 @@ export default function Header({ language, setLanguage }: HeaderProps) {
               >
                 {t.home}
               </button>
-              <a href="#" className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 rounded-md text-base font-medium">
+              <Link
+                href="/glossary"
+                className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 rounded-md text-base font-medium"
+              >
                 {t.glossary}
-              </a>
-              <a href="#" className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 rounded-md text-base font-medium">
+              </Link>
+              <Link
+                href="/resources"
+                className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 rounded-md text-base font-medium"
+              >
                 {t.resources}
-              </a>
+              </Link>
               <Link
                 href="/tests"
                 className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 rounded-md text-base font-medium"
