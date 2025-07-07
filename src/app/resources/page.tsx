@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Header from '@/components/Header'
 import Resources from '@/components/Resources'
+import Head from 'next/head'
 
 export default function ResourcesPage() {
   const [language, setLanguage] = useState<'ru' | 'en'>('ru')
@@ -16,7 +17,11 @@ export default function ResourcesPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900" role="main">
+      <Head>
+        <title>Ресурсы для тестировщиков | BugHubForge</title>
+        <meta name="description" content="Полезные ресурсы, инструменты, статьи и курсы для QA и автоматизации тестирования." />
+      </Head>
       {/* Header */}
       <Header language={language} setLanguage={setLanguage} />
 

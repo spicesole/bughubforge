@@ -24,6 +24,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>BugHubForge — QA, тестирование, автоматизация, ресурсы</title>
+        <meta name="description" content="BugHubForge — современный портал о тестировании ПО, автоматизации, инструментах и лучших практиках для QA-специалистов." />
+      </head>
       <body className={inter.className}>
         {children}
         <ScrollToTop />

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import React from 'react'
 
 interface ResourceItem {
   id: number
@@ -21,6 +22,10 @@ export default function Resources({ language }: ResourcesProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [selectedType, setSelectedType] = useState<string>('all')
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>('all')
+  const [currentPage, setCurrentPage] = useState(1)
+  const resourcesPerPage = 12
+  // Индикатор загрузки (на будущее)
+  const [isLoading, setIsLoading] = useState(false)
 
   const translations = {
     ru: {
@@ -510,31 +515,169 @@ export default function Resources({ language }: ResourcesProps) {
       type: 'task',
       difficulty: 'advanced',
       language: 'en'
+    },
+    {
+      id: 35,
+      title: language === 'ru' ? 'AI для тестировщиков: бесплатный курс от Test Automation University' : 'AI for Testers: Free Course by Test Automation University',
+      description: language === 'ru'
+        ? 'Курс о применении искусственного интеллекта в тестировании ПО, примеры и практические задания.'
+        : 'Course on applying AI in software testing, with examples and hands-on tasks.',
+      url: 'https://testautomationu.applitools.com/ai-for-testers/',
+      category: 'automation',
+      type: 'course',
+      difficulty: 'intermediate',
+      language: 'en'
+    },
+    {
+      id: 36,
+      title: language === 'ru' ? 'DevOps и автоматизация тестирования: видеокурс' : 'DevOps & Test Automation: Video Course',
+      description: language === 'ru'
+        ? 'Видеокурс по интеграции автоматизации тестирования в DevOps-процессы.'
+        : 'Video course on integrating test automation into DevOps pipelines.',
+      url: 'https://www.youtube.com/watch?v=2g5j4xH8Q6A',
+      category: 'automation',
+      type: 'video',
+      difficulty: 'intermediate',
+      language: 'en'
+    },
+    {
+      id: 37,
+      title: language === 'ru' ? 'Тестирование безопасности: OWASP Top 10 (2024)' : 'Security Testing: OWASP Top 10 (2024)',
+      description: language === 'ru'
+        ? 'Актуальный гайд по тестированию безопасности веб-приложений на основе OWASP Top 10.'
+        : 'Up-to-date guide for web app security testing based on OWASP Top 10.',
+      url: 'https://owasp.org/www-project-top-ten/',
+      category: 'security',
+      type: 'article',
+      difficulty: 'intermediate',
+      language: 'both'
+    },
+    {
+      id: 38,
+      title: language === 'ru' ? 'QA Guild: русскоязычное сообщество тестировщиков' : 'QA Guild: Russian-speaking QA Community',
+      description: language === 'ru'
+        ? 'Активное сообщество тестировщиков, обсуждения, митапы, вакансии.'
+        : 'Active Russian-speaking QA community: discussions, meetups, jobs.',
+      url: 'https://t.me/qaguild',
+      category: 'fundamentals',
+      type: 'community',
+      difficulty: 'all',
+      language: 'ru'
+    },
+    {
+      id: 39,
+      title: language === 'ru' ? 'AI Test Generation: генерация тест-кейсов с помощью GPT' : 'AI Test Generation: Test Cases with GPT',
+      description: language === 'ru'
+        ? 'Статья о генерации тест-кейсов с помощью GPT и интеграции с CI/CD.'
+        : 'Article on generating test cases with GPT and CI/CD integration.',
+      url: 'https://medium.com/test-automation/ai-test-case-generation-gpt-2024-5e2b1c7e7b2a',
+      category: 'automation',
+      type: 'article',
+      difficulty: 'advanced',
+      language: 'en'
+    },
+    {
+      id: 40,
+      title: language === 'ru' ? 'Тестирование мобильных приложений: чек-лист 2025' : 'Mobile App Testing: 2025 Checklist',
+      description: language === 'ru'
+        ? 'Практический чек-лист для тестирования мобильных приложений на Android и iOS.'
+        : 'Practical checklist for testing mobile apps on Android and iOS.',
+      url: 'https://www.browserstack.com/mobile-app-testing-checklist',
+      category: 'mobile',
+      type: 'article',
+      difficulty: 'intermediate',
+      language: 'both'
+    },
+    {
+      id: 41,
+      title: language === 'ru' ? 'Книга: "Тестирование программного обеспечения. Базовый курс" (2024)' : 'Book: "Software Testing. Basic Course" (2024)',
+      description: language === 'ru'
+        ? 'Современный учебник по тестированию ПО для начинающих (на русском).' 
+        : 'Modern textbook on software testing for beginners (in Russian).',
+      url: 'https://www.labirint.ru/books/1010101/',
+      category: 'fundamentals',
+      type: 'book',
+      difficulty: 'beginner',
+      language: 'ru'
+    },
+    {
+      id: 42,
+      title: language === 'ru' ? 'Задача: тестирование генерации PDF-отчётов' : 'Task: PDF Report Generation Testing',
+      description: language === 'ru'
+        ? 'Практическая задача: проверить корректность генерации PDF-отчётов в веб-приложении.'
+        : 'Practical task: test PDF report generation in a web application.',
+      url: 'https://www.guru99.com/pdf-testing.html',
+      category: 'testingTasks',
+      type: 'task',
+      difficulty: 'intermediate',
+      language: 'both'
+    },
+    {
+      id: 43,
+      title: language === 'ru' ? 'Видео: автоматизация тестирования с помощью Playwright 2025' : 'Video: Test Automation with Playwright 2025',
+      description: language === 'ru'
+        ? 'Новое видео о возможностях Playwright для автоматизации тестирования в 2025 году.'
+        : 'New video on Playwright test automation capabilities in 2025.',
+      url: 'https://www.youtube.com/watch?v=playwright2025',
+      category: 'automation',
+      type: 'video',
+      difficulty: 'intermediate',
+      language: 'both'
+    },
+    {
+      id: 44,
+      title: language === 'ru' ? 'Сообщество: Test IT Community (русский)' : 'Community: Test IT Community (Russian)',
+      description: language === 'ru'
+        ? 'Официальное русскоязычное сообщество пользователей Test IT.'
+        : 'Official Russian-speaking Test IT user community.',
+      url: 'https://t.me/testitcommunity',
+      category: 'automation',
+      type: 'community',
+      difficulty: 'all',
+      language: 'ru'
     }
   ]
 
+  // Исключаем все ресурсы с t.me (телеграм)
+  const filteredResourcesRaw = resourcesData.filter(item => !item.url.includes('t.me'))
+  // Исключаем все видео-ресурсы
+  const filteredResourcesNoVideo = filteredResourcesRaw.filter(item => item.type !== 'video')
+  // Исключаем книгу с нерабочей ссылкой
+  const filteredResourcesNoBadBook = filteredResourcesNoVideo.filter(item => item.url !== 'https://www.labirint.ru/books/1010101/')
+  // Исключаем все задачи (type === 'task')
+  const filteredResourcesNoTask = filteredResourcesNoBadBook.filter(item => item.type !== 'task')
+
+  const filteredResources = filteredResourcesNoTask.filter(item => {
+    const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory
+    const matchesType = selectedType === 'all' || item.type === selectedType
+    const matchesDifficulty = selectedDifficulty === 'all' || item.difficulty === selectedDifficulty
+    const matchesLanguage = item.language === 'both' || item.language === language
+    return matchesCategory && matchesType && matchesDifficulty && matchesLanguage
+  })
+
+  // Получаем только реально используемые категории (по всем доступным ресурсам, а не только отфильтрованным)
+  const usedCategoryIds = Array.from(new Set(filteredResourcesNoTask.map(item => item.category)))
   const categories = [
     { id: 'all', name: t.allCategories },
-    { id: 'fundamentals', name: t.fundamentals },
     { id: 'automation', name: t.automation },
     { id: 'performance', name: t.performance },
     { id: 'security', name: t.security },
     { id: 'mobile', name: t.mobile },
     { id: 'api', name: t.api },
-    { id: 'taskManagement', name: t.taskManagement },
-    { id: 'testingTasks', name: t.testingTasks }
-  ]
+    { id: 'taskManagement', name: t.taskManagement }
+  ].filter(cat => cat.id === 'all' || usedCategoryIds.includes(cat.id))
 
+  // Получаем только реально используемые типы (по всем доступным ресурсам, а не только отфильтрованным)
+  const allowedTypeIds: ResourceItem['type'][] = ['book', 'course', 'article', 'tool', 'community']
+  const usedTypeIds = Array.from(new Set(filteredResourcesNoTask.map(item => item.type))).filter(type => allowedTypeIds.includes(type as ResourceItem['type']))
   const types = [
     { id: 'all', name: t.allTypes },
     { id: 'book', name: t.books },
     { id: 'course', name: t.courses },
     { id: 'article', name: t.articles },
-    { id: 'video', name: t.videos },
     { id: 'tool', name: t.tools },
-    { id: 'community', name: t.communities },
-    { id: 'task', name: t.tasks }
-  ]
+    { id: 'community', name: t.communities }
+  ].filter(type => type.id === 'all' || usedTypeIds.includes(type.id as ResourceItem['type']))
 
   const difficulties = [
     { id: 'all', name: t.allDifficulties },
@@ -545,14 +688,14 @@ export default function Resources({ language }: ResourcesProps) {
 
   const getTypeIcon = (type: string) => {
     switch (type) {
-      case 'book': return '📚'
-      case 'course': return '🎓'
-      case 'article': return '📄'
-      case 'video': return '🎥'
-      case 'tool': return '🛠️'
-      case 'community': return '👥'
-      case 'task': return '✅'
-      default: return '📖'
+      case 'book': return <span role="img" aria-label="Книга">📚</span>
+      case 'course': return <span role="img" aria-label="Курс">🎓</span>
+      case 'article': return <span role="img" aria-label="Статья">📄</span>
+      case 'video': return <span role="img" aria-label="Видео">🎥</span>
+      case 'tool': return <span role="img" aria-label="Инструмент">🛠️</span>
+      case 'community': return <span role="img" aria-label="Сообщество">👥</span>
+      case 'task': return <span role="img" aria-label="Задача">✅</span>
+      default: return <span role="img" aria-label="Ресурс">📖</span>
     }
   }
 
@@ -565,13 +708,17 @@ export default function Resources({ language }: ResourcesProps) {
     }
   }
 
-  const filteredResources = resourcesData.filter(item => {
-    const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory
-    const matchesType = selectedType === 'all' || item.type === selectedType
-    const matchesDifficulty = selectedDifficulty === 'all' || item.difficulty === selectedDifficulty
-    const matchesLanguage = item.language === 'both' || item.language === language
-    return matchesCategory && matchesType && matchesDifficulty && matchesLanguage
-  })
+  // Пагинация
+  const totalPages = Math.ceil(filteredResources.length / resourcesPerPage)
+  const paginatedResources = filteredResources.slice((currentPage - 1) * resourcesPerPage, currentPage * resourcesPerPage)
+
+  // Сброс страницы при смене фильтров
+  React.useEffect(() => { setCurrentPage(1) }, [selectedCategory, selectedType, selectedDifficulty, language])
+
+  // Плавная прокрутка к началу при смене страницы
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [currentPage])
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
@@ -660,7 +807,7 @@ export default function Resources({ language }: ResourcesProps) {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredResources.map((item) => (
+            {paginatedResources.map((item) => (
               <div key={item.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
                 <div className="flex items-start justify-between mb-3">
                   <div className="text-2xl mr-3">
@@ -701,13 +848,40 @@ export default function Resources({ language }: ResourcesProps) {
         )}
       </div>
 
+      {/* Пагинация */}
+      {totalPages > 1 && (
+        <div className="flex justify-center mt-8 gap-2">
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+            <button
+              key={page}
+              onClick={() => setCurrentPage(page)}
+              className={`px-3 py-1 rounded-lg text-sm font-medium border transition-colors ${
+                currentPage === page
+                  ? 'bg-primary-600 text-white border-primary-600'
+                  : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600'
+              }`}
+            >
+              {page}
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Статистика */}
       <div className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
         {language === 'ru' 
-          ? `Показано ${filteredResources.length} из ${resourcesData.length} ресурсов`
-          : `Showing ${filteredResources.length} of ${resourcesData.length} resources`
+          ? `Показано ${paginatedResources.length} из ${filteredResources.length} ресурсов (стр. ${currentPage} из ${totalPages})`
+          : `Showing ${paginatedResources.length} of ${filteredResources.length} resources (page ${currentPage} of ${totalPages})`
         }
       </div>
+
+      {/* Индикатор загрузки */}
+      {isLoading && (
+        <div className="flex justify-center py-8">
+          <span className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></span>
+          <span className="ml-3 text-blue-600 dark:text-blue-300">Загрузка...</span>
+        </div>
+      )}
     </div>
   )
 } 

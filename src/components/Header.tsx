@@ -85,7 +85,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
   };
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700 ipad-fix">
+    <header className="bg-white shadow-sm border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700 ipad-fix" role="navigation">
       <div className="container-ipad">
         <div className="flex justify-between items-center h-14 md:h-16">
           {/* Logo */}

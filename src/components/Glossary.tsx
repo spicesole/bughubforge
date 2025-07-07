@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import React from 'react'
 
 interface GlossaryItem {
   id: number
@@ -16,6 +17,8 @@ interface GlossaryProps {
 export default function Glossary({ language }: GlossaryProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [searchTerm, setSearchTerm] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
+  const termsPerPage = 20
 
   const translations = {
     ru: {
@@ -726,6 +729,30 @@ export default function Glossary({ language }: GlossaryProps) {
     return matchesCategory && matchesSearch
   })
 
+  // Пагинация
+  const totalPages = Math.ceil(filteredGlossary.length / termsPerPage)
+  const paginatedGlossary = filteredGlossary.slice((currentPage - 1) * termsPerPage, currentPage * termsPerPage)
+
+  // Сброс страницы при смене фильтра или поиска
+  React.useEffect(() => { setCurrentPage(1) }, [selectedCategory, searchTerm, language])
+
+  // Плавная прокрутка к началу при смене страницы
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [currentPage])
+
+  // Цвета для категорий
+  const getCategoryColor = (category: string) => {
+    switch (category) {
+      case 'functional': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+      case 'nonFunctional': return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+      case 'automation': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+      case 'methodology': return 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
+      case 'tools': return 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'
+      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
+    }
+  }
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <div className="text-center mb-8">
@@ -795,13 +822,13 @@ export default function Glossary({ language }: GlossaryProps) {
             </p>
           </div>
         ) : (
-          filteredGlossary.map((item) => (
+          paginatedGlossary.map((item) => (
             <div key={item.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
               <div className="flex items-start justify-between mb-3">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                   {item.term}
                 </h3>
-                <span className="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full">
+                <span className={`px-3 py-1 text-xs font-medium rounded-full ${getCategoryColor(item.category)}`}>
                   {categories.find(cat => cat.id === item.category)?.name}
                 </span>
               </div>
@@ -813,11 +840,30 @@ export default function Glossary({ language }: GlossaryProps) {
         )}
       </div>
 
+      {/* Пагинация */}
+      {totalPages > 1 && (
+        <div className="flex justify-center mt-8 gap-2">
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+            <button
+              key={page}
+              onClick={() => setCurrentPage(page)}
+              className={`px-3 py-1 rounded-lg text-sm font-medium border transition-colors ${
+                currentPage === page
+                  ? 'bg-blue-600 text-white border-blue-600'
+                  : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600'
+              }`}
+            >
+              {page}
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Статистика */}
       <div className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
         {language === 'ru' 
-          ? `Показано ${filteredGlossary.length} из ${glossaryData.length} терминов`
-          : `Showing ${filteredGlossary.length} of ${glossaryData.length} terms`
+          ? `Показано ${paginatedGlossary.length} из ${filteredGlossary.length} терминов (стр. ${currentPage} из ${totalPages})`
+          : `Showing ${paginatedGlossary.length} of ${filteredGlossary.length} terms (page ${currentPage} of ${totalPages})`
         }
       </div>
     </div>

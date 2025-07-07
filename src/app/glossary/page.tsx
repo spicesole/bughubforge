@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Header from '@/components/Header'
 import Glossary from '@/components/Glossary'
+import Head from 'next/head'
 
 export default function GlossaryPage() {
   const [language, setLanguage] = useState<'ru' | 'en'>('ru')
@@ -16,7 +17,11 @@ export default function GlossaryPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900" role="main">
+      <Head>
+        <title>Глоссарий терминов | BugHubForge</title>
+        <meta name="description" content="Глоссарий терминов по тестированию ПО, автоматизации и QA. Понятия, определения, методологии." />
+      </Head>
       {/* Header */}
       <Header language={language} setLanguage={setLanguage} />
 

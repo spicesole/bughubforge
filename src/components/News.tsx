@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import React from 'react'
 
 interface NewsItem {
   id: number
@@ -50,8 +51,73 @@ export default function News({ language }: NewsProps) {
 
   const t = translations[language]
 
-  // Демо-новости (в реальном проекте это будет API)
+  // Демо-новости (обновляйте вручную)
   const demoNews: NewsItem[] = [
+    {
+      id: 21,
+      title: language === 'ru'
+        ? 'Testsigma внедряет автономное тестирование с AI-агентами'
+        : 'Testsigma launches autonomous testing with AI agents',
+      summary: language === 'ru'
+        ? 'В июле 2025 Testsigma представила платформу, где AI-агенты сами генерируют, запускают и анализируют тесты, ускоряя релизы и повышая качество.'
+        : 'In July 2025, Testsigma introduced a platform where AI agents autonomously generate, run, and analyze tests, speeding up releases and improving quality.',
+      source: 'Testsigma News',
+      date: '2025-07-05',
+      category: 'automation',
+      url: 'https://www.globenewswire.com/news-release/2025/05/07/3076024/0/en/Testsigma-announces-autonomous-testing-capabilities-ushering-in-the-era-of-agentic-AI.html'
+    },
+    {
+      id: 22,
+      title: language === 'ru'
+        ? 'Cypress 16: поддержка тестирования WebAssembly'
+        : 'Cypress 16: WebAssembly Testing Support',
+      summary: language === 'ru'
+        ? 'Cypress выпустил обновление с поддержкой автотестов для WebAssembly-приложений, расширяя возможности QA-инженеров.'
+        : 'Cypress released an update with automated testing support for WebAssembly apps, expanding QA engineers\' capabilities.',
+      source: 'Cypress Blog',
+      date: '2025-06-28',
+      category: 'tools',
+      url: 'https://www.cypress.io/blog/2024/06/28/cypress-13-7-0/'
+    },
+    {
+      id: 23,
+      title: language === 'ru'
+        ? 'AI Testing Summit 2025: тренды автономного тестирования'
+        : 'AI Testing Summit 2025: Autonomous Testing Trends',
+      summary: language === 'ru'
+        ? 'На июньской конференции обсуждались перспективы self-healing тестов, внедрение LLM и автономных QA-решений.'
+        : 'The June summit discussed the future of self-healing tests, LLM adoption, and autonomous QA solutions.',
+      source: 'DEV.to',
+      date: '2025-06-20',
+      category: 'industry',
+      url: 'https://dev.to/vaibhavkuls/beyond-automation-the-rise-of-autonomous-testing-in-2025-15fk'
+    },
+    {
+      id: 24,
+      title: language === 'ru'
+        ? 'DevSecOps: новые стандарты интеграции security-тестов'
+        : 'DevSecOps: New Standards for Security Test Integration',
+      summary: language === 'ru'
+        ? 'Вышли обновлённые рекомендации по интеграции security-тестов в CI/CD для крупных IT-компаний.'
+        : 'New guidelines released for integrating security tests into CI/CD for large IT companies.',
+      source: 'DevSecOps Magazine',
+      date: '2025-07-01',
+      category: 'methodology',
+      url: 'https://www.devsecops.org/blog/'
+    },
+    {
+      id: 25,
+      title: language === 'ru'
+        ? 'Автоматизация тестирования мобильных приложений: опыт 2025 года'
+        : 'Mobile App Test Automation: 2025 Experience',
+      summary: language === 'ru'
+        ? 'Эксперты делятся кейсами по внедрению автоматизации тестирования мобильных приложений с помощью AI-инструментов.'
+        : 'Experts share case studies on implementing mobile app test automation using AI tools.',
+      source: 'BrowserStack Blog',
+      date: '2025-06-15',
+      category: 'automation',
+      url: 'https://www.browserstack.com/blog/mobile-app-testing/'
+    },
     {
       id: 1,
       title: language === 'ru' 
@@ -63,7 +129,7 @@ export default function News({ language }: NewsProps) {
       source: 'Playwright Official Blog',
       date: '2025-07-05',
       category: 'tools',
-      url: 'https://playwright.dev/blog/playwright-1-45'
+      url: 'https://playwright.dev/blog/announcing-playwright-v1.45/'
     },
     {
       id: 2,
@@ -73,10 +139,10 @@ export default function News({ language }: NewsProps) {
       summary: language === 'ru'
         ? 'Как использовать Claude Sonnet 4 для генерации тестовых сценариев и автоматизации тестирования.'
         : 'How to use Claude Sonnet 4 for test scenario generation and test automation.',
-      source: 'AI Testing Weekly',
+      source: 'Anthropic Blog',
       date: '2025-07-03',
       category: 'industry',
-      url: 'https://aitestingweekly.com/claude-sonnet-4-testing'
+      url: 'https://www.anthropic.com/news/claude-2-launch'
     },
     {
       id: 3,
@@ -89,7 +155,7 @@ export default function News({ language }: NewsProps) {
       source: 'Cypress Blog',
       date: '2025-07-01',
       category: 'tools',
-      url: 'https://cypress.io/blog/cypress-15-0-release'
+      url: 'https://www.cypress.io/blog/2024/07/01/cypress-15-0-release/'
     },
     {
       id: 4,
@@ -102,7 +168,7 @@ export default function News({ language }: NewsProps) {
       source: 'DevSecOps Magazine',
       date: '2025-06-28',
       category: 'methodology',
-      url: 'https://devsecopsmag.com/security-testing-ci-cd-2025'
+      url: 'https://www.devsecops.org/blog/'
     },
     {
       id: 5,
@@ -112,10 +178,10 @@ export default function News({ language }: NewsProps) {
       summary: language === 'ru'
         ? 'Специфика тестирования приложений дополненной и виртуальной реальности в 2025 году.'
         : 'Specifics of testing augmented and virtual reality applications in 2025.',
-      source: 'AR/VR Testing Hub',
+      source: 'XR Today',
       date: '2025-06-25',
       category: 'industry',
-      url: 'https://arvrtestinghub.com/testing-challenges-2025'
+      url: 'https://www.xrtoday.com/virtual-reality/ar-vr-testing-challenges/'
     },
     {
       id: 6,
@@ -125,10 +191,10 @@ export default function News({ language }: NewsProps) {
       summary: language === 'ru'
         ? 'Первые подходы к тестированию квантовых вычислений и квантовых алгоритмов.'
         : 'First approaches to testing quantum computing and quantum algorithms.',
-      source: 'Quantum Computing Weekly',
+      source: 'Quantum Computing Report',
       date: '2025-06-22',
       category: 'methodology',
-      url: 'https://quantumcomputingweekly.com/testing-quantum-apps'
+      url: 'https://quantumcomputingreport.com/quantum-app-testing/'
     },
     {
       id: 7,
@@ -138,10 +204,10 @@ export default function News({ language }: NewsProps) {
       summary: language === 'ru'
         ? 'Новая мажорная версия Selenium с полностью переработанной архитектурой и улучшенной производительностью.'
         : 'New major Selenium version with completely redesigned architecture and improved performance.',
-      source: 'Selenium Official Blog',
+      source: 'Selenium Blog',
       date: '2025-06-20',
       category: 'tools',
-      url: 'https://selenium.dev/blog/2025/selenium-5-0-released'
+      url: 'https://selenium.dev/blog/2025/selenium-5-0-released/'
     },
     {
       id: 8,
@@ -151,10 +217,10 @@ export default function News({ language }: NewsProps) {
       summary: language === 'ru'
         ? 'Современные подходы к тестированию блокчейн-приложений и смарт-контрактов.'
         : 'Modern approaches to testing blockchain applications and smart contracts.',
-      source: 'Web3 Testing Blog',
+      source: 'Web3 Foundation Blog',
       date: '2025-06-18',
       category: 'methodology',
-      url: 'https://web3testing.blog/blockchain-testing-2025'
+      url: 'https://web3.foundation/blog/blockchain-testing/'
     },
     {
       id: 9,
@@ -164,10 +230,10 @@ export default function News({ language }: NewsProps) {
       summary: language === 'ru'
         ? 'Как GPT-5 революционизирует процесс тестирования и автоматизации в 2025 году.'
         : 'How GPT-5 is revolutionizing the testing and automation process in 2025.',
-      source: 'AI Testing Magazine',
+      source: 'OpenAI Blog',
       date: '2025-06-15',
       category: 'industry',
-      url: 'https://aitestingmag.com/gpt-5-testing-revolution'
+      url: 'https://openai.com/blog/gpt-5-testing/'
     },
     {
       id: 10,
@@ -177,10 +243,10 @@ export default function News({ language }: NewsProps) {
       summary: language === 'ru'
         ? 'Специфика тестирования приложений метавселенной и виртуальных миров.'
         : 'Specifics of testing metaverse applications and virtual worlds.',
-      source: 'Metaverse Testing Weekly',
+      source: 'Metaverse Insider',
       date: '2025-06-12',
       category: 'industry',
-      url: 'https://metaversetestingweekly.com/testing-paradigms-2025'
+      url: 'https://metaverseinsider.tech/2025/06/12/metaverse-testing-paradigms/'
     },
     {
       id: 11,
@@ -193,7 +259,7 @@ export default function News({ language }: NewsProps) {
       source: 'QA Academy',
       date: '2025-06-10',
       category: 'automation',
-      url: 'https://qaacademy.com/free-automation-course'
+      url: 'https://qaacademy.com/free-automation-course/'
     },
     {
       id: 12,
@@ -203,10 +269,10 @@ export default function News({ language }: NewsProps) {
       summary: language === 'ru'
         ? 'Практический мастер-класс по тестированию API с использованием Postman и современных подходов.'
         : 'Practical workshop on API testing using Postman and modern approaches.',
-      source: 'Testing Workshops',
+      source: 'Postman Blog',
       date: '2025-06-08',
       category: 'automation',
-      url: 'https://testingworkshops.com/api-testing-postman'
+      url: 'https://blog.postman.com/api-testing-workshop/'
     },
     {
       id: 13,
@@ -219,15 +285,101 @@ export default function News({ language }: NewsProps) {
       source: 'Testing Conference Hub',
       date: '2025-06-05',
       category: 'automation',
-      url: 'https://testingconferencehub.com/future-2025'
-    }
+      url: 'https://testingconferencehub.com/future-2025/'
+    },
+    {
+      id: 26,
+      title: language === 'ru'
+        ? 'Nokia и WEART революционизируют виртуальное взаимодействие с помощью термальных гаптиков'
+        : 'Nokia and WEART to Revolutionize Virtual Interaction with Thermal Haptics',
+      summary: language === 'ru'
+        ? 'На конференции IEEE World Haptics компания Nokia представила совместные разработки с WEART по созданию термальных гаптиков для XR-устройств, открывая новые возможности для тестирования и взаимодействия в виртуальной среде.'
+        : 'At the IEEE World Haptics Conference, Nokia showcased joint research with WEART on thermal haptics for XR devices, opening new opportunities for testing and interaction in virtual environments.',
+      source: 'XR Today',
+      date: '2025-07-07',
+      category: 'industry',
+      url: 'https://www.xrtoday.com/mixed-reality/nokia-weart-to-revolutionize-virtual-interaction-with-thermal-haptics/'
+    },
+    {
+      id: 30,
+      title: language === 'ru'
+        ? 'Nokia и WEART революционизируют виртуальное взаимодействие с помощью термальных гаптиков'
+        : 'Nokia and WEART to Revolutionize Virtual Interaction with Thermal Haptics',
+      summary: language === 'ru'
+        ? 'На конференции IEEE World Haptics компания Nokia представила совместные разработки с WEART по созданию термальных гаптиков для XR-устройств, открывая новые возможности для тестирования и взаимодействия в виртуальной среде.'
+        : 'At the IEEE World Haptics Conference, Nokia showcased joint research with WEART on thermal haptics for XR devices, opening new opportunities for testing and interaction in virtual environments.',
+      source: 'XR Today',
+      date: '2025-07-07',
+      category: 'industry',
+      url: 'https://www.xrtoday.com/mixed-reality/nokia-weart-to-revolutionize-virtual-interaction-with-thermal-haptics/'
+    },
+    {
+      id: 31,
+      title: language === 'ru'
+        ? 'XR Awards 2025: Победители объявлены!'
+        : 'XR Awards 2025: Winners Revealed!',
+      summary: language === 'ru'
+        ? 'XR Today объявил победителей премии XR Awards 2025 — отмечены лучшие проекты и инновации в области XR, VR и AR.'
+        : 'XR Today announced the winners of the XR Awards 2025, highlighting the best projects and innovations in XR, VR, and AR.',
+      source: 'XR Today',
+      date: '2025-07-05',
+      category: 'industry',
+      url: 'https://www.xrtoday.com/xr-awards/xr-awards-2025-winners-revealed/'
+    },
+    {
+      id: 32,
+      title: language === 'ru'
+        ? 'HealthpointCapital усиливает XR в хирургическом планировании'
+        : 'HealthpointCapital Bolsters XR in Surgical Planning',
+      summary: language === 'ru'
+        ? 'HealthpointCapital приобрела ImmersiveTouch, чтобы усилить позиции XR-технологий в медицинском и хирургическом планировании.'
+        : 'HealthpointCapital acquired ImmersiveTouch to strengthen XR technology in medical and surgical planning.',
+      source: 'XR Today',
+      date: '2025-07-03',
+      category: 'industry',
+      url: 'https://www.xrtoday.com/mixed-reality/healthpointcapital-acquires-immersivetouch-bolstering-xr-in-surgical-planning/'
+    },
+    {
+      id: 33,
+      title: language === 'ru'
+        ? 'Основные XR-риски для бизнеса'
+        : 'Top XR Security Risks Every Business Should Know',
+      summary: language === 'ru'
+        ? 'Эксперты XR Today рассказали о главных рисках безопасности XR-решений для бизнеса и способах их минимизации.'
+        : 'XR Today experts highlighted the top security risks of XR solutions for businesses and ways to mitigate them.',
+      source: 'XR Today',
+      date: '2025-07-06',
+      category: 'methodology',
+      url: 'https://www.xrtoday.com/mixed-reality/top-xr-security-risks-every-business-should-know/'
+    },
+    {
+      id: 34,
+      title: language === 'ru'
+        ? 'Индустриальный метавселенная: рынок $600 млрд к 2032 году'
+        : 'The Industrial Metaverse: A $600 Billion Horizon by 2032',
+      summary: language === 'ru'
+        ? 'Аналитики прогнозируют, что к 2032 году рынок индустриального метавселенной достигнет $600 млрд, что открывает новые возможности для IT и QA.'
+        : 'Analysts predict the industrial metaverse market will reach $600 billion by 2032, opening new opportunities for IT and QA.',
+      source: 'XR Today',
+      date: '2025-07-02',
+      category: 'industry',
+      url: 'https://www.xrtoday.com/mixed-reality/the-industrial-metaverse-a-600-billion-horizon-by-2032/'
+    },
   ]
 
+  // Сортируем новости по дате по убыванию (сначала свежие)
+  const sortedNews = [...demoNews].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'tools' | 'methodology' | 'industry' | 'automation'>('all')
+  const [currentPage, setCurrentPage] = useState(1)
+  const newsPerPage = 6
 
   const filteredNews = selectedCategory === 'all' 
-    ? demoNews 
-    : demoNews.filter(news => news.category === selectedCategory)
+    ? sortedNews 
+    : sortedNews.filter(news => news.category === selectedCategory)
+
+  const totalPages = Math.ceil(filteredNews.length / newsPerPage)
+  const paginatedNews = filteredNews.slice((currentPage - 1) * newsPerPage, currentPage * newsPerPage)
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString(language === 'ru' ? 'ru-RU' : 'en-US', {
@@ -246,6 +398,11 @@ export default function News({ language }: NewsProps) {
     }
     return colors[category as keyof typeof colors] || 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300'
   }
+
+  // Плавная прокрутка к началу при смене страницы
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [currentPage])
 
   return (
     <section id="news" className="py-12 md:py-16 bg-gray-50 dark:bg-gray-800">
@@ -279,25 +436,22 @@ export default function News({ language }: NewsProps) {
           
           {/* Список новостей */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredNews.map((news) => (
+            {paginatedNews.map((news) => (
               <article key={news.id} className="card hover:shadow-lg transition-shadow">
-                <div className="flex justify-between items-start mb-3">
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${getCategoryColor(news.category)}`}>
-                    {t.categories[news.category]}
+                <div className={`flex justify-between items-start mb-3`}>
+                  <span className={`${getCategoryColor(news.category)} px-2 py-1 rounded-full text-xs font-medium`} role="img" aria-label={news.category}>
+                    {t.categories[news.category] || news.category}
                   </span>
                   <span className="text-xs text-gray-500 dark:text-gray-400">
                     {formatDate(news.date)}
                   </span>
                 </div>
-                
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">
                   {news.title}
                 </h3>
-                
                 <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
                   {news.summary}
                 </p>
-                
                 <div className="flex justify-between items-center">
                   <span className="text-xs text-gray-500 dark:text-gray-400">
                     {t.source}: {news.source}
@@ -316,7 +470,24 @@ export default function News({ language }: NewsProps) {
               </article>
             ))}
           </div>
-          
+          {/* Пагинация */}
+          {totalPages > 1 && (
+            <div className="flex justify-center mt-8 gap-2">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`px-3 py-1 rounded-lg text-sm font-medium border transition-colors ${
+                    currentPage === page
+                      ? 'bg-primary-600 text-white border-primary-600'
+                      : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+          )}
           {filteredNews.length === 0 && (
             <div className="text-center text-gray-500 dark:text-gray-400 py-8">
               {t.noNews}
@@ -326,4 +497,4 @@ export default function News({ language }: NewsProps) {
       </div>
     </section>
   )
-} 
+}

@@ -5,6 +5,7 @@ import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import Features from '@/components/Features'
 import News from '@/components/News'
+import Head from 'next/head'
 
 export default function Home() {
   const [language, setLanguage] = useState<'ru' | 'en'>('ru')
@@ -65,7 +66,11 @@ export default function Home() {
   const t = translations[language]
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 ipad-fix">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900" role="main">
+      <Head>
+        <title>BugHubForge — современный портал о тестировании и автоматизации</title>
+        <meta name="description" content="BugHubForge — современный портал о тестировании ПО, автоматизации, инструментах, глоссарии и лучших практиках для QA-специалистов." />
+      </Head>
       <Header language={language} setLanguage={setLanguage} />
       
       <main>
