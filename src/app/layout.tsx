@@ -29,6 +29,18 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>BugHubForge — QA, тестирование, автоматизация, ресурсы</title>
         <meta name="description" content="BugHubForge — современный портал о тестировании ПО, автоматизации, инструментах и лучших практиках для QA-специалистов." />
+        <script dangerouslySetInnerHTML={{__html: `
+          (function() {
+            try {
+              var theme = localStorage.getItem('theme');
+              if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+              } else {
+                document.documentElement.classList.remove('dark');
+              }
+            } catch(e) {}
+          })();
+        `}} />
       </head>
       <body className={inter.className}>
         {children}

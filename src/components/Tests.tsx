@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { getTests, type Test, type Question, type Difficulty } from '../data/tests'
+import Link from 'next/link'
 
 const translations = {
   ru: {
@@ -107,6 +108,18 @@ export default function Tests({ language }: TestsProps) {
   const [difficultyFilter, setDifficultyFilter] = useState<'' | Difficulty>('')
   const [showMistakes, setShowMistakes] = useState(false)
   const t = translations[language]
+  const tests = getTests(language)
+
+  useEffect(() => {
+    const handler = () => setSelectedTest(null)
+    window.addEventListener('reset-test-selection', handler)
+    return () => window.removeEventListener('reset-test-selection', handler)
+  }, [])
+
+  // Фильтрация по сложности
+  const filteredTests = difficultyFilter
+    ? tests.filter((test) => test.difficulty === difficultyFilter)
+    : tests
 
   const startTest = (test: Test) => {
     const randomizedTest = prepareTest(test)
@@ -196,9 +209,15 @@ export default function Tests({ language }: TestsProps) {
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
               {t.perfectScore}
             </h3>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-gray-600 dark:text-gray-400 mb-6">
               {t.perfectScoreDesc}
             </p>
+            <button
+              onClick={resetTest}
+              className="mt-4 px-4 py-2 bg-primary-600 text-white rounded-md font-medium hover:bg-primary-700 transition-colors"
+            >
+              {language === 'ru' ? 'Вернуться к тестам' : 'Return to tests'}
+            </button>
           </div>
         ) : (
           <>
@@ -290,6 +309,63 @@ export default function Tests({ language }: TestsProps) {
     )
   }
 
+  if (!selectedTest) {
+    return (
+      <div className="max-w-4xl mx-auto p-6">
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+          {t.tests}
+        </h2>
+        <div className="mb-6 flex flex-wrap gap-2 items-center">
+          <span className="text-gray-700 dark:text-gray-300 font-medium">
+            {t.difficulty}:
+          </span>
+          <button
+            className={`px-3 py-1 rounded-md text-sm font-medium border ${difficultyFilter === '' ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'}`}
+            onClick={() => setDifficultyFilter('')}
+          >
+            {t.allLevels}
+          </button>
+          <button
+            className={`px-3 py-1 rounded-md text-sm font-medium border ${difficultyFilter === 'beginner' ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'}`}
+            onClick={() => setDifficultyFilter('beginner')}
+          >
+            {t.beginnerFull}
+          </button>
+          <button
+            className={`px-3 py-1 rounded-md text-sm font-medium border ${difficultyFilter === 'intermediate' ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'}`}
+            onClick={() => setDifficultyFilter('intermediate')}
+          >
+            {t.intermediateFull}
+          </button>
+          <button
+            className={`px-3 py-1 rounded-md text-sm font-medium border ${difficultyFilter === 'advanced' ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'}`}
+            onClick={() => setDifficultyFilter('advanced')}
+          >
+            {t.advancedFull}
+          </button>
+        </div>
+        <div className="grid gap-6">
+          {filteredTests.map((test) => (
+            <div key={test.id} className="p-6 rounded-lg shadow bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex flex-col md:flex-row md:items-center md:justify-between">
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{test.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-2">{test.description}</p>
+                <span className="inline-block px-2 py-1 text-xs rounded bg-primary-100 text-primary-700 dark:bg-primary-900 dark:text-primary-200">
+                  {t[test.difficulty]}
+                </span>
+              </div>
+              <div className="mt-4 md:mt-0 md:ml-6">
+                <button onClick={() => startTest(test)} className="px-4 py-2 bg-primary-600 text-white rounded-md font-medium hover:bg-primary-700 transition-colors">
+                  {t.startTest}
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   if (selectedTest) {
     const question = selectedTest.questions[currentQuestion]
     const isLastQuestion = currentQuestion === selectedTest.questions.length - 1
@@ -371,131 +447,4 @@ export default function Tests({ language }: TestsProps) {
       </div>
     )
   }
-
-  if (!selectedTest) {
-    // фильтрация тестов по сложности
-    const currentTests = getTests(language)
-    const filteredTests = difficultyFilter
-      ? currentTests.filter((test) => test.difficulty === difficultyFilter)
-      : currentTests
-
-    return (
-      <div className="max-w-4xl mx-auto p-6">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            {t.tests}
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-2">
-            {language === 'ru' 
-              ? 'Проверьте свои знания в области тестирования программного обеспечения'
-              : 'Test your knowledge in software testing'
-            }
-          </p>
-          <div className="inline-flex items-center px-4 py-2 bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-200 rounded-full text-sm font-medium">
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            {filteredTests.length} {language === 'ru' ? 'доступных тестов' : 'available tests'}
-          </div>
-        </div>
-
-        {/* Фильтр по сложности */}
-        <div className="flex justify-center mb-8">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 border border-gray-200 dark:border-gray-700">
-            <div className="flex items-center space-x-4">
-              <label className="font-medium text-gray-700 dark:text-gray-300">
-                {t.difficulty}:
-              </label>
-                             <div className="flex flex-wrap gap-2">
-                 <button
-                   onClick={() => setDifficultyFilter('')}
-                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap ${
-                     difficultyFilter === ''
-                       ? 'bg-primary-600 text-white shadow-md'
-                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
-                   }`}
-                 >
-                   {t.allLevels}
-                 </button>
-                 <button
-                   onClick={() => setDifficultyFilter('beginner')}
-                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap ${
-                     difficultyFilter === 'beginner'
-                       ? 'bg-green-600 text-white shadow-md'
-                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
-                   }`}
-                 >
-                   {t.beginnerFull}
-                 </button>
-                 <button
-                   onClick={() => setDifficultyFilter('intermediate')}
-                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap ${
-                     difficultyFilter === 'intermediate'
-                       ? 'bg-yellow-600 text-white shadow-md'
-                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
-                   }`}
-                 >
-                   {t.intermediateFull}
-                 </button>
-                 <button
-                   onClick={() => setDifficultyFilter('advanced')}
-                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap ${
-                     difficultyFilter === 'advanced'
-                       ? 'bg-red-600 text-white shadow-md'
-                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
-                   }`}
-                 >
-                   {t.advancedFull}
-                 </button>
-               </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredTests.map((test) => (
-            <div key={test.id} className="card hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full border-2 border-transparent hover:border-primary-200 dark:hover:border-primary-800 min-h-[280px]">
-              <div className="flex-1">
-                <div className="flex items-start justify-between mb-3 gap-2">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white flex-1 leading-tight">
-                    {test.title}
-                  </h3>
-                  <span 
-                    className={`inline-block px-1 py-0.5 rounded-full text-xs font-medium whitespace-nowrap flex-shrink-0 transition-all duration-200 ${
-                      test.difficulty === 'beginner' 
-                        ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
-                        : test.difficulty === 'intermediate'
-                        ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
-                        : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
-                    }`}
-                  >
-                    {t[test.difficulty]}
-                  </span>
-                </div>
-                <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">
-                  {test.description}
-                </p>
-                <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  {test.questions.length} {t.questions}
-                </div>
-              </div>
-              <div className="mt-6">
-                <button
-                  onClick={() => startTest(test)}
-                  className="w-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
-                >
-                  {t.startTest}
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    )
-  }
-
-  return null
 } 

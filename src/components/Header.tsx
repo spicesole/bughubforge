@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { getTests } from '@/data/tests'
 
 interface HeaderProps {
   language: 'ru' | 'en'
@@ -11,6 +12,7 @@ interface HeaderProps {
 export default function Header({ language, setLanguage }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isTestsDropdownOpen, setIsTestsDropdownOpen] = useState(false)
 
   // Инициализация языка
   useEffect(() => {
@@ -84,6 +86,8 @@ export default function Header({ language, setLanguage }: HeaderProps) {
     }
   };
 
+  const tests = getTests(language)
+
   return (
     <header className="bg-white shadow-sm border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700 ipad-fix" role="navigation">
       <div className="container-ipad">
@@ -120,6 +124,11 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             </Link>
             <Link
               href="/tests"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.dispatchEvent(new Event('reset-test-selection'))
+                }
+              }}
               className="text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 px-2 md:px-3 py-2 rounded-md text-sm font-medium"
             >
               {t.tests}
@@ -175,36 +184,46 @@ export default function Header({ language, setLanguage }: HeaderProps) {
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="lg:hidden border-t border-gray-200 dark:border-gray-700">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+        <div>
+          {/* Overlay */}
+          {isMenuOpen && (
+            <div
+              className="fixed inset-0 z-40 bg-black/30 transition-opacity duration-300"
+              aria-hidden="true"
+              onClick={() => setIsMenuOpen(false)}
+            />
+          )}
+          {/* Slide-in menu */}
+          <div
+            className={`fixed top-0 right-0 z-50 h-auto py-4 max-h-screen overflow-y-auto w-[70vw] max-w-xs bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg rounded-l-2xl transform transition-transform duration-300 ease-in-out
+              ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}
+            `}
+            style={{ pointerEvents: isMenuOpen ? 'auto' : 'none' }}
+            aria-modal="true"
+            role="dialog"
+          >
+            {/* Заголовок и крестик */}
+            <div className="flex items-center justify-between px-6 pt-2 pb-1">
+              <span className="text-lg font-semibold text-gray-700 dark:text-gray-200 mx-auto w-full text-center select-none">Навигация</span>
               <button
-                onClick={goToHome}
-                className="block w-full text-left px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 rounded-md text-base font-medium cursor-pointer"
+                className="ml-2 p-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
+                aria-label="Закрыть меню"
+                onClick={() => setIsMenuOpen(false)}
               >
-                {t.home}
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
               </button>
-              <Link
-                href="/glossary"
-                className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 rounded-md text-base font-medium"
-              >
-                {t.glossary}
-              </Link>
-              <Link
-                href="/resources"
-                className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 rounded-md text-base font-medium"
-              >
-                {t.resources}
-              </Link>
-              <Link
-                href="/tests"
-                className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 rounded-md text-base font-medium"
-              >
-                {t.tests}
-              </Link>
             </div>
+            <hr className="border-gray-300 dark:border-gray-700 mb-2" />
+            <nav className="flex flex-col mt-4 space-y-2 px-6">
+              <Link href="/" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 text-base font-medium py-2">{t.home}</Link>
+              <Link href="/glossary" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 text-base font-medium py-2">{t.glossary}</Link>
+              <Link href="/resources" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 text-base font-medium py-2">{t.resources}</Link>
+              <Link href="/tests" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 text-base font-medium py-2">{t.tests}</Link>
+            </nav>
           </div>
-        )}
+        </div>
       </div>
     </header>
   )

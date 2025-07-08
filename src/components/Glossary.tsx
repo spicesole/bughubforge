@@ -14,6 +14,35 @@ interface GlossaryProps {
   language: 'ru' | 'en'
 }
 
+// Функция для вставки мягких переносов в длинные слова
+function insertSoftHyphens(text: string) {
+  // Для русского: перенос после "нефункциональ" и перед "ное тестирование"
+  if (text === 'Нефункциональное тестирование') {
+    return 'Нефункциональ&shy;ное тестирование';
+  }
+  // Для английского: перенос после "Non-Functional"
+  if (text === 'Non-Functional Testing') {
+    return 'Non-Functional&shy; Testing';
+  }
+  return text;
+}
+
+function fixCategoryName(text: string) {
+  if (text === 'Нефункциональное тестирование') {
+    return 'Нефункциональное<br/>тестирование';
+  }
+  if (text === 'Non-Functional Testing') {
+    return 'Non-Functional<br/>Testing';
+  }
+  if (text === 'Тестирование производительности') {
+    return 'Тестирование\u00A0производительности';
+  }
+  if (text === 'Performance Testing') {
+    return 'Performance\u00A0Testing';
+  }
+  return text;
+}
+
 export default function Glossary({ language }: GlossaryProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [searchTerm, setSearchTerm] = useState('')
@@ -824,17 +853,68 @@ export default function Glossary({ language }: GlossaryProps) {
         ) : (
           paginatedGlossary.map((item) => (
             <div key={item.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-              <div className="flex items-start justify-between mb-3">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  {item.term}
-                </h3>
-                <span className={`px-3 py-1 text-xs font-medium rounded-full ${getCategoryColor(item.category)}`}>
-                  {categories.find(cat => cat.id === item.category)?.name}
-                </span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                {item.term}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-xs sm:text-sm md:text-lg lg:text-xl">
                 {item.definition}
               </p>
+              {(() => {
+                let cat = categories.find(cat => cat.id === item.category)?.name || '';
+                if (cat === 'Нефункциональное тестирование') {
+                  return (
+                    <span
+                      lang={language}
+                      className={`inline-block whitespace-normal break-words max-w-[180px] sm:max-w-xs mt-3 px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-medium rounded-full text-center align-middle ${getCategoryColor(item.category)}`}
+                      title={cat}
+                    >
+                      <span>Нефункциональное</span><br /><span>тестирование</span>
+                    </span>
+                  );
+                }
+                if (cat === 'Non-Functional Testing') {
+                  return (
+                    <span
+                      lang={language}
+                      className={`inline-block whitespace-normal break-words max-w-[180px] sm:max-w-xs mt-3 px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-medium rounded-full text-center align-middle ${getCategoryColor(item.category)}`}
+                      title={cat}
+                    >
+                      <span>Non-Functional</span><br /><span>Testing</span>
+                    </span>
+                  );
+                }
+                if (cat === 'Функциональное тестирование') {
+                  return (
+                    <span
+                      lang={language}
+                      className={`inline-block whitespace-normal break-words max-w-[180px] sm:max-w-xs mt-3 px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-medium rounded-full text-center align-middle ${getCategoryColor(item.category)}`}
+                      title={cat}
+                    >
+                      <span>Функциональное</span><br /><span>тестирование</span>
+                    </span>
+                  );
+                }
+                if (cat === 'Functional Testing') {
+                  return (
+                    <span
+                      lang={language}
+                      className={`inline-block whitespace-normal break-words max-w-[180px] sm:max-w-xs mt-3 px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-medium rounded-full text-center align-middle ${getCategoryColor(item.category)}`}
+                      title={cat}
+                    >
+                      <span>Functional</span><br /><span>Testing</span>
+                    </span>
+                  );
+                }
+                return (
+                  <span
+                    lang={language}
+                    className={`inline-block whitespace-normal break-words max-w-[180px] sm:max-w-xs mt-3 px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-medium rounded-full text-center align-middle ${getCategoryColor(item.category)}`}
+                    title={cat}
+                  >
+                    {cat}
+                  </span>
+                );
+              })()}
             </div>
           ))
         )}

@@ -301,19 +301,6 @@ export default function News({ language }: NewsProps) {
       url: 'https://www.xrtoday.com/mixed-reality/nokia-weart-to-revolutionize-virtual-interaction-with-thermal-haptics/'
     },
     {
-      id: 30,
-      title: language === 'ru'
-        ? 'Nokia и WEART революционизируют виртуальное взаимодействие с помощью термальных гаптиков'
-        : 'Nokia and WEART to Revolutionize Virtual Interaction with Thermal Haptics',
-      summary: language === 'ru'
-        ? 'На конференции IEEE World Haptics компания Nokia представила совместные разработки с WEART по созданию термальных гаптиков для XR-устройств, открывая новые возможности для тестирования и взаимодействия в виртуальной среде.'
-        : 'At the IEEE World Haptics Conference, Nokia showcased joint research with WEART on thermal haptics for XR devices, opening new opportunities for testing and interaction in virtual environments.',
-      source: 'XR Today',
-      date: '2025-07-07',
-      category: 'industry',
-      url: 'https://www.xrtoday.com/mixed-reality/nokia-weart-to-revolutionize-virtual-interaction-with-thermal-haptics/'
-    },
-    {
       id: 31,
       title: language === 'ru'
         ? 'XR Awards 2025: Победители объявлены!'
@@ -401,7 +388,15 @@ export default function News({ language }: NewsProps) {
 
   // Плавная прокрутка к началу при смене страницы
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    // Прокручиваем только если мы на странице новостей
+    if (typeof window !== 'undefined' && window.location.pathname.includes('news')) {
+      const newsSection = document.getElementById('news');
+      if (newsSection) {
+        newsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
   }, [currentPage])
 
   return (
