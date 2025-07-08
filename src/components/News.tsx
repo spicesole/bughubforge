@@ -301,43 +301,56 @@ export default function News({ language }: NewsProps) {
       url: 'https://www.xrtoday.com/mixed-reality/nokia-weart-to-revolutionize-virtual-interaction-with-thermal-haptics/'
     },
     {
+      id: 30,
+      title: language === 'ru'
+        ? 'The Real QA Automation Struggles: как победить рутину?' 
+        : 'The Real QA Automation Struggles (and How to Finally Get Ahead)',
+      summary: language === 'ru'
+        ? 'Автоматизация тестирования обещала революцию, но многие команды до сих пор сталкиваются с хрупкими скриптами, сложной поддержкой и интеграцией в CI/CD. Новые AI-инструменты, такие как Aurick, предлагают автономное тестирование, самовосстанавливающиеся тесты и минимизацию рутины.'
+        : 'Automation promised to revolutionize QA, but many teams still struggle with brittle scripts, maintenance, and CI/CD integration. New AI tools like Aurick offer autonomous testing, self-healing tests, and less routine.',
+      source: 'DEV.to',
+      date: '2025-07-08',
+      category: 'automation',
+      url: 'https://dev.to/esha_suchana_3514f571649c/the-real-qa-automation-struggles-and-how-to-finally-get-ahead-1bdi'
+    },
+    {
       id: 31,
       title: language === 'ru'
-        ? 'XR Awards 2025: Победители объявлены!'
-        : 'XR Awards 2025: Winners Revealed!',
+        ? 'Testing AI Systems: новые правила для эпохи ИИ'
+        : 'Testing AI Systems: New Rules for a New Era',
       summary: language === 'ru'
-        ? 'XR Today объявил победителей премии XR Awards 2025 — отмечены лучшие проекты и инновации в области XR, VR и AR.'
-        : 'XR Today announced the winners of the XR Awards 2025, highlighting the best projects and innovations in XR, VR, and AR.',
-      source: 'XR Today',
-      date: '2025-07-05',
-      category: 'industry',
-      url: 'https://www.xrtoday.com/xr-awards/xr-awards-2025-winners-revealed/'
+        ? 'Тестирование ИИ-систем требует новых подходов: проверка на предвзятость, устойчивость к атакам, объяснимость решений и мониторинг деградации моделей. Появляются специализированные инструменты для тестирования ИИ, такие как DeepChecks, WhyLabs, Fiddler AI.'
+        : 'Testing AI systems requires new approaches: bias checking, adversarial robustness, explainability, and model decay monitoring. Specialized tools like DeepChecks, WhyLabs, and Fiddler AI are emerging.',
+      source: 'DEV.to',
+      date: '2025-07-03',
+      category: 'methodology',
+      url: 'https://dev.to/vaibhavkuls/testing-ai-systems-new-rules-for-a-new-era-33d1'
     },
     {
       id: 32,
       title: language === 'ru'
-        ? 'HealthpointCapital усиливает XR в хирургическом планировании'
-        : 'HealthpointCapital Bolsters XR in Surgical Planning',
+        ? 'Testing for Accessibility: доступность ПО в 2025 году'
+        : 'Testing for Accessibility: Building Inclusive Software in 2025',
       summary: language === 'ru'
-        ? 'HealthpointCapital приобрела ImmersiveTouch, чтобы усилить позиции XR-технологий в медицинском и хирургическом планировании.'
-        : 'HealthpointCapital acquired ImmersiveTouch to strengthen XR technology in medical and surgical planning.',
-      source: 'XR Today',
-      date: '2025-07-03',
-      category: 'industry',
-      url: 'https://www.xrtoday.com/mixed-reality/healthpointcapital-acquires-immersivetouch-bolstering-xr-in-surgical-planning/'
+        ? 'Доступность (a11y) становится обязательной частью QA. В 2025 году автоматизированные и ручные инструменты (Axe, Lighthouse, WAVE) интегрируются в CI/CD, а компании всё чаще тестируют продукты с реальными пользователями с ограниченными возможностями.'
+        : 'Accessibility (a11y) is now a must-have in QA. In 2025, automated and manual tools (Axe, Lighthouse, WAVE) are integrated into CI/CD, and companies increasingly test with real users with disabilities.',
+      source: 'DEV.to',
+      date: '2025-07-02',
+      category: 'methodology',
+      url: 'https://dev.to/vaibhavkuls/testing-for-accessibility-building-inclusive-software-in-2025-1lam'
     },
     {
       id: 33,
       title: language === 'ru'
-        ? 'Основные XR-риски для бизнеса'
-        : 'Top XR Security Risks Every Business Should Know',
+        ? 'Учёные впервые смоделировали отказоустойчивый квантовый код'
+        : 'Scientists simulated fault-tolerant quantum code for the first time',
       summary: language === 'ru'
-        ? 'Эксперты XR Today рассказали о главных рисках безопасности XR-решений для бизнеса и способах их минимизации.'
-        : 'XR Today experts highlighted the top security risks of XR solutions for businesses and ways to mitigate them.',
-      source: 'XR Today',
-      date: '2025-07-06',
-      category: 'methodology',
-      url: 'https://www.xrtoday.com/mixed-reality/top-xr-security-risks-every-business-should-know/'
+        ? 'Международная команда разработала алгоритм, позволяющий на обычных компьютерах имитировать работу отказоустойчивых квантовых схем, что открывает новые возможности для тестирования будущих квантовых компьютеров.'
+        : 'An international team developed an algorithm that allows conventional computers to simulate fault-tolerant quantum circuits, opening new opportunities for testing future quantum computers.',
+      source: 'ScienceDaily',
+      date: '2025-07-03',
+      category: 'industry',
+      url: 'https://www.sciencedaily.com/releases/2025/07/250702214157.htm'
     },
     {
       id: 34,
