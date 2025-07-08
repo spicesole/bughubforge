@@ -98,6 +98,15 @@ function prepareTest(test: Test): Test {
   return { ...test, questions: shuffledQuestions }
 }
 
+function getDifficultyLabel(difficulty: Difficulty, t: any) {
+  switch (difficulty) {
+    case 'beginner': return t.beginnerFull;
+    case 'intermediate': return t.intermediateFull;
+    case 'advanced': return t.advancedFull;
+    default: return '';
+  }
+}
+
 export default function Tests({ language }: TestsProps) {
   const [selectedTest, setSelectedTest] = useState<Test | null>(null)
   const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -109,6 +118,12 @@ export default function Tests({ language }: TestsProps) {
   const [showMistakes, setShowMistakes] = useState(false)
   const t = translations[language]
   const tests = getTests(language)
+
+  const difficultyColors = {
+    beginner: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
+    intermediate: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
+    advanced: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
+  }
 
   useEffect(() => {
     const handler = () => setSelectedTest(null)
@@ -350,9 +365,21 @@ export default function Tests({ language }: TestsProps) {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{test.title}</h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-2">{test.description}</p>
-                <span className="inline-block px-2 py-1 text-xs rounded bg-primary-100 text-primary-700 dark:bg-primary-900 dark:text-primary-200">
-                  {t[test.difficulty]}
-                </span>
+                {test.difficulty === 'beginner' && (
+                  <span className="inline-block px-3 py-1 text-sm rounded-full font-semibold shadow-sm border border-gray-200 dark:border-gray-700 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                    {getDifficultyLabel(test.difficulty, t)}
+                  </span>
+                )}
+                {test.difficulty === 'intermediate' && (
+                  <span className="inline-block px-3 py-1 text-sm rounded-full font-semibold shadow-sm border border-gray-200 dark:border-gray-700 bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
+                    {getDifficultyLabel(test.difficulty, t)}
+                  </span>
+                )}
+                {test.difficulty === 'advanced' && (
+                  <span className="inline-block px-3 py-1 text-sm rounded-full font-semibold shadow-sm border border-gray-200 dark:border-gray-700 bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
+                    {getDifficultyLabel(test.difficulty, t)}
+                  </span>
+                )}
               </div>
               <div className="mt-4 md:mt-0 md:ml-6">
                 <button onClick={() => startTest(test)} className="px-4 py-2 bg-primary-600 text-white rounded-md font-medium hover:bg-primary-700 transition-colors">
