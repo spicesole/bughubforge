@@ -172,6 +172,7 @@ export default function Tests() {
         t={t}
         resetTest={resetTest}
         setShowMistakes={setShowMistakes}
+        lang={lang}
       />
     );
   }

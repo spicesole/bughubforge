@@ -7,6 +7,7 @@ interface TestMistakesProps {
   t: Record<string, string>;
   resetTest: () => void;
   setShowMistakes: (show: boolean) => void;
+  lang: 'ru' | 'en';
 }
 
 const TestMistakes: React.FC<TestMistakesProps> = ({
@@ -15,6 +16,7 @@ const TestMistakes: React.FC<TestMistakesProps> = ({
   t,
   resetTest,
   setShowMistakes,
+  lang,
 }) => {
   const mistakes = test.questions
     .map((q, idx) => ({
@@ -39,20 +41,20 @@ const TestMistakes: React.FC<TestMistakesProps> = ({
                 {t.question} {test.questions.findIndex((qq) => qq.id === q.id) + 1}
               </div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                {q.question}
+                {q.question[lang]}
               </h3>
               <div className="mb-2">
                 <span className="font-semibold text-red-600 dark:text-red-400">{t.incorrect}:</span>{' '}
-                {q.options[q.userAnswer] || '-'}
+                {q.options[lang][q.userAnswer] || '-'}
               </div>
               <div className="mb-2">
                 <span className="font-semibold text-green-600 dark:text-green-400">
                   {t.correct}:
                 </span>{' '}
-                {q.options[q.correctAnswer]}
+                {q.options[lang][q.correctAnswer]}
               </div>
               <div className="mb-2 p-3 bg-yellow-50 dark:bg-yellow-900 rounded-lg text-yellow-800 dark:text-yellow-200">
-                <strong>{t.explanation}:</strong> {q.explanation}
+                <strong>{t.explanation}:</strong> {q.explanation[lang]}
               </div>
             </div>
           ))}
