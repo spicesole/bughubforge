@@ -1,10 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { useLanguage } from '../useLanguage';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import type { Test, Question } from '../../data/tests';
+import React from 'react';
+import type { Test } from '../../data/tests';
 
 interface TestRunnerProps {
   test: Test;
