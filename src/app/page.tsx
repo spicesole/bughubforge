@@ -6,7 +6,6 @@ import Features from '@/components/Features';
 import News from '@/components/News';
 import Head from 'next/head';
 import { useLanguage } from '@/components/useLanguage';
-import Resources from '@/components/Resources';
 
 export default function Home() {
   const { language } = useLanguage();
@@ -72,7 +71,6 @@ export default function Home() {
       <main>
         <Hero />
         <Features />
-        <Resources />
         <News />
       </main>
 
