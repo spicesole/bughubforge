@@ -33,7 +33,9 @@ export function useTheme() {
         document.documentElement.classList.remove('dark');
         localStorage.setItem('theme', 'light');
       }
-    } catch { /* ignore */ }
+    } catch {
+      /* ignore */
+    }
   };
 
   return { isDarkMode, toggleDarkMode };
