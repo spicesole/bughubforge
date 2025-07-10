@@ -326,6 +326,21 @@ export default function News() {
       id: 26,
       title:
         language === 'ru'
+          ? 'Анонсирован Grok 4: новая модель от xAI для сложных задач'
+          : 'Grok 4 Announced: New xAI Model for Complex Tasks',
+      summary:
+        language === 'ru'
+          ? '9 июля 2025 компания xAI представила Grok 4 и Grok Code 4 — новые языковые модели с улучшенной точностью и производительностью, ориентированные на разработчиков и технических специалистов.'
+          : 'On July 9, 2025, xAI announced Grok 4 and Grok Code 4 — new language models with improved accuracy and performance, targeting developers and technical professionals.',
+      source: 'TestingCatalog',
+      date: '2025-07-09',
+      category: 'industry',
+      url: 'https://www.testingcatalog.com/grok-4-set-for-july-9-debut-as-xai-plans-expanded-model-lineup/',
+    },
+    {
+      id: 27,
+      title:
+        language === 'ru'
           ? 'Nokia и WEART революционизируют виртуальное взаимодействие с помощью термальных гаптиков'
           : 'Nokia and WEART to Revolutionize Virtual Interaction with Thermal Haptics',
       summary:
