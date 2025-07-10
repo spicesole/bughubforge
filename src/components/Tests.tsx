@@ -30,7 +30,9 @@ function prepareTest(test: Test): Test {
     const shuffleOptions = (options: string[], correctIdx: number) => {
       const optionsWithIndex = options.map((option, idx) => ({ option, idx }));
       const shuffled = shuffleArray(optionsWithIndex);
-      const newCorrectIndex = shuffled.findIndex((item: { option: string; idx: number }) => item.idx === correctIdx);
+      const newCorrectIndex = shuffled.findIndex(
+        (item: { option: string; idx: number }) => item.idx === correctIdx
+      );
       return {
         options: shuffled.map((item: { option: string; idx: number }) => item.option),
         correctAnswer: newCorrectIndex,

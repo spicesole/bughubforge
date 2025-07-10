@@ -51,7 +51,10 @@
     "title": "What you will find on our site",
     "items": [
       { "title": "Glossary of terms", "description": "Basic testing terms with explanations" },
-      { "title": "Useful resources", "description": "Books, articles, videos and other useful materials" },
+      {
+        "title": "Useful resources",
+        "description": "Books, articles, videos and other useful materials"
+      },
       { "title": "Tests and exercises", "description": "Practical tasks to consolidate knowledge" }
     ]
   }

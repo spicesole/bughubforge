@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { getTests, LocalizedTest } from '../../data/tests';
 import { useLanguage } from '../useLanguage';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import type { Test, Question } from '../../data/tests';
 
 interface TestRunnerProps {
-  test: any;
+  test: Test;
   currentQuestion: number;
   selectedAnswer: number | null;
   setSelectedAnswer: (idx: number) => void;
@@ -37,9 +37,6 @@ const TestRunner: React.FC<TestRunnerProps> = ({
   mistakes = [],
   lang,
 }) => {
-  const { language } = useLanguage();
-  const router = useRouter();
-
   const question = test.questions[currentQuestion];
   const isLast = currentQuestion === test.questions.length - 1;
 
@@ -59,8 +56,13 @@ const TestRunner: React.FC<TestRunnerProps> = ({
                   <div className="mb-1">
                     <span className="font-semibold">{test.questions[idx].question[lang]}</span>
                   </div>
-                  <div>{t.correct}: {test.questions[idx].options[lang][test.questions[idx].correctAnswer]}</div>
-                  <div className="text-yellow-700 dark:text-yellow-300">{t.explanation}: {test.questions[idx].explanation[lang]}</div>
+                  <div>
+                    {t.correct}:{' '}
+                    {test.questions[idx].options[lang][test.questions[idx].correctAnswer]}
+                  </div>
+                  <div className="text-yellow-700 dark:text-yellow-300">
+                    {t.explanation}: {test.questions[idx].explanation[lang]}
+                  </div>
                 </li>
               ))}
             </ul>
@@ -85,23 +87,24 @@ const TestRunner: React.FC<TestRunnerProps> = ({
         {question.question[lang]}
       </h3>
       <div className="space-y-2 mb-6">
-        {Array.isArray(question.options[lang])
-          ? question.options[lang].map((option: string, idx: number) => (
-              <button
-                key={idx}
-                onClick={() => setSelectedAnswer(idx)}
-                className={`w-full text-left px-4 py-2 rounded-lg border transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  selectedAnswer === idx
-                    ? 'bg-blue-600 text-white border-blue-600'
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600'
-                }`}
-                disabled={showResults}
-              >
-                {option}
-              </button>
-            ))
-          : <div style={{ color: 'red' }}>{t.selectAnswer}</div>
-        }
+        {Array.isArray(question.options[lang]) ? (
+          question.options[lang].map((option: string, idx: number) => (
+            <button
+              key={idx}
+              onClick={() => setSelectedAnswer(idx)}
+              className={`w-full text-left px-4 py-2 rounded-lg border transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                selectedAnswer === idx
+                  ? 'bg-blue-600 text-white border-blue-600'
+                  : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600'
+              }`}
+              disabled={showResults}
+            >
+              {option}
+            </button>
+          ))
+        ) : (
+          <div style={{ color: 'red' }}>{t.selectAnswer}</div>
+        )}
       </div>
       {showExplanation && (
         <div className="mb-4 p-4 bg-yellow-50 dark:bg-yellow-900 rounded-lg text-yellow-800 dark:text-yellow-200">
