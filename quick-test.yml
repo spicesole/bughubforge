@@ -3,12 +3,12 @@ config:
   phases:
     - duration: 30
       arrivalRate: 5
-      name: "Quick test"
+      name: 'Quick test'
 
 scenarios:
-  - name: "Quick homepage test"
+  - name: 'Quick homepage test'
     flow:
       - get:
-          url: "/"
+          url: '/'
           expect:
-            - statusCode: 200 
+            - statusCode: 200

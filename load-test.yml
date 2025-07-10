@@ -4,71 +4,71 @@ config:
     # Разогрев - постепенное увеличение нагрузки
     - duration: 60
       arrivalRate: 1
-      name: "Warm up"
-    
+      name: 'Warm up'
+
     # Основная нагрузка - стабильная
     - duration: 120
       arrivalRate: 10
-      name: "Steady load"
-    
+      name: 'Steady load'
+
     # Пиковая нагрузка
     - duration: 60
       arrivalRate: 50
-      name: "Peak load"
-    
+      name: 'Peak load'
+
     # Снижение нагрузки
     - duration: 60
       arrivalRate: 5
-      name: "Cool down"
+      name: 'Cool down'
 
 scenarios:
-  - name: "Homepage load test"
+  - name: 'Homepage load test'
     weight: 40
     flow:
       - get:
-          url: "/"
+          url: '/'
           expect:
             - statusCode: 200
             - contentType: html
 
-  - name: "Glossary page load test"
+  - name: 'Glossary page load test'
     weight: 20
     flow:
       - get:
-          url: "/glossary"
+          url: '/glossary'
           expect:
             - statusCode: 200
             - contentType: html
 
-  - name: "Resources page load test"
+  - name: 'Resources page load test'
     weight: 20
     flow:
       - get:
-          url: "/resources"
+          url: '/resources'
           expect:
             - statusCode: 200
             - contentType: html
 
-  - name: "Tests page load test"
+  - name: 'Tests page load test'
     weight: 20
     flow:
       - get:
-          url: "/tests"
+          url: '/tests'
           expect:
             - statusCode: 200
             - contentType: html
 
-  - name: "Navigation flow test"
+  - name: 'Navigation flow test'
     weight: 10
     flow:
       - get:
-          url: "/"
+          url: '/'
       - think: 2
       - get:
-          url: "/glossary"
+          url: '/glossary'
       - think: 1
       - get:
-          url: "/resources"
+          url: '/resources'
       - think: 1
       - get:
-          url: "/tests" 
+          url: '/tests'

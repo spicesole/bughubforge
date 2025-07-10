@@ -6,6 +6,6 @@ const nextConfig = {
     return config;
   },
   // appDir теперь включен по умолчанию в Next.js 14
-}
+};
 
-module.exports = nextConfig 
+module.exports = nextConfig;

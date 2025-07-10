@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const PerformanceMonitor = require('./performance-monitor');
+import PerformanceMonitor from './performance-monitor';
 
 console.log('🚀 BugHubForge Performance Monitor');
 console.log('==================================');
@@ -25,4 +25,4 @@ process.on('SIGINT', () => {
 });
 
 // Запускаем мониторинг
-monitor.start(); 
+monitor.start();

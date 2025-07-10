@@ -1,0 +1,58 @@
+{
+  "glossary": {
+    "title": "Testing Glossary",
+    "subtitle": "Key concepts and terms in software testing",
+    "search": "Search terms...",
+    "allCategories": "All categories",
+    "functional": "Functional Testing",
+    "nonFunctional": "Non-Functional Testing",
+    "automation": "Automation",
+    "methodology": "Methodology",
+    "tools": "Tools",
+    "noResults": "No terms found",
+    "category": "Category"
+  },
+  "tests": {
+    "tests": "Tests",
+    "startTest": "Start Test",
+    "question": "Question",
+    "of": "of",
+    "next": "Next",
+    "finish": "Finish",
+    "results": "Results",
+    "correct": "Correct",
+    "incorrect": "Incorrect",
+    "score": "Score",
+    "explanation": "Explanation",
+    "tryAgain": "Try Again",
+    "backToTests": "Back to Tests",
+    "selectAnswer": "Select an answer",
+    "testCompleted": "Test completed!",
+    "perfectScore": "Excellent! All answers are correct!",
+    "perfectScoreDesc": "You did great on the test. Keep studying the materials!",
+    "difficulty": "Difficulty",
+    "allLevels": "All levels",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "beginnerFull": "Beginner",
+    "intermediateFull": "Intermediate",
+    "advancedFull": "Advanced",
+    "viewMistakes": "View mistakes",
+    "questions": "questions"
+  },
+  "hero": {
+    "title": "Welcome to the World of Testing!",
+    "subtitle": "Educational platform for beginner testers",
+    "startLearning": "Start Learning",
+    "learnMore": "Learn More"
+  },
+  "features": {
+    "title": "What you will find on our site",
+    "items": [
+      { "title": "Glossary of terms", "description": "Basic testing terms with explanations" },
+      { "title": "Useful resources", "description": "Books, articles, videos and other useful materials" },
+      { "title": "Tests and exercises", "description": "Practical tasks to consolidate knowledge" }
+    ]
+  }
+}

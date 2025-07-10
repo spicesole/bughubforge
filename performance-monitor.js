@@ -1,5 +1,5 @@
-const http = require('http');
-const https = require('https');
+import http from 'http';
+import https from 'https';
 
 class PerformanceMonitor {
   constructor(url, interval = 1000) {
@@ -11,7 +11,7 @@ class PerformanceMonitor {
       totalTime: 0,
       minTime: Infinity,
       maxTime: 0,
-      startTime: Date.now()
+      startTime: Date.now(),
     };
   }
 
@@ -19,7 +19,7 @@ class PerformanceMonitor {
     return new Promise((resolve) => {
       const start = Date.now();
       const protocol = this.url.startsWith('https') ? https : http;
-      
+
       const req = protocol.get(this.url, (res) => {
         const duration = Date.now() - start;
         this.updateStats(duration, res.statusCode === 200);
@@ -44,7 +44,7 @@ class PerformanceMonitor {
   updateStats(duration, success) {
     this.stats.requests++;
     this.stats.totalTime += duration;
-    
+
     if (success) {
       this.stats.minTime = Math.min(this.stats.minTime, duration);
       this.stats.maxTime = Math.max(this.stats.maxTime, duration);
@@ -65,18 +65,18 @@ class PerformanceMonitor {
       avgResponseTime: `${avgTime.toFixed(2)}ms`,
       minResponseTime: this.stats.minTime === Infinity ? 'N/A' : `${this.stats.minTime}ms`,
       maxResponseTime: `${this.stats.maxTime}ms`,
-      requestsPerSecond: rps
+      requestsPerSecond: rps,
     };
   }
 
   start() {
     console.log(`🚀 Starting performance monitor for ${this.url}`);
     console.log('Press Ctrl+C to stop\n');
-    
+
     this.intervalId = setInterval(async () => {
       await this.makeRequest();
       const stats = this.getStats();
-      
+
       console.clear();
       console.log('📊 Performance Monitor');
       console.log('=====================');
@@ -110,14 +110,14 @@ class PerformanceMonitor {
 if (require.main === module) {
   const url = process.argv[2] || 'http://localhost:3000';
   const monitor = new PerformanceMonitor(url);
-  
+
   process.on('SIGINT', () => {
     console.log('\n🛑 Stopping monitor...');
     monitor.stop();
     process.exit(0);
   });
-  
+
   monitor.start();
 }
 
-module.exports = PerformanceMonitor; 
+module.exports = PerformanceMonitor;
