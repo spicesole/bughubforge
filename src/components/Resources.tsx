@@ -678,7 +678,7 @@ export default function Resources() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <div className="text-center mb-8">
+      <div className="text-center mb-8 mt-12">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
           {language === 'ru' ? (
             <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.title) }} />
