@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import React from 'react';
 import { useLanguage } from './useLanguage';
+import { fixHangingPrepositions } from '../utils/fixHangingPrepositions';
 
 interface ResourceItem {
   id: number;
@@ -678,8 +679,16 @@ export default function Resources() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{t.title}</h1>
-        <p className="text-xl text-gray-600 dark:text-gray-400">{t.subtitle}</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+          {language === 'ru' ? (
+            <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.title) }} />
+          ) : t.title}
+        </h2>
+        <p className="text-lg text-center text-gray-600 dark:text-gray-300 mb-8">
+          {language === 'ru' ? (
+            <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.subtitle) }} />
+          ) : t.subtitle}
+        </p>
       </div>
 
       {/* Фильтры */}
@@ -695,9 +704,11 @@ export default function Resources() {
               onChange={(e) => setSelectedCategory(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
             >
-              {categories.map((category) => (
-                <option key={category.id} value={category.id}>
-                  {category.name}
+              {categories.map((cat) => (
+                <option key={cat.id} value={cat.id}>
+                  {language === 'ru' ? (
+                    <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(cat.name) }} />
+                  ) : cat.name}
                 </option>
               ))}
             </select>
@@ -715,7 +726,9 @@ export default function Resources() {
             >
               {types.map((type) => (
                 <option key={type.id} value={type.id}>
-                  {type.name}
+                  {language === 'ru' ? (
+                    <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(type.name) }} />
+                  ) : type.name}
                 </option>
               ))}
             </select>
@@ -733,7 +746,9 @@ export default function Resources() {
             >
               {difficulties.map((difficulty) => (
                 <option key={difficulty.id} value={difficulty.id}>
-                  {difficulty.name}
+                  {language === 'ru' ? (
+                    <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(difficulty.name) }} />
+                  ) : difficulty.name}
                 </option>
               ))}
             </select>
@@ -747,7 +762,9 @@ export default function Resources() {
           <div className="text-center py-12">
             <div className="text-6xl mb-4">🔍</div>
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-              {t.noResults}
+              {language === 'ru' ? (
+                <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.noResults) }} />
+              ) : t.noResults}
             </h3>
             <p className="text-gray-600 dark:text-gray-400">
               {language === 'ru' ? 'Попробуйте изменить фильтры' : 'Try changing the filters'}
@@ -770,11 +787,15 @@ export default function Resources() {
                 </div>
 
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                  {item.title}
+                  {language === 'ru' ? (
+                    <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(item.title) }} />
+                  ) : item.title}
                 </h3>
 
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
-                  {item.description}
+                  {language === 'ru' ? (
+                    <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(item.description) }} />
+                  ) : item.description}
                 </p>
 
                 <div className="flex items-center justify-between">
@@ -787,7 +808,9 @@ export default function Resources() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-3 py-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
                   >
-                    {t.openResource}
+                    {language === 'ru' ? (
+                      <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.openResource) }} />
+                    ) : t.openResource}
                     <svg
                       className="ml-1 w-4 h-4"
                       fill="none"

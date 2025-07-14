@@ -1,4 +1,5 @@
 import React from 'react';
+import { fixHangingPrepositions } from '../../utils/fixHangingPrepositions';
 
 interface Category {
   id: string;
@@ -12,6 +13,7 @@ interface GlossarySearchProps {
   selectedCategory: string;
   setSelectedCategory: (value: string) => void;
   t: Record<string, string>;
+  language: 'ru' | 'en';
 }
 
 const GlossarySearch: React.FC<GlossarySearchProps> = ({
@@ -21,12 +23,13 @@ const GlossarySearch: React.FC<GlossarySearchProps> = ({
   selectedCategory,
   setSelectedCategory,
   t,
+  language,
 }) => (
   <div className="mb-8 space-y-4">
     <div className="relative">
       <input
         type="text"
-        placeholder={t.search}
+        placeholder={language === 'ru' ? fixHangingPrepositions(t.search) : t.search}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         className="w-full px-4 py-3 pl-10 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
@@ -56,7 +59,9 @@ const GlossarySearch: React.FC<GlossarySearchProps> = ({
               : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
           }`}
         >
-          {category.name}
+          {language === 'ru' ? (
+            <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(category.name) }} />
+          ) : category.name}
         </button>
       ))}
     </div>

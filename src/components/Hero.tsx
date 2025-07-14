@@ -1,4 +1,5 @@
 import { useLanguage } from './useLanguage';
+import { fixHangingPrepositions } from '../utils/fixHangingPrepositions';
 
 type HeroTranslation = {
   title: string;
@@ -31,21 +32,27 @@ export default function Hero() {
 
   return (
     <div className="bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-700 dark:to-primary-900 ipad-fix">
-      <div className="max-w-4xl mx-auto px-4 py-16 sm:py-24 text-center">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-4">
-          {t.title}
+      <div className="container-ipad py-12 md:py-20 text-center text-white">
+        <h1 className="text-3xl md:text-5xl font-bold mb-4">
+          {language === 'ru' ? (
+            <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.title) }} />
+          ) : t.title}
         </h1>
-        <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8">{t.subtitle}</p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
+        <p className="text-lg md:text-2xl mb-8">
+          {language === 'ru' ? (
+            <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.subtitle) }} />
+          ) : t.subtitle}
+        </p>
+        <div className="flex flex-col md:flex-row justify-center gap-4">
           <button
+            className="bg-white text-primary-700 font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-gray-100 transition-colors"
             onClick={handleStartLearning}
-            className="inline-block px-8 py-3 text-base font-semibold rounded-lg border border-primary-700 text-primary-700 bg-white hover:bg-primary-700 hover:text-white transition dark:bg-white dark:text-primary-700 dark:border-primary-700 dark:hover:bg-primary-700 dark:hover:text-white"
           >
             {t.startLearning}
           </button>
           <button
+            className="bg-primary-700 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-primary-800 transition-colors"
             onClick={handleLearnMore}
-            className="inline-block px-8 py-3 text-base font-semibold rounded-lg border border-primary-700 text-primary-700 bg-white hover:bg-primary-700 hover:text-white transition dark:bg-white dark:text-primary-700 dark:border-primary-700 dark:hover:bg-primary-700 dark:hover:text-white"
           >
             {t.learnMore}
           </button>

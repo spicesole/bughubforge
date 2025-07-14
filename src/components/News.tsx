@@ -3,6 +3,7 @@
 import { useState, useEffect, SetStateAction } from 'react';
 import React from 'react';
 import { useLanguage } from './useLanguage';
+import { fixHangingPrepositions } from '../utils/fixHangingPrepositions';
 
 interface NewsItem {
   id: number;
@@ -355,9 +356,13 @@ export default function News() {
       <div className="container-ipad">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 language-transition">
-            {t.title}
+            {language === 'ru' ? (
+              <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.title) }} />
+            ) : t.title}
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">{t.subtitle}</p>
+          <p className="text-lg text-gray-600 dark:text-gray-300">{language === 'ru' ? (
+            <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.subtitle) }} />
+          ) : t.subtitle}</p>
         </div>
 
         <div className="max-w-6xl mx-auto">
@@ -379,7 +384,9 @@ export default function News() {
                     : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'
                 }`}
               >
-                {value}
+                {language === 'ru' ? (
+                  <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(value) }} />
+                ) : value}
               </button>
             ))}
           </div>
@@ -401,10 +408,14 @@ export default function News() {
                   </span>
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">
-                  {news.title}
+                  {language === 'ru' ? (
+                    <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(news.title) }} />
+                  ) : news.title}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
-                  {news.summary}
+                  {language === 'ru' ? (
+                    <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(news.summary) }} />
+                  ) : news.summary}
                 </p>
                 <div className="flex justify-between items-center">
                   <span className="text-xs text-gray-500 dark:text-gray-400">
@@ -417,7 +428,9 @@ export default function News() {
                       rel="noopener noreferrer"
                       className="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 text-sm font-medium transition-colors"
                     >
-                      {t.readMore}
+                      {language === 'ru' ? (
+                        <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.readMore) }} />
+                      ) : t.readMore}
                     </a>
                   )}
                 </div>

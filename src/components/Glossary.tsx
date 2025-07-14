@@ -9,6 +9,7 @@ import GlossaryStats from './Glossary/GlossaryStats';
 import ru from '../locales/ru.json';
 import en from '../locales/en.json';
 import { useLanguage } from './useLanguage';
+import { fixHangingPrepositions } from '../utils/fixHangingPrepositions';
 
 interface GlossaryItem {
   id: number;
@@ -1751,8 +1752,16 @@ export default function Glossary() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{t.title}</h1>
-        <p className="text-xl text-gray-600 dark:text-gray-400">{t.subtitle}</p>
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          {language === 'ru' ? (
+            <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.title) }} />
+          ) : t.title}
+        </h1>
+        <p className="text-xl text-gray-600 dark:text-gray-400">
+          {language === 'ru' ? (
+            <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.subtitle) }} />
+          ) : t.subtitle}
+        </p>
       </div>
 
       {/* Поиск и фильтры */}
@@ -1763,6 +1772,7 @@ export default function Glossary() {
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
         t={t}
+        language={language}
       />
 
       {/* Результаты */}
@@ -1773,9 +1783,11 @@ export default function Glossary() {
             {t.noResults}
           </h3>
           <p className="text-gray-600 dark:text-gray-400">
-            {language === 'ru'
-              ? 'Попробуйте изменить поисковый запрос или категорию'
-              : 'Try changing your search query or category'}
+            {language === 'ru' ? (
+              <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions('Попробуйте изменить поисковый запрос или категорию') }} />
+            ) : (
+              'Try changing your search query or category'
+            )}
           </p>
         </div>
       ) : (

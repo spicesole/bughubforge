@@ -9,6 +9,7 @@ import TestMistakes from './Tests/TestMistakes';
 import ru from '../locales/ru.json';
 import en from '../locales/en.json';
 import { useLanguage } from './useLanguage';
+import { fixHangingPrepositions } from '../utils/fixHangingPrepositions';
 
 const translations = { ru: ru.tests, en: en.tests };
 
@@ -222,9 +223,14 @@ export default function Tests() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+      <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
         {t.tests}
       </h1>
+      <p className="text-lg text-center text-gray-600 dark:text-gray-300 mb-8">
+        {language === 'ru' ? (
+          <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.subtitle) }} />
+        ) : t.subtitle}
+      </p>
       <TestList
         tests={filteredTests}
         difficultyFilter={difficultyFilter}

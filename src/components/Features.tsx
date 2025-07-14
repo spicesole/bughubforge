@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useLanguage } from './useLanguage';
 import ruFeatures from '../locales/ru.json';
 import enFeatures from '../locales/en.json';
+import { fixHangingPrepositions } from '../utils/fixHangingPrepositions';
 
 interface Feature {
   title: string;
@@ -114,35 +115,41 @@ export default function Features() {
   };
 
   return (
-    <section className="py-12 md:py-16 bg-white dark:bg-gray-900" data-section="features">
+    <section className="py-12 md:py-20 bg-white dark:bg-gray-900" data-section="features">
       <div className="container-ipad">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 language-transition">
-            {t.title}
-          </h2>
-        </div>
-
-        <div className="flex justify-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-4xl">
-            {features.map((feature, index) => (
-              <Link
-                key={index}
-                href={feature.url}
-                className={`card text-center hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer group
-                  ${features.length === 3 && index === 2 ? 'sm:col-span-2 lg:col-span-1 mx-auto' : ''}`}
-              >
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mx-auto mb-3 md:mb-4 group-hover:bg-primary-200 dark:group-hover:bg-primary-800 transition-colors">
-                  {getIcon(feature.icon)}
-                </div>
-                <h3 className="text-base md:text-lg font-semibold text-gray-900 dark:text-white mb-2 language-transition group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 language-transition">
+        <h2 className="text-2xl md:text-4xl font-bold text-center mb-8">
+          {language === 'ru' ? (
+            <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.title) }} />
+          ) : t.title}
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {features.map((feature, idx) => (
+            <a
+              key={feature.title}
+              href={feature.url}
+              className="block bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
+            >
+              <div className="flex items-center mb-4">
+                {getIcon(feature.icon)}
+                <span className="ml-3 text-lg font-semibold">
+                  {language === 'ru' ? (
+                    <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(feature.title) }} />
+                  ) : feature.title}
+                </span>
+              </div>
+              {language === 'ru' ? (
+                <p
+                  className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap"
+                  style={{ wordBreak: 'keep-all' }}
+                  dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(feature.description) }}
+                />
+              ) : (
+                <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap" style={{ wordBreak: 'keep-all' }}>
                   {feature.description}
                 </p>
-              </Link>
-            ))}
-          </div>
+              )}
+            </a>
+          ))}
         </div>
       </div>
     </section>

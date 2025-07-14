@@ -1,5 +1,6 @@
 import React from 'react';
 import { Test, Difficulty } from '../../data/tests';
+import { fixHangingPrepositions } from '../../utils/fixHangingPrepositions';
 
 interface TestListProps {
   tests: Test[];
@@ -78,7 +79,9 @@ const TestList: React.FC<TestListProps> = ({
           >
             <div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                {test.title[lang]}
+                {lang === 'ru' ? (
+                  <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(test.title[lang]) }} />
+                ) : test.title[lang]}
               </h3>
               <div
                 className={`inline-block px-3 py-1 rounded-full text-xs font-medium mt-1 mb-2 ${difficultyColors[test.difficulty]}`}
@@ -86,7 +89,9 @@ const TestList: React.FC<TestListProps> = ({
                 {getDifficultyLabel(test.difficulty, t)}
               </div>
               <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                {test.description[lang]}
+                {lang === 'ru' ? (
+                  <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(test.description[lang]) }} />
+                ) : test.description[lang]}
               </p>
             </div>
             <button

@@ -46,3 +46,8 @@ export function useLanguage(): LanguageContextProps {
   if (!ctx) throw new Error('useLanguage must be used within a LanguageProvider');
   return ctx;
 }
+
+export function getCurrentLanguage(): string {
+  const lang = typeof window !== 'undefined' ? localStorage.getItem('lang') : null;
+  return lang || 'ru'; // по умолчанию русский
+}

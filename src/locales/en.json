@@ -13,7 +13,8 @@
     "category": "Category"
   },
   "tests": {
-    "tests": "Tests",
+    "tests": "Tests and Exercises",
+    "subtitle": "Practical tests and exercises to reinforce your software testing knowledge. Choose a difficulty level and check your skills!",
     "startTest": "Start Test",
     "question": "Question",
     "of": "of",
