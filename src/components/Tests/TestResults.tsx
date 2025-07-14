@@ -9,7 +9,6 @@ interface TestResultsProps {
   resetTest: () => void;
   restartTest: () => void;
   setShowMistakes: (show: boolean) => void;
-  showMistakes: boolean;
 }
 
 const TestResults: React.FC<TestResultsProps> = ({
@@ -20,7 +19,6 @@ const TestResults: React.FC<TestResultsProps> = ({
   resetTest,
   restartTest,
   setShowMistakes,
-  showMistakes,
 }) => {
   const allCorrect = answers.every((answer, idx) => answer === test.questions[idx].correctAnswer);
 
@@ -53,14 +51,12 @@ const TestResults: React.FC<TestResultsProps> = ({
         >
           {t.backToTests}
         </button>
-        {!showMistakes && (
-          <button
-            className="px-4 py-2 rounded-lg bg-yellow-500 text-white font-semibold hover:bg-yellow-600 transition-colors"
-            onClick={() => setShowMistakes(true)}
-          >
-            {t.viewMistakes}
-          </button>
-        )}
+        <button
+          className="px-4 py-2 rounded-lg bg-yellow-500 text-white font-semibold hover:bg-yellow-600 transition-colors"
+          onClick={() => setShowMistakes(true)}
+        >
+          {t.viewMistakes}
+        </button>
       </div>
     </div>
   );

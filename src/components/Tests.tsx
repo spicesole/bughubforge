@@ -181,7 +181,6 @@ export default function Tests() {
         t={t}
         resetTest={resetTest}
         restartTest={restartTest}
-        setShowMistakes={setShowMistakes}
         lang={lang}
       />
     );
@@ -197,7 +196,6 @@ export default function Tests() {
         resetTest={resetTest}
         restartTest={restartTest}
         setShowMistakes={setShowMistakes}
-        showMistakes={showMistakes}
       />
     );
   }

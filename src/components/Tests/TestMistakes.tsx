@@ -7,7 +7,6 @@ interface TestMistakesProps {
   t: Record<string, string>;
   resetTest: () => void;
   restartTest: () => void;
-  setShowMistakes: (show: boolean) => void;
   lang: 'ru' | 'en';
 }
 
@@ -17,7 +16,6 @@ const TestMistakes: React.FC<TestMistakesProps> = ({
   t,
   resetTest,
   restartTest,
-  setShowMistakes,
   lang,
 }) => {
   const mistakes = test.questions
