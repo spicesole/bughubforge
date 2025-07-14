@@ -36,12 +36,16 @@ export default function Hero() {
         <h1 className="text-3xl md:text-5xl font-bold mb-4">
           {language === 'ru' ? (
             <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.title) }} />
-          ) : t.title}
+          ) : (
+            t.title
+          )}
         </h1>
         <p className="text-lg md:text-2xl mb-8">
           {language === 'ru' ? (
             <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.subtitle) }} />
-          ) : t.subtitle}
+          ) : (
+            t.subtitle
+          )}
         </p>
         <div className="flex flex-col md:flex-row justify-center gap-4">
           <button

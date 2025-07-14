@@ -229,7 +229,9 @@ export default function Tests() {
       <p className="text-lg text-center text-gray-600 dark:text-gray-300 mb-8">
         {language === 'ru' ? (
           <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.subtitle) }} />
-        ) : t.subtitle}
+        ) : (
+          t.subtitle
+        )}
       </p>
       <TestList
         tests={filteredTests}

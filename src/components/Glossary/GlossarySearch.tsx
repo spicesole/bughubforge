@@ -61,7 +61,9 @@ const GlossarySearch: React.FC<GlossarySearchProps> = ({
         >
           {language === 'ru' ? (
             <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(category.name) }} />
-          ) : category.name}
+          ) : (
+            category.name
+          )}
         </button>
       ))}
     </div>

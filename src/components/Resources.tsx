@@ -682,12 +682,16 @@ export default function Resources() {
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
           {language === 'ru' ? (
             <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.title) }} />
-          ) : t.title}
+          ) : (
+            t.title
+          )}
         </h2>
         <p className="text-lg text-center text-gray-600 dark:text-gray-300 mb-8">
           {language === 'ru' ? (
             <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.subtitle) }} />
-          ) : t.subtitle}
+          ) : (
+            t.subtitle
+          )}
         </p>
       </div>
 
@@ -708,7 +712,9 @@ export default function Resources() {
                 <option key={cat.id} value={cat.id}>
                   {language === 'ru' ? (
                     <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(cat.name) }} />
-                  ) : cat.name}
+                  ) : (
+                    cat.name
+                  )}
                 </option>
               ))}
             </select>
@@ -728,7 +734,9 @@ export default function Resources() {
                 <option key={type.id} value={type.id}>
                   {language === 'ru' ? (
                     <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(type.name) }} />
-                  ) : type.name}
+                  ) : (
+                    type.name
+                  )}
                 </option>
               ))}
             </select>
@@ -747,8 +755,12 @@ export default function Resources() {
               {difficulties.map((difficulty) => (
                 <option key={difficulty.id} value={difficulty.id}>
                   {language === 'ru' ? (
-                    <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(difficulty.name) }} />
-                  ) : difficulty.name}
+                    <span
+                      dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(difficulty.name) }}
+                    />
+                  ) : (
+                    difficulty.name
+                  )}
                 </option>
               ))}
             </select>
@@ -764,7 +776,9 @@ export default function Resources() {
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
               {language === 'ru' ? (
                 <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.noResults) }} />
-              ) : t.noResults}
+              ) : (
+                t.noResults
+              )}
             </h3>
             <p className="text-gray-600 dark:text-gray-400">
               {language === 'ru' ? 'Попробуйте изменить фильтры' : 'Try changing the filters'}
@@ -788,14 +802,22 @@ export default function Resources() {
 
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                   {language === 'ru' ? (
-                    <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(item.title) }} />
-                  ) : item.title}
+                    <span
+                      dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(item.title) }}
+                    />
+                  ) : (
+                    item.title
+                  )}
                 </h3>
 
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
                   {language === 'ru' ? (
-                    <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(item.description) }} />
-                  ) : item.description}
+                    <span
+                      dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(item.description) }}
+                    />
+                  ) : (
+                    item.description
+                  )}
                 </p>
 
                 <div className="flex items-center justify-between">
@@ -809,8 +831,12 @@ export default function Resources() {
                     className="inline-flex items-center px-3 py-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
                   >
                     {language === 'ru' ? (
-                      <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.openResource) }} />
-                    ) : t.openResource}
+                      <span
+                        dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.openResource) }}
+                      />
+                    ) : (
+                      t.openResource
+                    )}
                     <svg
                       className="ml-1 w-4 h-4"
                       fill="none"

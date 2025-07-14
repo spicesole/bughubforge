@@ -1755,12 +1755,16 @@ export default function Glossary() {
         <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
           {language === 'ru' ? (
             <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.title) }} />
-          ) : t.title}
+          ) : (
+            t.title
+          )}
         </h1>
         <p className="text-xl text-gray-600 dark:text-gray-400">
           {language === 'ru' ? (
             <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.subtitle) }} />
-          ) : t.subtitle}
+          ) : (
+            t.subtitle
+          )}
         </p>
       </div>
 
@@ -1784,7 +1788,13 @@ export default function Glossary() {
           </h3>
           <p className="text-gray-600 dark:text-gray-400">
             {language === 'ru' ? (
-              <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions('Попробуйте изменить поисковый запрос или категорию') }} />
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: fixHangingPrepositions(
+                    'Попробуйте изменить поисковый запрос или категорию'
+                  ),
+                }}
+              />
             ) : (
               'Try changing your search query or category'
             )}
