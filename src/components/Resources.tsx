@@ -501,9 +501,10 @@ export default function Resources() {
     {
       id: 1001,
       title: language === 'ru' ? 'Reddit: r/softwaretesting' : 'Reddit: r/softwaretesting',
-      description: language === 'ru'
-        ? 'Международное сообщество по ручному и автоматизированному тестированию ПО.'
-        : 'Global community for manual and automated software testing.',
+      description:
+        language === 'ru'
+          ? 'Международное сообщество по ручному и автоматизированному тестированию ПО.'
+          : 'Global community for manual and automated software testing.',
       url: 'https://www.reddit.com/r/softwaretesting/',
       category: 'fundamentals',
       type: 'community',
@@ -513,9 +514,10 @@ export default function Resources() {
     {
       id: 1002,
       title: language === 'ru' ? 'Reddit: r/testautomation' : 'Reddit: r/testautomation',
-      description: language === 'ru'
-        ? 'Обсуждение автоматизации тестирования, инструментов и best practices.'
-        : 'Discussion of test automation, tools, and best practices.',
+      description:
+        language === 'ru'
+          ? 'Обсуждение автоматизации тестирования, инструментов и best practices.'
+          : 'Discussion of test automation, tools, and best practices.',
       url: 'https://www.reddit.com/r/testautomation/',
       category: 'fundamentals',
       type: 'community',
@@ -525,9 +527,10 @@ export default function Resources() {
     {
       id: 1003,
       title: language === 'ru' ? 'Reddit: r/selenium' : 'Reddit: r/selenium',
-      description: language === 'ru'
-        ? 'Всё о Selenium и автоматизации тестирования.'
-        : 'All about Selenium and test automation.',
+      description:
+        language === 'ru'
+          ? 'Всё о Selenium и автоматизации тестирования.'
+          : 'All about Selenium and test automation.',
       url: 'https://www.reddit.com/r/selenium/',
       category: 'fundamentals',
       type: 'community',

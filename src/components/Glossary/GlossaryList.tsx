@@ -50,7 +50,13 @@ const GlossaryList: React.FC<GlossaryListProps> = ({
                   className="px-3 py-1 rounded bg-blue-100 text-blue-800 text-xs font-semibold hover:bg-blue-200 transition-colors"
                   onClick={() => setShowExample(showExample === item.id ? null : item.id)}
                 >
-                  {showExample === item.id ? (language === 'ru' ? 'Скрыть пример' : 'Hide Example') : (language === 'ru' ? 'Пример' : 'Example')}
+                  {showExample === item.id
+                    ? language === 'ru'
+                      ? 'Скрыть пример'
+                      : 'Hide Example'
+                    : language === 'ru'
+                      ? 'Пример'
+                      : 'Example'}
                 </button>
               )}
             </div>

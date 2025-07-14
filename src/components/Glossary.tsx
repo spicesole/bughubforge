@@ -40,7 +40,7 @@ export default function Glossary() {
       category: 'functional',
       example: {
         ru: 'Пользователь оформляет заказ, и система должна отправить подтверждение на email.',
-        en: 'A user places an order and the system should send a confirmation email.'
+        en: 'A user places an order and the system should send a confirmation email.',
       },
     },
     {
@@ -53,7 +53,7 @@ export default function Glossary() {
       category: 'functional',
       example: {
         ru: 'Тестировщик проверяет форму входа, не зная, как реализована проверка пароля внутри.',
-        en: 'A tester checks the login form without knowing how password validation is implemented.'
+        en: 'A tester checks the login form without knowing how password validation is implemented.',
       },
     },
     {
@@ -66,7 +66,7 @@ export default function Glossary() {
       category: 'functional',
       example: {
         ru: 'Тестировщик анализирует и тестирует все ветвления в функции расчёта скидки.',
-        en: 'A tester analyzes and tests all branches in a discount calculation function.'
+        en: 'A tester analyzes and tests all branches in a discount calculation function.',
       },
     },
     {
@@ -79,7 +79,7 @@ export default function Glossary() {
       category: 'functional',
       example: {
         ru: 'Тестировщик знает структуру базы данных, но не видит исходный код приложения.',
-        en: 'A tester knows the database structure but does not see the application source code.'
+        en: 'A tester knows the database structure but does not see the application source code.',
       },
     },
     {
@@ -92,7 +92,7 @@ export default function Glossary() {
       category: 'functional',
       example: {
         ru: 'Для поля возраста (1-100) тестируются значения 25, 50 и 75 как представители разных групп.',
-        en: 'For an age field (1-100), values 25, 50, and 75 are tested as representatives of different groups.'
+        en: 'For an age field (1-100), values 25, 50, and 75 are tested as representatives of different groups.',
       },
     },
     {
@@ -105,7 +105,7 @@ export default function Glossary() {
       category: 'functional',
       example: {
         ru: 'Проверяют ввод значений 0, 1, 2, 99, 100 и 101, если допустимый диапазон — от 1 до 100. Это позволяет убедиться, что система правильно обрабатывает значения на границах и рядом с ними.',
-        en: 'Test input values 0, 1, 2, 99, 100, and 101 if the valid range is from 1 to 100. This ensures the system correctly handles values at and near the boundaries.'
+        en: 'Test input values 0, 1, 2, 99, 100, and 101 if the valid range is from 1 to 100. This ensures the system correctly handles values at and near the boundaries.',
       },
     },
 
@@ -120,7 +120,7 @@ export default function Glossary() {
       category: 'nonFunctional',
       example: {
         ru: 'Проверка, сколько пользователей одновременно может оформить заказ без замедления сайта.',
-        en: 'Checking how many users can place orders simultaneously without the site slowing down.'
+        en: 'Checking how many users can place orders simultaneously without the site slowing down.',
       },
     },
     {
@@ -133,7 +133,7 @@ export default function Glossary() {
       category: 'nonFunctional',
       example: {
         ru: 'Одновременно 1000 пользователей заходят на сайт и оформляют заказы.',
-        en: '1,000 users visit the site and place orders at the same time.'
+        en: '1,000 users visit the site and place orders at the same time.',
       },
     },
     {
@@ -146,7 +146,7 @@ export default function Glossary() {
       category: 'nonFunctional',
       example: {
         ru: 'Проверка, как сайт работает при 10 000 одновременных пользователей.',
-        en: 'Testing how the site works with 10,000 simultaneous users.'
+        en: 'Testing how the site works with 10,000 simultaneous users.',
       },
     },
     {
@@ -159,7 +159,7 @@ export default function Glossary() {
       category: 'nonFunctional',
       example: {
         ru: 'Сайт работает без сбоев в течение 72 часов непрерывной работы.',
-        en: 'The site runs without failures for 72 hours of continuous operation.'
+        en: 'The site runs without failures for 72 hours of continuous operation.',
       },
     },
     {
@@ -172,7 +172,7 @@ export default function Glossary() {
       category: 'nonFunctional',
       example: {
         ru: 'Проверка, может ли неавторизованный пользователь получить доступ к личным данным.',
-        en: 'Checking if an unauthorized user can access personal data.'
+        en: 'Checking if an unauthorized user can access personal data.',
       },
     },
     {
@@ -185,7 +185,7 @@ export default function Glossary() {
       category: 'nonFunctional',
       example: {
         ru: 'Пользователь быстро находит нужную кнопку для оформления заказа.',
-        en: 'A user quickly finds the button to place an order.'
+        en: 'A user quickly finds the button to place an order.',
       },
     },
 
@@ -200,7 +200,7 @@ export default function Glossary() {
       category: 'automation',
       example: {
         ru: 'Скрипт автоматически проверяет регистрацию нового пользователя.',
-        en: 'A script automatically checks new user registration.'
+        en: 'A script automatically checks new user registration.',
       },
     },
     {
@@ -213,7 +213,7 @@ export default function Glossary() {
       category: 'automation',
       example: {
         ru: 'Тест на Selenium открывает сайт и проверяет, что кнопка "Войти" работает.',
-        en: 'A Selenium test opens the site and checks that the "Login" button works.'
+        en: 'A Selenium test opens the site and checks that the "Login" button works.',
       },
     },
     {
@@ -226,7 +226,7 @@ export default function Glossary() {
       category: 'automation',
       example: {
         ru: 'Тест на Cypress проверяет, что после нажатия "Добавить в корзину" товар появляется в корзине.',
-        en: 'A Cypress test checks that after clicking "Add to cart", the item appears in the cart.'
+        en: 'A Cypress test checks that after clicking "Add to cart", the item appears in the cart.',
       },
     },
     {
@@ -239,7 +239,7 @@ export default function Glossary() {
       category: 'automation',
       example: {
         ru: 'Тест на Playwright проверяет работу сайта в разных браузерах.',
-        en: 'A Playwright test checks the site in different browsers.'
+        en: 'A Playwright test checks the site in different browsers.',
       },
     },
 
@@ -254,7 +254,7 @@ export default function Glossary() {
       category: 'methodology',
       example: {
         ru: 'Сначала пишется тест на функцию, затем реализуется сама функция.',
-        en: 'First, a test for a function is written, then the function itself is implemented.'
+        en: 'First, a test for a function is written, then the function itself is implemented.',
       },
     },
     {
@@ -270,7 +270,7 @@ export default function Glossary() {
       category: 'methodology',
       example: {
         ru: 'Сценарий: "Если пользователь не авторизован, он не может оформить заказ."',
-        en: 'Scenario: "If the user is not authorized, they cannot place an order."'
+        en: 'Scenario: "If the user is not authorized, they cannot place an order."',
       },
     },
     {
@@ -283,7 +283,7 @@ export default function Glossary() {
       category: 'methodology',
       example: {
         ru: 'Тестировщик участвует в обсуждении требований до написания кода.',
-        en: 'A tester participates in requirements discussion before any code is written.'
+        en: 'A tester participates in requirements discussion before any code is written.',
       },
     },
     {
@@ -296,7 +296,7 @@ export default function Glossary() {
       category: 'methodology',
       example: {
         ru: 'В проекте больше модульных тестов, меньше интеграционных и ещё меньше UI-тестов.',
-        en: 'The project has more unit tests, fewer integration tests, and even fewer UI tests.'
+        en: 'The project has more unit tests, fewer integration tests, and even fewer UI tests.',
       },
     },
 
@@ -311,7 +311,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'Тест на JUnit проверяет, что функция сложения возвращает правильный результат.',
-        en: 'A JUnit test checks that the addition function returns the correct result.'
+        en: 'A JUnit test checks that the addition function returns the correct result.',
       },
     },
     {
@@ -324,7 +324,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'С помощью Postman отправляется запрос к API и проверяется ответ.',
-        en: 'Using Postman, a request is sent to the API and the response is checked.'
+        en: 'Using Postman, a request is sent to the API and the response is checked.',
       },
     },
     {
@@ -337,7 +337,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'JMeter используется для проверки, выдержит ли сайт 5000 одновременных пользователей.',
-        en: 'JMeter is used to check if the site can handle 5,000 simultaneous users.'
+        en: 'JMeter is used to check if the site can handle 5,000 simultaneous users.',
       },
     },
     {
@@ -350,7 +350,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'Тесты на TestNG запускаются параллельно для ускорения проверки.',
-        en: 'TestNG tests are run in parallel to speed up verification.'
+        en: 'TestNG tests are run in parallel to speed up verification.',
       },
     },
     {
@@ -363,7 +363,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'Appium автоматизирует тесты для Android и iOS приложений.',
-        en: 'Appium automates tests for Android and iOS applications.'
+        en: 'Appium automates tests for Android and iOS applications.',
       },
     },
     {
@@ -376,7 +376,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'С помощью SoapUI проверяется корректность ответа SOAP-сервиса.',
-        en: 'SoapUI is used to check the correctness of a SOAP service response.'
+        en: 'SoapUI is used to check the correctness of a SOAP service response.',
       },
     },
     {
@@ -389,7 +389,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'Katalon Studio позволяет создавать автотесты без программирования.',
-        en: 'Katalon Studio allows creating automated tests without programming.'
+        en: 'Katalon Studio allows creating automated tests without programming.',
       },
     },
     {
@@ -402,7 +402,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'TestComplete используется для автоматизации тестов пользовательского интерфейса.',
-        en: 'TestComplete is used to automate user interface tests.'
+        en: 'TestComplete is used to automate user interface tests.',
       },
     },
     {
@@ -415,7 +415,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'Robot Framework позволяет писать тесты в виде читаемых сценариев.',
-        en: 'Robot Framework allows writing tests as readable scenarios.'
+        en: 'Robot Framework allows writing tests as readable scenarios.',
       },
     },
     {
@@ -428,7 +428,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'Jest используется для тестирования React-компонентов.',
-        en: 'Jest is used for testing React components.'
+        en: 'Jest is used for testing React components.',
       },
     },
     {
@@ -441,7 +441,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'Mocha используется для запуска тестов на Node.js-приложениях.',
-        en: 'Mocha is used to run tests on Node.js applications.'
+        en: 'Mocha is used to run tests on Node.js applications.',
       },
     },
 
@@ -456,7 +456,7 @@ export default function Glossary() {
       category: 'functional',
       example: {
         ru: 'После обновления сайта проверяют, работает ли оформление заказа как раньше.',
-        en: 'After updating the site, they check if order placement still works as before.'
+        en: 'After updating the site, they check if order placement still works as before.',
       },
     },
     {
@@ -469,7 +469,7 @@ export default function Glossary() {
       category: 'functional',
       example: {
         ru: 'После развертывания новой версии проверяют, открывается ли главная страница.',
-        en: 'After deploying a new version, they check if the main page opens.'
+        en: 'After deploying a new version, they check if the main page opens.',
       },
     },
     {
@@ -482,7 +482,7 @@ export default function Glossary() {
       category: 'functional',
       example: {
         ru: 'После исправления бага проверяют только ту функцию, где была ошибка.',
-        en: 'After fixing a bug, only the function where the error was is checked.'
+        en: 'After fixing a bug, only the function where the error was is checked.',
       },
     },
     {
@@ -495,7 +495,7 @@ export default function Glossary() {
       category: 'functional',
       example: {
         ru: 'Клиент проверяет, что все функции сайта работают согласно договору.',
-        en: 'The client checks that all site functions work according to the contract.'
+        en: 'The client checks that all site functions work according to the contract.',
       },
     },
     {
@@ -508,7 +508,7 @@ export default function Glossary() {
       category: 'functional',
       example: {
         ru: 'Проверяют, как корзина взаимодействует с системой оплаты.',
-        en: 'They check how the cart interacts with the payment system.'
+        en: 'They check how the cart interacts with the payment system.',
       },
     },
     {
@@ -521,7 +521,7 @@ export default function Glossary() {
       category: 'functional',
       example: {
         ru: 'Проводят тесты на всём сайте, чтобы убедиться, что он работает как задумано.',
-        en: 'Tests are run on the whole site to make sure it works as intended.'
+        en: 'Tests are run on the whole site to make sure it works as intended.',
       },
     },
     {
@@ -534,7 +534,7 @@ export default function Glossary() {
       category: 'functional',
       example: {
         ru: 'Проверяют, что кнопка "Купить" видна и работает на всех страницах.',
-        en: 'They check that the "Buy" button is visible and works on all pages.'
+        en: 'They check that the "Buy" button is visible and works on all pages.',
       },
     },
     {
@@ -547,7 +547,7 @@ export default function Glossary() {
       category: 'functional',
       example: {
         ru: 'Тест отправляет запрос к API и проверяет, что ответ корректный.',
-        en: 'A test sends a request to the API and checks that the response is correct.'
+        en: 'A test sends a request to the API and checks that the response is correct.',
       },
     },
     {
@@ -560,7 +560,7 @@ export default function Glossary() {
       category: 'functional',
       example: {
         ru: 'Проверяют, что после оформления заказа запись появляется в базе данных.',
-        en: 'They check that after placing an order, a record appears in the database.'
+        en: 'They check that after placing an order, a record appears in the database.',
       },
     },
     {
@@ -573,7 +573,7 @@ export default function Glossary() {
       category: 'functional',
       example: {
         ru: 'Проверяют, одинаково ли сайт отображается в Chrome и Firefox.',
-        en: 'They check if the site displays the same in Chrome and Firefox.'
+        en: 'They check if the site displays the same in Chrome and Firefox.',
       },
     },
 
@@ -588,7 +588,7 @@ export default function Glossary() {
       category: 'nonFunctional',
       example: {
         ru: 'Проверяют, как сайт работает при увеличении числа пользователей с 1000 до 10 000.',
-        en: 'They check how the site works as the number of users increases from 1,000 to 10,000.'
+        en: 'They check how the site works as the number of users increases from 1,000 to 10,000.',
       },
     },
     {
@@ -601,7 +601,7 @@ export default function Glossary() {
       category: 'nonFunctional',
       example: {
         ru: 'Отключают один из серверов и проверяют, продолжает ли работать сайт.',
-        en: 'They turn off one of the servers and check if the site keeps working.'
+        en: 'They turn off one of the servers and check if the site keeps working.',
       },
     },
     {
@@ -614,7 +614,7 @@ export default function Glossary() {
       category: 'nonFunctional',
       example: {
         ru: 'Проверяют, можно ли пользоваться сайтом с помощью экранного диктора.',
-        en: 'They check if the site can be used with a screen reader.'
+        en: 'They check if the site can be used with a screen reader.',
       },
     },
     {
@@ -627,7 +627,7 @@ export default function Glossary() {
       category: 'nonFunctional',
       example: {
         ru: 'Проверяют, что все кнопки и сообщения переведены на английский и русский.',
-        en: 'They check that all buttons and messages are translated into English and Russian.'
+        en: 'They check that all buttons and messages are translated into English and Russian.',
       },
     },
     {
@@ -640,7 +640,7 @@ export default function Glossary() {
       category: 'nonFunctional',
       example: {
         ru: 'После сбоя сервера проверяют, восстанавливаются ли данные.',
-        en: 'After a server failure, they check if the data is restored.'
+        en: 'After a server failure, they check if the data is restored.',
       },
     },
     {
@@ -653,7 +653,7 @@ export default function Glossary() {
       category: 'nonFunctional',
       example: {
         ru: 'Проверяют, что программа устанавливается и запускается без ошибок.',
-        en: 'They check that the program installs and starts without errors.'
+        en: 'They check that the program installs and starts without errors.',
       },
     },
     {
@@ -666,7 +666,7 @@ export default function Glossary() {
       category: 'nonFunctional',
       example: {
         ru: 'Проверяют, что все данные сохранились после обновления системы.',
-        en: 'They check that all data is preserved after the system update.'
+        en: 'They check that all data is preserved after the system update.',
       },
     },
     {
@@ -679,7 +679,7 @@ export default function Glossary() {
       category: 'nonFunctional',
       example: {
         ru: 'Проверяют, одинаково ли сайт работает в Chrome, Firefox и Safari.',
-        en: 'They check if the site works the same in Chrome, Firefox, and Safari.'
+        en: 'They check if the site works the same in Chrome, Firefox, and Safari.',
       },
     },
     {
@@ -692,7 +692,7 @@ export default function Glossary() {
       category: 'nonFunctional',
       example: {
         ru: 'Проверяют, корректно ли приложение работает на iOS и Android.',
-        en: 'They check if the app works correctly on iOS and Android.'
+        en: 'They check if the app works correctly on iOS and Android.',
       },
     },
 
@@ -707,7 +707,7 @@ export default function Glossary() {
       category: 'automation',
       example: {
         ru: 'В Page Object Model для каждой страницы сайта создаётся отдельный класс с методами для работы с элементами.',
-        en: 'In Page Object Model, a separate class is created for each site page with methods for interacting with elements.'
+        en: 'In Page Object Model, a separate class is created for each site page with methods for interacting with elements.',
       },
     },
     {
@@ -720,7 +720,7 @@ export default function Glossary() {
       category: 'automation',
       example: {
         ru: 'Один тест выполняется с разными наборами данных из таблицы.',
-        en: 'A single test is run with different data sets from a table.'
+        en: 'A single test is run with different data sets from a table.',
       },
     },
     {
@@ -733,7 +733,7 @@ export default function Glossary() {
       category: 'automation',
       example: {
         ru: 'Тестовые сценарии описываются с помощью ключевых слов: "Открыть страницу", "Ввести логин".',
-        en: 'Test scenarios are described using keywords: "Open page", "Enter login".'
+        en: 'Test scenarios are described using keywords: "Open page", "Enter login".',
       },
     },
     {
@@ -746,7 +746,7 @@ export default function Glossary() {
       category: 'automation',
       example: {
         ru: 'TestNG позволяет запускать тесты параллельно и группировать их по категориям.',
-        en: 'TestNG allows running tests in parallel and grouping them by category.'
+        en: 'TestNG allows running tests in parallel and grouping them by category.',
       },
     },
     {
@@ -759,7 +759,7 @@ export default function Glossary() {
       category: 'automation',
       example: {
         ru: 'С помощью Pytest пишут простые и читаемые тесты для Python-кода.',
-        en: 'Pytest is used to write simple and readable tests for Python code.'
+        en: 'Pytest is used to write simple and readable tests for Python code.',
       },
     },
     {
@@ -772,7 +772,7 @@ export default function Glossary() {
       category: 'automation',
       example: {
         ru: 'NUnit используется для тестирования бизнес-логики в .NET-приложениях.',
-        en: 'NUnit is used for testing business logic in .NET applications.'
+        en: 'NUnit is used for testing business logic in .NET applications.',
       },
     },
     {
@@ -785,7 +785,7 @@ export default function Glossary() {
       category: 'automation',
       example: {
         ru: 'XUnit поддерживает параллельный запуск тестов для ускорения проверки.',
-        en: 'XUnit supports parallel test execution to speed up verification.'
+        en: 'XUnit supports parallel test execution to speed up verification.',
       },
     },
     {
@@ -798,7 +798,7 @@ export default function Glossary() {
       category: 'automation',
       example: {
         ru: 'Cucumber позволяет описывать сценарии тестирования на языке Gherkin.',
-        en: 'Cucumber allows describing test scenarios in Gherkin language.'
+        en: 'Cucumber allows describing test scenarios in Gherkin language.',
       },
     },
     {
@@ -811,7 +811,7 @@ export default function Glossary() {
       category: 'automation',
       example: {
         ru: 'SpecFlow используется для написания BDD-тестов на C#.',
-        en: 'SpecFlow is used for writing BDD tests in C#.'
+        en: 'SpecFlow is used for writing BDD tests in C#.',
       },
     },
     {
@@ -824,14 +824,17 @@ export default function Glossary() {
       category: 'automation',
       example: {
         ru: 'Behave позволяет писать тесты на языке Gherkin для Python-проектов.',
-        en: 'Behave allows writing tests in Gherkin language for Python projects.'
+        en: 'Behave allows writing tests in Gherkin language for Python projects.',
       },
     },
 
     // Дополнительные термины методологии
     {
       id: 61,
-      term: language === 'ru' ? 'ATDD (Acceptance Test-Driven Development)' : 'ATDD (Acceptance Test-Driven Development)',
+      term:
+        language === 'ru'
+          ? 'ATDD (Acceptance Test-Driven Development)'
+          : 'ATDD (Acceptance Test-Driven Development)',
       definition:
         language === 'ru'
           ? 'Методология, при которой приемочные тесты пишутся до реализации функциональности.'
@@ -839,7 +842,7 @@ export default function Glossary() {
       category: 'methodology',
       example: {
         ru: 'Перед началом разработки пишут тест, который проверяет, что пользователь может оформить заказ.',
-        en: 'Before development starts, a test is written to check that a user can place an order.'
+        en: 'Before development starts, a test is written to check that a user can place an order.',
       },
     },
     {
@@ -852,7 +855,7 @@ export default function Glossary() {
       category: 'methodology',
       example: {
         ru: 'Каждый коммит автоматически запускает тесты на сервере.',
-        en: 'Each commit automatically triggers tests on the server.'
+        en: 'Each commit automatically triggers tests on the server.',
       },
     },
     {
@@ -865,7 +868,7 @@ export default function Glossary() {
       category: 'methodology',
       example: {
         ru: 'После успешного тестирования новая версия автоматически развёртывается на сервере.',
-        en: 'After successful testing, the new version is automatically deployed to the server.'
+        en: 'After successful testing, the new version is automatically deployed to the server.',
       },
     },
     {
@@ -878,7 +881,7 @@ export default function Glossary() {
       category: 'methodology',
       example: {
         ru: 'Каждый коммит, прошедший тесты, сразу попадает на боевой сервер.',
-        en: 'Every commit that passes tests is immediately deployed to the production server.'
+        en: 'Every commit that passes tests is immediately deployed to the production server.',
       },
     },
     {
@@ -891,7 +894,7 @@ export default function Glossary() {
       category: 'methodology',
       example: {
         ru: 'В команде DevOps разработчики и админы вместе отвечают за выпуск продукта.',
-        en: 'In a DevOps team, developers and admins are jointly responsible for product release.'
+        en: 'In a DevOps team, developers and admins are jointly responsible for product release.',
       },
     },
     {
@@ -904,7 +907,7 @@ export default function Glossary() {
       category: 'methodology',
       example: {
         ru: 'Задачи перемещаются по колонкам "В работе", "Тестирование", "Готово" на доске Kanban.',
-        en: 'Tasks move across columns "In Progress", "Testing", "Done" on a Kanban board.'
+        en: 'Tasks move across columns "In Progress", "Testing", "Done" on a Kanban board.',
       },
     },
     {
@@ -917,7 +920,7 @@ export default function Glossary() {
       category: 'methodology',
       example: {
         ru: 'В Scrum команда работает по 2-недельным спринтам и регулярно демонстрирует результат.',
-        en: 'In Scrum, the team works in 2-week sprints and regularly demonstrates results.'
+        en: 'In Scrum, the team works in 2-week sprints and regularly demonstrates results.',
       },
     },
     {
@@ -930,7 +933,7 @@ export default function Glossary() {
       category: 'methodology',
       example: {
         ru: 'Agile-команда быстро меняет план работы в ответ на новые требования.',
-        en: 'An Agile team quickly changes the work plan in response to new requirements.'
+        en: 'An Agile team quickly changes the work plan in response to new requirements.',
       },
     },
     {
@@ -943,7 +946,7 @@ export default function Glossary() {
       category: 'methodology',
       example: {
         ru: 'В Waterfall каждый этап (анализ, проектирование, кодирование) завершается полностью перед следующим.',
-        en: 'In Waterfall, each stage (analysis, design, coding) is completed fully before the next.'
+        en: 'In Waterfall, each stage (analysis, design, coding) is completed fully before the next.',
       },
     },
     {
@@ -956,7 +959,7 @@ export default function Glossary() {
       category: 'methodology',
       example: {
         ru: 'Половине пользователей показывают старую кнопку, половине — новую и сравнивают конверсию.',
-        en: 'Half of users see the old button, half see the new one, and conversion is compared.'
+        en: 'Half of users see the old button, half see the new one, and conversion is compared.',
       },
     },
 
@@ -971,7 +974,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'С помощью Charles Proxy отслеживают, какие запросы отправляет приложение.',
-        en: 'With Charles Proxy, you can track what requests the application sends.'
+        en: 'With Charles Proxy, you can track what requests the application sends.',
       },
     },
     {
@@ -984,7 +987,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'Fiddler позволяет увидеть все запросы и ответы между браузером и сервером.',
-        en: 'Fiddler allows you to see all requests and responses between the browser and the server.'
+        en: 'Fiddler allows you to see all requests and responses between the browser and the server.',
       },
     },
     {
@@ -997,7 +1000,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'Burp Suite используется для поиска уязвимостей в веб-приложениях.',
-        en: 'Burp Suite is used to find vulnerabilities in web applications.'
+        en: 'Burp Suite is used to find vulnerabilities in web applications.',
       },
     },
     {
@@ -1010,7 +1013,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'В TestRail хранятся все тест-кейсы и результаты их выполнения.',
-        en: 'All test cases and their results are stored in TestRail.'
+        en: 'All test cases and their results are stored in TestRail.',
       },
     },
     {
@@ -1023,7 +1026,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'Allure строит красивые отчёты по результатам автотестов.',
-        en: 'Allure builds beautiful reports based on automated test results.'
+        en: 'Allure builds beautiful reports based on automated test results.',
       },
     },
     {
@@ -1036,7 +1039,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'В Jira создают задачи для тестирования и отслеживают баги.',
-        en: 'In Jira, tasks for testing are created and bugs are tracked.'
+        en: 'In Jira, tasks for testing are created and bugs are tracked.',
       },
     },
     {
@@ -1049,7 +1052,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'В Confluence хранятся инструкции и тестовая документация.',
-        en: 'Instructions and test documentation are stored in Confluence.'
+        en: 'Instructions and test documentation are stored in Confluence.',
       },
     },
     {
@@ -1062,7 +1065,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'GitLab CI/CD автоматически запускает тесты и выкладывает новую версию приложения.',
-        en: 'GitLab CI/CD automatically runs tests and deploys a new version of the application.'
+        en: 'GitLab CI/CD automatically runs tests and deploys a new version of the application.',
       },
     },
     {
@@ -1075,7 +1078,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'Sauce Labs позволяет запускать автотесты в разных браузерах и на устройствах.',
-        en: 'Sauce Labs allows running automated tests in different browsers and on devices.'
+        en: 'Sauce Labs allows running automated tests in different browsers and on devices.',
       },
     },
     {
@@ -1088,7 +1091,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'LambdaTest позволяет проверить сайт в десятках браузеров онлайн.',
-        en: 'LambdaTest allows you to check your site in dozens of browsers online.'
+        en: 'LambdaTest allows you to check your site in dozens of browsers online.',
       },
     },
     {
@@ -1101,7 +1104,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'Jenkins автоматически запускает тесты после каждого коммита в репозиторий.',
-        en: 'Jenkins automatically runs tests after each commit to the repository.'
+        en: 'Jenkins automatically runs tests after each commit to the repository.',
       },
     },
     {
@@ -1114,7 +1117,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'В TestLink создают тест-кейсы и формируют тест-планы для релизов.',
-        en: 'Test cases are created and test plans for releases are formed in TestLink.'
+        en: 'Test cases are created and test plans for releases are formed in TestLink.',
       },
     },
     {
@@ -1127,7 +1130,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'В Bugzilla регистрируют баги и отслеживают их исправление.',
-        en: 'Bugs are registered and their fixing is tracked in Bugzilla.'
+        en: 'Bugs are registered and their fixing is tracked in Bugzilla.',
       },
     },
     {
@@ -1140,7 +1143,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'В MantisBT удобно отслеживать статус найденных дефектов.',
-        en: 'MantisBT is convenient for tracking the status of found defects.'
+        en: 'MantisBT is convenient for tracking the status of found defects.',
       },
     },
     {
@@ -1153,7 +1156,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'В Redmine ведут задачи по проекту и отслеживают их выполнение.',
-        en: 'Project tasks are managed and tracked in Redmine.'
+        en: 'Project tasks are managed and tracked in Redmine.',
       },
     },
     {
@@ -1166,7 +1169,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'В YouTrack удобно фильтровать задачи по тегам и статусу.',
-        en: 'In YouTrack, it is convenient to filter tasks by tags and status.'
+        en: 'In YouTrack, it is convenient to filter tasks by tags and status.',
       },
     },
     {
@@ -1179,7 +1182,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'TestFairy записывает видео с экрана во время тестирования приложения.',
-        en: 'TestFairy records screen video during app testing.'
+        en: 'TestFairy records screen video during app testing.',
       },
     },
     {
@@ -1192,7 +1195,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'В Qase удобно создавать тест-кейсы и запускать тест-раны.',
-        en: 'Qase makes it easy to create test cases and run test runs.'
+        en: 'Qase makes it easy to create test cases and run test runs.',
       },
     },
     {
@@ -1205,7 +1208,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'Zephyr интегрируется с Jira и позволяет вести тест-кейсы прямо в задачах.',
-        en: 'Zephyr integrates with Jira and allows managing test cases directly in issues.'
+        en: 'Zephyr integrates with Jira and allows managing test cases directly in issues.',
       },
     },
     {
@@ -1218,7 +1221,7 @@ export default function Glossary() {
       category: 'tools',
       example: {
         ru: 'В TestLodge можно создавать тест-планы и отслеживать их выполнение онлайн.',
-        en: 'In TestLodge, you can create test plans and track their execution online.'
+        en: 'In TestLodge, you can create test plans and track their execution online.',
       },
     },
 
@@ -1226,121 +1229,131 @@ export default function Glossary() {
     {
       id: 1001,
       term: language === 'ru' ? 'Модульное тестирование' : 'Unit Testing',
-      definition: language === 'ru'
-        ? 'Тестирование отдельных модулей или функций программы изолированно от других частей.'
-        : 'Testing individual modules or functions of a program in isolation from other parts.',
+      definition:
+        language === 'ru'
+          ? 'Тестирование отдельных модулей или функций программы изолированно от других частей.'
+          : 'Testing individual modules or functions of a program in isolation from other parts.',
       category: 'functional',
       example: {
         ru: 'Тест проверяет, что функция сложения возвращает правильный результат для 2 + 2.',
-        en: 'A test checks that the addition function returns the correct result for 2 + 2.'
+        en: 'A test checks that the addition function returns the correct result for 2 + 2.',
       },
     },
     {
       id: 1002,
       term: language === 'ru' ? 'Интеграционное тестирование' : 'Integration Testing',
-      definition: language === 'ru'
-        ? 'Проверка взаимодействия между различными модулями системы.'
-        : 'Testing the interaction between different modules of the system.',
+      definition:
+        language === 'ru'
+          ? 'Проверка взаимодействия между различными модулями системы.'
+          : 'Testing the interaction between different modules of the system.',
       category: 'functional',
       example: {
         ru: 'Проверяют, как модуль оплаты взаимодействует с корзиной.',
-        en: 'They check how the payment module interacts with the cart.'
+        en: 'They check how the payment module interacts with the cart.',
       },
     },
     {
       id: 1003,
       term: language === 'ru' ? 'Системное тестирование' : 'System Testing',
-      definition: language === 'ru'
-        ? 'Тестирование всей системы в целом для проверки соответствия требованиям.'
-        : 'Testing the entire system as a whole to verify compliance with requirements.',
+      definition:
+        language === 'ru'
+          ? 'Тестирование всей системы в целом для проверки соответствия требованиям.'
+          : 'Testing the entire system as a whole to verify compliance with requirements.',
       category: 'functional',
       example: {
         ru: 'Проводят тесты на всём сайте, чтобы убедиться, что он работает как задумано.',
-        en: 'Tests are run on the whole site to make sure it works as intended.'
+        en: 'Tests are run on the whole site to make sure it works as intended.',
       },
     },
     {
       id: 1004,
       term: language === 'ru' ? 'Приёмочное тестирование' : 'Acceptance Testing',
-      definition: language === 'ru'
-        ? 'Тестирование, подтверждающее, что система соответствует требованиям заказчика.'
-        : 'Testing that confirms the system meets customer requirements.',
+      definition:
+        language === 'ru'
+          ? 'Тестирование, подтверждающее, что система соответствует требованиям заказчика.'
+          : 'Testing that confirms the system meets customer requirements.',
       category: 'functional',
       example: {
         ru: 'Клиент проверяет, что все функции сайта работают согласно договору.',
-        en: 'The client checks that all site functions work according to the contract.'
+        en: 'The client checks that all site functions work according to the contract.',
       },
     },
     {
       id: 1005,
       term: language === 'ru' ? 'Тестирование дымовых тестов' : 'Smoke Testing',
-      definition: language === 'ru'
-        ? 'Краткая проверка основных функций системы после сборки.'
-        : 'A quick check of the main system functions after a build.',
+      definition:
+        language === 'ru'
+          ? 'Краткая проверка основных функций системы после сборки.'
+          : 'A quick check of the main system functions after a build.',
       category: 'functional',
       example: {
         ru: 'После развертывания новой версии проверяют, открывается ли главная страница.',
-        en: 'After deploying a new version, they check if the main page opens.'
+        en: 'After deploying a new version, they check if the main page opens.',
       },
     },
     {
       id: 1006,
       term: language === 'ru' ? 'Тестирование санитарии' : 'Sanity Testing',
-      definition: language === 'ru'
-        ? 'Проверка работоспособности отдельных функций после небольших изменений.'
-        : 'Checking the operability of specific functions after minor changes.',
+      definition:
+        language === 'ru'
+          ? 'Проверка работоспособности отдельных функций после небольших изменений.'
+          : 'Checking the operability of specific functions after minor changes.',
       category: 'functional',
       example: {
         ru: 'После исправления бага проверяют только ту функцию, где была ошибка.',
-        en: 'After fixing a bug, only the function where the error was is checked.'
+        en: 'After fixing a bug, only the function where the error was is checked.',
       },
     },
     {
       id: 1007,
       term: language === 'ru' ? 'Тестирование регрессии' : 'Regression Testing',
-      definition: language === 'ru'
-        ? 'Тестирование, которое проверяет, что ранее работавшие функции продолжают работать после изменений.'
-        : 'Testing that verifies previously working features continue to work after changes.',
+      definition:
+        language === 'ru'
+          ? 'Тестирование, которое проверяет, что ранее работавшие функции продолжают работать после изменений.'
+          : 'Testing that verifies previously working features continue to work after changes.',
       category: 'functional',
       example: {
         ru: 'После обновления сайта проверяют, работает ли оформление заказа как раньше.',
-        en: 'After updating the site, they check if order placement still works as before.'
+        en: 'After updating the site, they check if order placement still works as before.',
       },
     },
     {
       id: 1008,
       term: language === 'ru' ? 'Тестирование производительности' : 'Performance Testing',
-      definition: language === 'ru'
-        ? 'Тестирование, которое определяет, как система работает под различной нагрузкой и в различных условиях.'
-        : 'Testing that determines how a system performs under various loads and conditions.',
+      definition:
+        language === 'ru'
+          ? 'Тестирование, которое определяет, как система работает под различной нагрузкой и в различных условиях.'
+          : 'Testing that determines how a system performs under various loads and conditions.',
       category: 'nonFunctional',
       example: {
         ru: 'Проверка, сколько пользователей одновременно может оформить заказ без замедления сайта.',
-        en: 'Checking how many users can place orders simultaneously without the site slowing down.'
+        en: 'Checking how many users can place orders simultaneously without the site slowing down.',
       },
     },
     {
       id: 1009,
       term: language === 'ru' ? 'Нагрузочное тестирование' : 'Load Testing',
-      definition: language === 'ru'
-        ? 'Тестирование системы под ожидаемой нагрузкой для проверки её производительности.'
-        : 'Testing the system under expected load to verify its performance.',
+      definition:
+        language === 'ru'
+          ? 'Тестирование системы под ожидаемой нагрузкой для проверки её производительности.'
+          : 'Testing the system under expected load to verify its performance.',
       category: 'nonFunctional',
       example: {
         ru: 'Одновременно 1000 пользователей заходят на сайт и оформляют заказы.',
-        en: '1,000 users visit the site and place orders at the same time.'
+        en: '1,000 users visit the site and place orders at the same time.',
       },
     },
     {
       id: 1010,
       term: language === 'ru' ? 'Стресс-тестирование' : 'Stress Testing',
-      definition: language === 'ru'
-        ? 'Тестирование системы при экстремальных нагрузках для оценки её устойчивости.'
-        : 'Testing the system under extreme loads to assess its stability.',
+      definition:
+        language === 'ru'
+          ? 'Тестирование системы при экстремальных нагрузках для оценки её устойчивости.'
+          : 'Testing the system under extreme loads to assess its stability.',
       category: 'nonFunctional',
       example: {
         ru: 'Проверка, как сайт работает при 10 000 одновременных пользователей.',
-        en: 'Testing how the site works with 10,000 simultaneous users.'
+        en: 'Testing how the site works with 10,000 simultaneous users.',
       },
     },
 
@@ -1348,121 +1361,131 @@ export default function Glossary() {
     {
       id: 1011,
       term: language === 'ru' ? 'Дефект, баг' : 'Bug',
-      definition: language === 'ru'
-        ? 'Ошибка или несоответствие в программе, приводящее к неправильной работе.'
-        : 'An error or discrepancy in the program that leads to incorrect operation.',
+      definition:
+        language === 'ru'
+          ? 'Ошибка или несоответствие в программе, приводящее к неправильной работе.'
+          : 'An error or discrepancy in the program that leads to incorrect operation.',
       category: 'general',
       example: {
         ru: 'Пользователь не может войти в систему из-за ошибки валидации пароля — это баг.',
-        en: 'A user cannot log in due to a password validation error — this is a bug.'
+        en: 'A user cannot log in due to a password validation error — this is a bug.',
       },
     },
     {
       id: 1012,
       term: language === 'ru' ? 'Система отслеживания дефектов' : 'Defect Tracking System',
-      definition: language === 'ru'
-        ? 'Инструмент для регистрации, отслеживания и управления ошибками (например, Jira, Bugzilla).'
-        : 'A tool for registering, tracking, and managing bugs (e.g., Jira, Bugzilla).',
+      definition:
+        language === 'ru'
+          ? 'Инструмент для регистрации, отслеживания и управления ошибками (например, Jira, Bugzilla).'
+          : 'A tool for registering, tracking, and managing bugs (e.g., Jira, Bugzilla).',
       category: 'tools',
       example: {
         ru: 'В системе отслеживания дефектов тестировщик заводит баг и отслеживает его исправление.',
-        en: 'A tester creates a bug in the tracking system and monitors its resolution.'
+        en: 'A tester creates a bug in the tracking system and monitors its resolution.',
       },
     },
     {
       id: 1013,
       term: language === 'ru' ? 'Статическое тестирование' : 'Static Testing',
-      definition: language === 'ru'
-        ? 'Анализ кода, требований или документации без выполнения программы.'
-        : 'Analysis of code, requirements, or documentation without running the program.',
+      definition:
+        language === 'ru'
+          ? 'Анализ кода, требований или документации без выполнения программы.'
+          : 'Analysis of code, requirements, or documentation without running the program.',
       category: 'methodology',
       example: {
         ru: 'Тестировщик проверяет требования на наличие ошибок до написания кода.',
-        en: 'A tester checks requirements for errors before any code is written.'
+        en: 'A tester checks requirements for errors before any code is written.',
       },
     },
     {
       id: 1014,
       term: language === 'ru' ? 'Динамическое тестирование' : 'Dynamic Testing',
-      definition: language === 'ru'
-        ? 'Тестирование с запуском программы и анализом её поведения.'
-        : 'Testing by running the program and analyzing its behavior.',
+      definition:
+        language === 'ru'
+          ? 'Тестирование с запуском программы и анализом её поведения.'
+          : 'Testing by running the program and analyzing its behavior.',
       category: 'methodology',
       example: {
         ru: 'Тестировщик запускает приложение и проверяет, как оно реагирует на ввод данных.',
-        en: 'A tester runs the application and checks how it responds to data input.'
+        en: 'A tester runs the application and checks how it responds to data input.',
       },
     },
     {
       id: 1015,
       term: language === 'ru' ? 'Тестовые данные' : 'Test Data',
-      definition: language === 'ru'
-        ? 'Данные, используемые для выполнения тестов.'
-        : 'Data used to execute tests.',
+      definition:
+        language === 'ru'
+          ? 'Данные, используемые для выполнения тестов.'
+          : 'Data used to execute tests.',
       category: 'general',
       example: {
         ru: 'Для проверки регистрации используют тестовые email и пароли.',
-        en: 'Test emails and passwords are used to check registration.'
+        en: 'Test emails and passwords are used to check registration.',
       },
     },
     {
       id: 1016,
       term: language === 'ru' ? 'Непрерывная интеграция (CI)' : 'Continuous Integration (CI)',
-      definition: language === 'ru'
-        ? 'Практика регулярного объединения изменений в общий репозиторий с автоматическим запуском тестов.'
-        : 'A practice of regularly merging changes into a shared repository with automatic test runs.',
+      definition:
+        language === 'ru'
+          ? 'Практика регулярного объединения изменений в общий репозиторий с автоматическим запуском тестов.'
+          : 'A practice of regularly merging changes into a shared repository with automatic test runs.',
       category: 'automation',
       example: {
         ru: 'Каждый коммит в репозиторий автоматически запускает тесты на сервере.',
-        en: 'Each commit to the repository automatically triggers tests on the server.'
+        en: 'Each commit to the repository automatically triggers tests on the server.',
       },
     },
     {
       id: 1017,
       term: language === 'ru' ? 'Непрерывная доставка (CD)' : 'Continuous Delivery (CD)',
-      definition: language === 'ru'
-        ? 'Автоматизация процесса развертывания приложения на тестовые и продакшн-среды.'
-        : 'Automation of deploying applications to test and production environments.',
+      definition:
+        language === 'ru'
+          ? 'Автоматизация процесса развертывания приложения на тестовые и продакшн-среды.'
+          : 'Automation of deploying applications to test and production environments.',
       category: 'automation',
       example: {
         ru: 'После успешного тестирования новая версия автоматически развёртывается на тестовом сервере.',
-        en: 'After successful testing, the new version is automatically deployed to the test server.'
+        en: 'After successful testing, the new version is automatically deployed to the test server.',
       },
     },
     {
       id: 1018,
       term: language === 'ru' ? 'Тестирование границ' : 'Boundary Testing',
-      definition: language === 'ru'
-        ? 'Проверка работы системы на граничных значениях входных данных.'
-        : 'Testing the system at the boundary values of input data.',
+      definition:
+        language === 'ru'
+          ? 'Проверка работы системы на граничных значениях входных данных.'
+          : 'Testing the system at the boundary values of input data.',
       category: 'functional',
       example: {
         ru: 'Для поля возраста (1-100) тестируются значения 1, 100 и значения рядом с ними: 0 и 101.',
-        en: 'For an age field (1-100), test values 1, 100, and values near them: 0 and 101.'
+        en: 'For an age field (1-100), test values 1, 100, and values near them: 0 and 101.',
       },
     },
     {
       id: 1019,
       term: language === 'ru' ? 'Пользовательская история' : 'User Story',
-      definition: language === 'ru'
-        ? 'Краткое описание функциональности с точки зрения пользователя.'
-        : "A short description of functionality from the user's perspective.",
+      definition:
+        language === 'ru'
+          ? 'Краткое описание функциональности с точки зрения пользователя.'
+          : "A short description of functionality from the user's perspective.",
       category: 'methodology',
       example: {
         ru: 'Как пользователь, я хочу получать уведомления о новых сообщениях, чтобы не пропустить важную информацию.',
-        en: 'As a user, I want to receive notifications about new messages so I do not miss important information.'
+        en: 'As a user, I want to receive notifications about new messages so I do not miss important information.',
       },
     },
     {
       id: 1020,
       term: language === 'ru' ? 'План тестирования' : 'Test Plan',
-      definition: language === 'ru'
-        ? 'Документ, описывающий объём, подходы, ресурсы и расписание тестирования.'
-        : 'A document describing the scope, approaches, resources, and schedule for testing.',
+      definition:
+        language === 'ru'
+          ? 'Документ, описывающий объём, подходы, ресурсы и расписание тестирования.'
+          : 'A document describing the scope, approaches, resources, and schedule for testing.',
       category: 'methodology',
       example: {
         ru: 'В плане тестирования указаны этапы, ответственные и сроки для каждого вида тестов.',
-        en: 'The test plan specifies the stages, responsible persons, and deadlines for each type of test.'
+        en: 'The test plan specifies the stages, responsible persons, and deadlines for each type of test.',
       },
     },
 
@@ -1470,181 +1493,196 @@ export default function Glossary() {
     {
       id: 1021,
       term: language === 'ru' ? 'Релиз' : 'Release',
-      definition: language === 'ru'
-        ? 'Версия программного продукта, официально выпущенная для пользователей.'
-        : 'A version of the software product officially released to users.',
+      definition:
+        language === 'ru'
+          ? 'Версия программного продукта, официально выпущенная для пользователей.'
+          : 'A version of the software product officially released to users.',
       category: 'general',
       example: {
         ru: 'Вышел релиз версии 2.0, пользователи получили новые функции.',
-        en: 'Version 2.0 was released, and users received new features.'
+        en: 'Version 2.0 was released, and users received new features.',
       },
     },
     {
       id: 1022,
       term: language === 'ru' ? 'Сборка' : 'Build',
-      definition: language === 'ru'
-        ? 'Конкретная версия программного обеспечения, собранная из исходного кода.'
-        : 'A specific version of software built from source code.',
+      definition:
+        language === 'ru'
+          ? 'Конкретная версия программного обеспечения, собранная из исходного кода.'
+          : 'A specific version of software built from source code.',
       category: 'general',
       example: {
         ru: 'Тестировщик проверяет сборку 105 перед релизом.',
-        en: 'The tester checks build 105 before release.'
+        en: 'The tester checks build 105 before release.',
       },
     },
     {
       id: 1023,
       term: language === 'ru' ? 'Инцидент' : 'Issue',
-      definition: language === 'ru'
-        ? 'Любое событие, которое может привести к сбою или ошибке в работе системы.'
-        : 'Any event that may lead to a failure or error in the system.',
+      definition:
+        language === 'ru'
+          ? 'Любое событие, которое может привести к сбою или ошибке в работе системы.'
+          : 'Any event that may lead to a failure or error in the system.',
       category: 'general',
       example: {
         ru: 'Во время тестирования был зафиксирован инцидент: сайт перестал отвечать.',
-        en: 'During testing, an issue was recorded: the site stopped responding.'
+        en: 'During testing, an issue was recorded: the site stopped responding.',
       },
     },
     {
       id: 1024,
       term: language === 'ru' ? 'Требование' : 'Requirement',
-      definition: language === 'ru'
-        ? 'Документированное описание функциональности или качества, которым должна обладать система.'
-        : 'A documented description of functionality or quality the system must have.',
+      definition:
+        language === 'ru'
+          ? 'Документированное описание функциональности или качества, которым должна обладать система.'
+          : 'A documented description of functionality or quality the system must have.',
       category: 'general',
       example: {
         ru: 'В требованиях указано, что пользователь должен получать уведомления о новых сообщениях.',
-        en: 'The requirements state that the user must receive notifications about new messages.'
+        en: 'The requirements state that the user must receive notifications about new messages.',
       },
     },
     {
       id: 1025,
       term: language === 'ru' ? 'Тестовое окружение' : 'Test Environment',
-      definition: language === 'ru'
-        ? 'Аппаратные и программные средства, на которых проводится тестирование.'
-        : 'Hardware and software used for testing.',
+      definition:
+        language === 'ru'
+          ? 'Аппаратные и программные средства, на которых проводится тестирование.'
+          : 'Hardware and software used for testing.',
       category: 'general',
       example: {
         ru: 'Тестирование проводится в отдельном тестовом окружении, чтобы не повлиять на реальных пользователей.',
-        en: 'Testing is performed in a separate test environment to avoid affecting real users.'
+        en: 'Testing is performed in a separate test environment to avoid affecting real users.',
       },
     },
     {
       id: 1026,
       term: language === 'ru' ? 'Отчёт о тестировании' : 'Test Report',
-      definition: language === 'ru'
-        ? 'Документ, содержащий результаты тестирования и выводы по качеству продукта.'
-        : 'A document containing test results and conclusions about product quality.',
+      definition:
+        language === 'ru'
+          ? 'Документ, содержащий результаты тестирования и выводы по качеству продукта.'
+          : 'A document containing test results and conclusions about product quality.',
       category: 'general',
       example: {
         ru: 'В отчёте о тестировании указано, что найдено 5 багов и все критические ошибки исправлены.',
-        en: 'The test report states that 5 bugs were found and all critical issues were fixed.'
+        en: 'The test report states that 5 bugs were found and all critical issues were fixed.',
       },
     },
     {
       id: 1027,
       term: language === 'ru' ? 'Тестовый сценарий' : 'Test Scenario',
-      definition: language === 'ru'
-        ? 'Высокоуровневое описание действий пользователя для проверки определённой функции.'
-        : 'A high-level description of user actions to check a specific function.',
+      definition:
+        language === 'ru'
+          ? 'Высокоуровневое описание действий пользователя для проверки определённой функции.'
+          : 'A high-level description of user actions to check a specific function.',
       category: 'general',
       example: {
         ru: 'Тестовый сценарий: оформить заказ на сайте как гость.',
-        en: 'Test scenario: place an order on the website as a guest.'
+        en: 'Test scenario: place an order on the website as a guest.',
       },
     },
     {
       id: 1028,
       term: language === 'ru' ? 'Шаг теста' : 'Test Step',
-      definition: language === 'ru'
-        ? 'Конкретное действие в рамках тест-кейса или сценария.'
-        : 'A specific action within a test case or scenario.',
+      definition:
+        language === 'ru'
+          ? 'Конкретное действие в рамках тест-кейса или сценария.'
+          : 'A specific action within a test case or scenario.',
       category: 'general',
       example: {
         ru: 'Шаг теста: нажать кнопку "Оформить заказ".',
-        en: 'Test step: click the "Place Order" button.'
+        en: 'Test step: click the "Place Order" button.',
       },
     },
     {
       id: 1029,
       term: language === 'ru' ? 'Ожидаемый результат' : 'Expected Result',
-      definition: language === 'ru'
-        ? 'Результат, который должен быть получен при выполнении теста, если система работает корректно.'
-        : 'The result that should be obtained if the system works correctly.',
+      definition:
+        language === 'ru'
+          ? 'Результат, который должен быть получен при выполнении теста, если система работает корректно.'
+          : 'The result that should be obtained if the system works correctly.',
       category: 'general',
       example: {
         ru: 'Ожидаемый результат: после нажатия кнопки появляется сообщение об успешном заказе.',
-        en: 'Expected result: after clicking the button, a success message appears.'
+        en: 'Expected result: after clicking the button, a success message appears.',
       },
     },
     {
       id: 1030,
       term: language === 'ru' ? 'Фактический результат' : 'Actual Result',
-      definition: language === 'ru'
-        ? 'Результат, который был получен при выполнении теста.'
-        : 'The result that was obtained during test execution.',
+      definition:
+        language === 'ru'
+          ? 'Результат, который был получен при выполнении теста.'
+          : 'The result that was obtained during test execution.',
       category: 'general',
       example: {
         ru: 'Фактический результат: после нажатия кнопки появилось сообщение об ошибке.',
-        en: 'Actual result: after clicking the button, an error message appeared.'
+        en: 'Actual result: after clicking the button, an error message appeared.',
       },
     },
     {
       id: 1031,
       term: language === 'ru' ? 'Приоритет' : 'Priority',
-      definition: language === 'ru'
-        ? 'Степень важности исправления дефекта или выполнения задачи.'
-        : 'The importance of fixing a defect or completing a task.',
+      definition:
+        language === 'ru'
+          ? 'Степень важности исправления дефекта или выполнения задачи.'
+          : 'The importance of fixing a defect or completing a task.',
       category: 'general',
       example: {
         ru: 'Баг с приоритетом "Высокий" должен быть исправлен в первую очередь.',
-        en: 'A bug with "High" priority should be fixed first.'
+        en: 'A bug with "High" priority should be fixed first.',
       },
     },
     {
       id: 1032,
       term: language === 'ru' ? 'Серьёзность' : 'Severity',
-      definition: language === 'ru'
-        ? 'Степень влияния дефекта на работу системы.'
-        : 'The impact of a defect on the system operation.',
+      definition:
+        language === 'ru'
+          ? 'Степень влияния дефекта на работу системы.'
+          : 'The impact of a defect on the system operation.',
       category: 'general',
       example: {
         ru: 'Серьёзность: критическая — из-за бага невозможно оформить заказ.',
-        en: 'Severity: critical — due to the bug, it is impossible to place an order.'
+        en: 'Severity: critical — due to the bug, it is impossible to place an order.',
       },
     },
     {
       id: 1033,
       term: language === 'ru' ? 'Трассируемость' : 'Traceability',
-      definition: language === 'ru'
-        ? 'Способность отследить связь между требованиями, тестами и дефектами.'
-        : 'The ability to trace the relationship between requirements, tests, and defects.',
+      definition:
+        language === 'ru'
+          ? 'Способность отследить связь между требованиями, тестами и дефектами.'
+          : 'The ability to trace the relationship between requirements, tests, and defects.',
       category: 'general',
       example: {
         ru: 'Трассируемость позволяет понять, какой тест покрывает конкретное требование.',
-        en: 'Traceability allows you to see which test covers a specific requirement.'
+        en: 'Traceability allows you to see which test covers a specific requirement.',
       },
     },
     {
       id: 1034,
       term: language === 'ru' ? 'Выполнение теста' : 'Test Execution',
-      definition: language === 'ru'
-        ? 'Процесс запуска тестов и фиксации результатов.'
-        : 'The process of running tests and recording results.',
+      definition:
+        language === 'ru'
+          ? 'Процесс запуска тестов и фиксации результатов.'
+          : 'The process of running tests and recording results.',
       category: 'general',
       example: {
         ru: 'Выполнение теста: автотесты запущены на сервере и результаты сохранены в отчёте.',
-        en: 'Test execution: automated tests are run on the server and results are saved in the report.'
+        en: 'Test execution: automated tests are run on the server and results are saved in the report.',
       },
     },
     {
       id: 1035,
       term: language === 'ru' ? 'Журнал тестирования' : 'Test Log',
-      definition: language === 'ru'
-        ? 'Запись всех действий и событий, произошедших во время тестирования.'
-        : 'A record of all actions and events during testing.',
+      definition:
+        language === 'ru'
+          ? 'Запись всех действий и событий, произошедших во время тестирования.'
+          : 'A record of all actions and events during testing.',
       category: 'general',
       example: {
         ru: 'В журнале тестирования зафиксированы все шаги и найденные ошибки за день.',
-        en: 'The test log records all steps and found errors for the day.'
+        en: 'The test log records all steps and found errors for the day.',
       },
     },
   ];
