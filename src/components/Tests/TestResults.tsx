@@ -7,6 +7,7 @@ interface TestResultsProps {
   t: Record<string, string>;
   score: number;
   resetTest: () => void;
+  restartTest: () => void;
   setShowMistakes: (show: boolean) => void;
   showMistakes: boolean;
 }
@@ -17,6 +18,7 @@ const TestResults: React.FC<TestResultsProps> = ({
   t,
   score,
   resetTest,
+  restartTest,
   setShowMistakes,
   showMistakes,
 }) => {
@@ -41,13 +43,13 @@ const TestResults: React.FC<TestResultsProps> = ({
       <div className="flex flex-wrap justify-center gap-2 mb-4">
         <button
           className="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
-          onClick={resetTest}
+          onClick={restartTest}
         >
           {t.tryAgain}
         </button>
         <button
           className="px-4 py-2 rounded-lg bg-gray-500 text-white font-semibold hover:bg-gray-600 transition-colors"
-          onClick={() => window.dispatchEvent(new Event('reset-test-selection'))}
+          onClick={resetTest}
         >
           {t.backToTests}
         </button>

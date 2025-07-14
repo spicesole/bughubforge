@@ -180,6 +180,7 @@ export default function Tests() {
         answers={answers}
         t={t}
         resetTest={resetTest}
+        restartTest={restartTest}
         setShowMistakes={setShowMistakes}
         lang={lang}
       />
@@ -193,7 +194,8 @@ export default function Tests() {
         answers={answers}
         t={t}
         score={calculateScore()}
-        resetTest={restartTest}
+        resetTest={resetTest}
+        restartTest={restartTest}
         setShowMistakes={setShowMistakes}
         showMistakes={showMistakes}
       />
