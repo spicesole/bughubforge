@@ -53,245 +53,133 @@ export default function News() {
 
   // Демо-новости (обновляйте вручную)
   const demoNews: NewsItem[] = [
-    // 1. Grok 4 Announced
-    {
-      id: 26,
-      title:
-        language === 'ru'
-          ? 'Анонсирован Grok 4: новая модель от xAI для сложных задач'
-          : 'Grok 4 Announced: New xAI Model for Complex Tasks',
-      summary:
-        language === 'ru'
-          ? '9 июля 2025 компания xAI представила Grok 4 и Grok Code 4 — новые языковые модели с улучшенной точностью и производительностью, ориентированные на разработчиков и технических специалистов.'
-          : 'On July 9, 2025, xAI announced Grok 4 and Grok Code 4 — new language models with improved accuracy and performance, targeting developers and technical professionals.',
-      source: 'TestingCatalog',
-      date: '2025-07-09',
-      category: 'industry',
-      url: 'https://www.testingcatalog.com/grok-4-set-for-july-9-debut-as-xai-plans-expanded-model-lineup/',
-    },
-    // 2. The Real QA Automation Struggles
-    {
-      id: 41,
-      title:
-        language === 'ru'
-          ? 'The Real QA Automation Struggles: как победить рутину?'
-          : 'The Real QA Automation Struggles (and How to Finally Get Ahead)',
-      summary:
-        language === 'ru'
-          ? 'Автоматизация тестирования обещала революцию, но многие команды до сих пор сталкиваются с хрупкими скриптами, сложной поддержкой и интеграцией в CI/CD. Новые AI-инструменты, такие как Aurick, предлагают автономное тестирование, самовосстанавливающиеся тесты и минимизацию рутины.'
-          : 'Automation promised to revolutionize QA, but many teams still struggle with brittle scripts, maintenance, and CI/CD integration. New AI tools like Aurick offer autonomous testing, self-healing tests, and less routine.',
-      source: 'DEV.to',
-      date: '2025-07-08',
-      category: 'automation',
-      url: 'https://dev.to/esha_suchana_3514f571649c/the-real-qa-automation-struggles-and-how-to-finally-get-ahead-1bdi',
-    },
-    // 3. Testsigma AI Agents
-    {
-      id: 21,
-      title:
-        language === 'ru'
-          ? 'Testsigma внедряет автономное тестирование с AI-агентами'
-          : 'Testsigma launches autonomous testing with AI agents',
-      summary:
-        language === 'ru'
-          ? 'В июле 2025 Testsigma представила платформу, где AI-агенты сами генерируют, запускают и анализируют тесты, ускоряя релизы и повышая качество.'
-          : 'In July 2025, Testsigma introduced a platform where AI agents autonomously generate, run, and analyze tests, speeding up releases and improving quality.',
-      source: 'Testsigma News',
-      date: '2025-07-05',
-      category: 'automation',
-      url: 'https://www.globenewswire.com/news-release/2025/05/07/3076024/0/en/Testsigma-announces-autonomous-testing-capabilities-ushering-in-the-era-of-agentic-AI.html',
-    },
-    // 4. Testing AI Systems: New Rules
-    {
-      id: 40,
-      title:
-        language === 'ru'
-          ? 'Testing AI Systems: новые правила для эпохи ИИ'
-          : 'Testing AI Systems: New Rules for a New Era',
-      summary:
-        language === 'ru'
-          ? 'В 2025 году тестирование ИИ-систем требует новых подходов: проверка на предвзятость, устойчивость к атакам, объяснимость решений и мониторинг деградации моделей. Появляются специализированные инструменты для тестирования ИИ, такие как DeepChecks, WhyLabs, Fiddler AI.'
-          : 'In 2025, testing AI systems requires new approaches: bias checking, adversarial robustness, explainability, and model decay monitoring. Specialized tools like DeepChecks, WhyLabs, and Fiddler AI are emerging.',
-      source: 'DEV.to',
-      date: '2025-07-03',
-      category: 'methodology',
-      url: 'https://dev.to/vaibhavkuls/testing-ai-systems-new-rules-for-a-new-era-33d1',
-    },
-    // 5. Testing for Accessibility
-    {
-      id: 42,
-      title:
-        language === 'ru'
-          ? 'Testing for Accessibility: доступность ПО в 2025 году'
-          : 'Testing for Accessibility: Building Inclusive Software in 2025',
-      summary:
-        language === 'ru'
-          ? 'Доступность (a11y) становится обязательной частью QA. В 2025 году автоматизированные и ручные инструменты (Axe, Lighthouse, WAVE) интегрируются в CI/CD, а компании всё чаще тестируют продукты с реальными пользователями с ограниченными возможностями.'
-          : 'Accessibility (a11y) is now a must-have in QA. In 2025, automated and manual tools (Axe, Lighthouse, WAVE) are integrated into CI/CD, and companies increasingly test with real users with disabilities.',
-      source: 'DEV.to',
-      date: '2025-07-02',
-      category: 'methodology',
-      url: 'https://dev.to/vaibhavkuls/testing-for-accessibility-building-inclusive-software-in-2025-1lam',
-    },
-    // 6. Nokia & WEART XR Haptics
-    {
-      id: 27,
-      title:
-        language === 'ru'
-          ? 'Nokia и WEART революционизируют виртуальное взаимодействие с помощью термальных гаптиков'
-          : 'Nokia and WEART to Revolutionize Virtual Interaction with Thermal Haptics',
-      summary:
-        language === 'ru'
-          ? 'На конференции IEEE World Haptics компания Nokia представила совместные разработки с WEART по созданию термальных гаптиков для XR-устройств, открывая новые возможности для тестирования и взаимодействия в виртуальной среде.'
-          : 'At the IEEE World Haptics Conference, Nokia showcased joint research with WEART on thermal haptics for XR devices, opening new opportunities for testing and interaction in virtual environments.',
-      source: 'XR Today',
-      date: '2025-07-07',
-      category: 'industry',
-      url: 'https://www.xrtoday.com/mixed-reality/nokia-weart-to-revolutionize-virtual-interaction-with-thermal-haptics/',
-    },
-    // 7. Playwright 1.45
+    // 1. Mailpit - инструмент для тестирования email
     {
       id: 1,
       title:
         language === 'ru'
-          ? 'Playwright 1.45: Революционные изменения в автоматизации тестирования'
-          : 'Playwright 1.45: Revolutionary Changes in Test Automation',
+          ? 'Mailpit: современный инструмент для тестирования email-функциональности'
+          : 'Mailpit: Modern Tool for Email Functionality Testing',
       summary:
         language === 'ru'
-          ? 'Вышла новая версия Playwright с поддержкой AI-powered тестирования и улучшенной интеграцией с CI/CD.'
-          : 'New Playwright version released with AI-powered testing support and improved CI/CD integration.',
-      source: 'Playwright Official Blog',
-      date: '2025-07-05',
+          ? 'Mailpit - это инструмент для перехвата и тестирования email-сообщений в процессе разработки. Позволяет тестировать email-функциональность без отправки реальных писем.'
+          : 'Mailpit is a tool for intercepting and testing email messages during development. Allows testing email functionality without sending real emails.',
+      source: 'Software Testing',
+      date: '2025-07-02',
       category: 'tools',
-      url: 'https://playwright.dev/blog/announcing-playwright-v1.45/',
+      url: 'https://software-testing.ru/library/testing/testing-tools/4392-mailpit-',
     },
-    // 8. Cypress 16
-    {
-      id: 22,
-      title:
-        language === 'ru'
-          ? 'Cypress 16: поддержка тестирования WebAssembly'
-          : 'Cypress 16: WebAssembly Testing Support',
-      summary:
-        language === 'ru'
-          ? 'Cypress выпустил обновление с поддержкой автотестов для WebAssembly-приложений, расширяя возможности QA-инженеров.'
-          : "Cypress released an update with automated testing support for WebAssembly apps, expanding QA engineers' capabilities.",
-      source: 'Cypress Blog',
-      date: '2025-06-28',
-      category: 'tools',
-      url: 'https://www.cypress.io/blog/2024/06/28/cypress-13-7-0/',
-    },
-    // 9. DevSecOps: Security Test Integration
-    {
-      id: 24,
-      title:
-        language === 'ru'
-          ? 'DevSecOps: новые стандарты интеграции security-тестов'
-          : 'DevSecOps: New Standards for Security Test Integration',
-      summary:
-        language === 'ru'
-          ? 'Вышли обновлённые рекомендации по интеграции security-тестов в CI/CD для крупных IT-компаний.'
-          : 'New guidelines released for integrating security tests into CI/CD for large IT companies.',
-      source: 'DevSecOps Magazine',
-      date: '2025-07-01',
-      category: 'methodology',
-      url: 'https://www.devsecops.org/blog/',
-    },
-    // 10. Claude Sonnet 4
+    // 2. ChromeDriver crashes in Kubernetes
     {
       id: 2,
       title:
         language === 'ru'
-          ? 'Claude Sonnet 4 в тестировании: Новые возможности ИИ'
-          : 'Claude Sonnet 4 in Testing: New AI Capabilities',
+          ? 'Проблемы ChromeDriver в Kubernetes: причины и решения'
+          : 'ChromeDriver Crashes in Kubernetes: Causes and Solutions',
       summary:
         language === 'ru'
-          ? 'Как использовать Claude Sonnet 4 для генерации тестовых сценариев и автоматизации тестирования.'
-          : 'How to use Claude Sonnet 4 for test scenario generation and test automation.',
-      source: 'Anthropic Blog',
-      date: '2025-07-03',
-      category: 'industry',
-      url: 'https://www.anthropic.com/news/claude-2-launch',
+          ? 'Анализ проблем с падением ChromeDriver в контейнеризированной среде Kubernetes. Рассмотрены причины и практические решения для стабильной работы автотестов.'
+          : 'Analysis of ChromeDriver crashes in containerized Kubernetes environment. Examines causes and practical solutions for stable automated test operation.',
+      source: 'Software Testing',
+      date: '2025-07-01',
+      category: 'automation',
+      url: 'https://software-testing.ru/library/testing/testing-tools/4343-chromedriver-crashes-in-kubernetes',
     },
-    // 11. AI Testing Summit 2025
+    // 3. Groundhog Day QA
     {
-      id: 23,
+      id: 3,
       title:
         language === 'ru'
-          ? 'AI Testing Summit 2025: тренды автономного тестирования'
-          : 'AI Testing Summit 2025: Autonomous Testing Trends',
+          ? 'Groundhog Day в QA: как избежать повторяющихся проблем'
+          : 'Groundhog Day in QA: How to Avoid Recurring Issues',
       summary:
         language === 'ru'
-          ? 'На июньской конференции обсуждались перспективы self-healing тестов, внедрение LLM и автономных QA-решений.'
-          : 'The June summit discussed the future of self-healing tests, LLM adoption, and autonomous QA solutions.',
-      source: 'DEV.to',
-      date: '2025-06-20',
-      category: 'industry',
-      url: 'https://dev.to/vaibhavkuls/beyond-automation-the-rise-of-autonomous-testing-in-2025-15fk',
-    },
-    // 12. Quantum App Testing
-    {
-      id: 6,
-      title:
-        language === 'ru'
-          ? 'Тестирование квантовых приложений: Будущее уже здесь'
-          : 'Quantum App Testing: The Future is Here',
-      summary:
-        language === 'ru'
-          ? 'Первые подходы к тестированию квантовых вычислений и квантовых алгоритмов.'
-          : 'First approaches to testing quantum computing and quantum algorithms.',
-      source: 'Quantum Computing Report',
-      date: '2025-06-22',
+          ? 'Анализ повторяющихся проблем в процессе тестирования и разработки. Методологии предотвращения "дня сурка" в QA-процессах.'
+          : 'Analysis of recurring issues in testing and development processes. Methodologies for preventing "groundhog day" in QA processes.',
+      source: 'Software Testing',
+      date: '2025-06-30',
       category: 'methodology',
-      url: 'https://quantumcomputingreport.com/quantum-app-testing/',
+      url: 'https://software-testing.ru/library/around-testing/processes/4389-groundhog-day-qa',
     },
-    // 13. Selenium 5.0
-    {
-      id: 7,
-      title:
-        language === 'ru'
-          ? 'Selenium 5.0: Полная переработка архитектуры'
-          : 'Selenium 5.0: Complete Architecture Overhaul',
-      summary:
-        language === 'ru'
-          ? 'Новая мажорная версия Selenium с полностью переработанной архитектурой и улучшенной производительностью.'
-          : 'New major Selenium version with completely redesigned architecture and improved performance.',
-      source: 'Selenium Blog',
-      date: '2025-06-20',
-      category: 'tools',
-      url: 'https://selenium.dev/blog/2025/selenium-5-0-released/',
-    },
-    // 14. AR/VR App Testing
-    {
-      id: 5,
-      title:
-        language === 'ru'
-          ? 'Тестирование AR/VR приложений: Новые вызовы и решения'
-          : 'AR/VR App Testing: New Challenges and Solutions',
-      summary:
-        language === 'ru'
-          ? 'Специфика тестирования приложений дополненной и виртуальной реальности в 2025 году.'
-          : 'Specifics of testing augmented and virtual reality applications in 2025.',
-      source: 'XR Today',
-      date: '2025-06-25',
-      category: 'industry',
-      url: 'https://www.xrtoday.com/virtual-reality/ar-vr-testing-challenges/',
-    },
-    // 15. DevSecOps в тестировании
+    // 4. Redis в performance testing
     {
       id: 4,
       title:
         language === 'ru'
-          ? 'DevSecOps в тестировании: Интеграция безопасности в CI/CD'
-          : 'DevSecOps in Testing: Security Integration in CI/CD',
+          ? 'Redis в нагрузочном тестировании: оптимизация производительности'
+          : 'Redis in Performance Testing: Performance Optimization',
       summary:
         language === 'ru'
-          ? 'Как интегрировать тестирование безопасности в процесс непрерывной разработки и развертывания.'
-          : 'How to integrate security testing into continuous development and deployment processes.',
-      source: 'DevSecOps Magazine',
-      date: '2025-06-28',
+          ? 'Использование Redis для оптимизации нагрузочного тестирования. Практические примеры интеграции Redis в тестовые сценарии.'
+          : 'Using Redis to optimize performance testing. Practical examples of Redis integration in test scenarios.',
+      source: 'Software Testing',
+      date: '2025-06-25',
+      category: 'automation',
+      url: 'https://software-testing.ru/library/testing/performance-testing/4341-redis',
+    },
+    // 5. Edge-to-edge Android testing
+    {
+      id: 5,
+      title:
+        language === 'ru'
+          ? 'Edge-to-edge тестирование Android-приложений'
+          : 'Edge-to-Edge Testing of Android Applications',
+      summary:
+        language === 'ru'
+          ? 'Современные подходы к тестированию Android-приложений с учетом edge-to-edge дисплеев. Особенности тестирования на устройствах с вырезами и изогнутыми экранами.'
+          : 'Modern approaches to testing Android applications considering edge-to-edge displays. Features of testing on devices with notches and curved screens.',
+      source: 'Software Testing',
+      date: '2025-06-24',
+      category: 'tools',
+      url: 'https://software-testing.ru/library/testing/mobile-testing/4388-edge-to-edge-android',
+    },
+    // 6. Restoring reliability to test results
+    {
+      id: 6,
+      title:
+        language === 'ru'
+          ? 'Восстановление надежности тестовых результатов: борьба с "красными" тестами'
+          : 'Restoring Reliability to Test Results: Fighting "Red" Tests',
+      summary:
+        language === 'ru'
+          ? 'Методологии повышения надежности автотестов и уменьшения количества ложных срабатываний. Практические советы по стабилизации тестовых результатов.'
+          : 'Methodologies for improving automated test reliability and reducing false positives. Practical tips for stabilizing test results.',
+      source: 'Software Testing',
+      date: '2025-06-23',
       category: 'methodology',
-      url: 'https://www.devsecops.org/blog/',
+      url: 'https://software-testing.ru/library/testing/testing-for-beginners/4340-are-you-seeing-red-restoring-reliability-to-test-results',
+    },
+    // 7. Personalized suggestions in testing
+    {
+      id: 7,
+      title:
+        language === 'ru'
+          ? 'Персонализированные предложения в тестировании: ИИ-подход'
+          : 'Personalized Suggestions in Testing: AI Approach',
+      summary:
+        language === 'ru'
+          ? 'Использование ИИ для создания персонализированных рекомендаций в процессе тестирования. Адаптивные системы, улучшающие качество тестирования.'
+          : 'Using AI to create personalized recommendations in the testing process. Adaptive systems that improve testing quality.',
+      source: 'Software Testing',
+      date: '2025-06-16',
+      category: 'automation',
+      url: 'https://software-testing.ru/library/testing/test-analysis/4337-personalized-suggestions-testing',
+    },
+    // 8. ИИ в тестировании
+    {
+      id: 8,
+      title:
+        language === 'ru'
+          ? 'Искусственный интеллект в тестировании: современные тренды'
+          : 'Artificial Intelligence in Testing: Current Trends',
+      summary:
+        language === 'ru'
+          ? 'Обзор современных применений ИИ в тестировании программного обеспечения. От автоматической генерации тестов до анализа качества кода.'
+          : 'Overview of modern AI applications in software testing. From automatic test generation to code quality analysis.',
+      source: 'Software Testing',
+      date: '2025-06-11',
+      category: 'industry',
+      url: 'https://software-testing.ru/library/around-testing/processes/4376-ii',
     },
   ];
 
