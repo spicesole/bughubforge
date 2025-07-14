@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useLanguage } from './useLanguage';
 import ruFeatures from '../locales/ru.json';
 import enFeatures from '../locales/en.json';
@@ -120,10 +119,12 @@ export default function Features() {
         <h2 className="text-2xl md:text-4xl font-bold text-center mb-8">
           {language === 'ru' ? (
             <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(t.title) }} />
-          ) : t.title}
+          ) : (
+            t.title
+          )}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {features.map((feature, idx) => (
+          {features.map((feature) => (
             <a
               key={feature.title}
               href={feature.url}
@@ -133,8 +134,12 @@ export default function Features() {
                 {getIcon(feature.icon)}
                 <span className="ml-3 text-lg font-semibold">
                   {language === 'ru' ? (
-                    <span dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(feature.title) }} />
-                  ) : feature.title}
+                    <span
+                      dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(feature.title) }}
+                    />
+                  ) : (
+                    feature.title
+                  )}
                 </span>
               </div>
               {language === 'ru' ? (
@@ -144,7 +149,10 @@ export default function Features() {
                   dangerouslySetInnerHTML={{ __html: fixHangingPrepositions(feature.description) }}
                 />
               ) : (
-                <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap" style={{ wordBreak: 'keep-all' }}>
+                <p
+                  className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap"
+                  style={{ wordBreak: 'keep-all' }}
+                >
                   {feature.description}
                 </p>
               )}
