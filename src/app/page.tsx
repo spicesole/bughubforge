@@ -58,7 +58,10 @@ export default function Home() {
   const t = translations[language];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white" role="main">
+    <div
+      className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white"
+      role="main"
+    >
       <Head>
         <title>BugHubForge — образовательная платформа для тестировщиков</title>
         <meta
