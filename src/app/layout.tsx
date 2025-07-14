@@ -8,9 +8,9 @@ import { ThemeProvider } from 'next-themes';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'BugHubForge - Платформа для тестировщиков',
+  title: 'BugHubForge — образовательная платформа для тестировщиков',
   description:
-    'Изучайте тестирование программного обеспечения с помощью интерактивных материалов, глоссария и мини-форума',
+    'Изучайте тестирование программного обеспечения с помощью глоссария терминов, полезных ресурсов, актуальных новостей и практических заданий. Всё для начинающих и опытных QA-специалистов!',
 };
 
 export const viewport = {
@@ -26,10 +26,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>BugHubForge — QA, тестирование, автоматизация, ресурсы</title>
+        <title>BugHubForge — образовательная платформа для тестировщиков</title>
         <meta
           name="description"
-          content="BugHubForge — современный портал о тестировании ПО, автоматизации, инструментах и лучших практиках для QA-специалистов."
+          content="Изучайте тестирование программного обеспечения с помощью глоссария терминов, полезных ресурсов, актуальных новостей и практических заданий. Всё для начинающих и опытных QA-специалистов!"
         />
       </head>
       <body className={inter.className}>
