@@ -156,6 +156,15 @@ export default function Tests() {
     setShowMistakes(false);
   };
 
+  const restartTest = () => {
+    setCurrentQuestion(0);
+    setSelectedAnswer(null);
+    setAnswers(selectedTest ? new Array(selectedTest.questions.length).fill(-1) : []);
+    setShowResults(false);
+    setShowExplanation(false);
+    setShowMistakes(false);
+  };
+
   // Вычисляем ошибки (индексы вопросов, где ответ неверный)
   const mistakes = useMemo(() => {
     if (!selectedTest) return [];
@@ -184,7 +193,7 @@ export default function Tests() {
         answers={answers}
         t={t}
         score={calculateScore()}
-        resetTest={resetTest}
+        resetTest={restartTest}
         setShowMistakes={setShowMistakes}
         showMistakes={showMistakes}
       />

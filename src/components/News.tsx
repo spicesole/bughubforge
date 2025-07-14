@@ -52,276 +52,7 @@ export default function News() {
 
   // Демо-новости (обновляйте вручную)
   const demoNews: NewsItem[] = [
-    {
-      id: 21,
-      title:
-        language === 'ru'
-          ? 'Testsigma внедряет автономное тестирование с AI-агентами'
-          : 'Testsigma launches autonomous testing with AI agents',
-      summary:
-        language === 'ru'
-          ? 'В июле 2025 Testsigma представила платформу, где AI-агенты сами генерируют, запускают и анализируют тесты, ускоряя релизы и повышая качество.'
-          : 'In July 2025, Testsigma introduced a platform where AI agents autonomously generate, run, and analyze tests, speeding up releases and improving quality.',
-      source: 'Testsigma News',
-      date: '2025-07-05',
-      category: 'automation',
-      url: 'https://www.globenewswire.com/news-release/2025/05/07/3076024/0/en/Testsigma-announces-autonomous-testing-capabilities-ushering-in-the-era-of-agentic-AI.html',
-    },
-    {
-      id: 22,
-      title:
-        language === 'ru'
-          ? 'Cypress 16: поддержка тестирования WebAssembly'
-          : 'Cypress 16: WebAssembly Testing Support',
-      summary:
-        language === 'ru'
-          ? 'Cypress выпустил обновление с поддержкой автотестов для WebAssembly-приложений, расширяя возможности QA-инженеров.'
-          : "Cypress released an update with automated testing support for WebAssembly apps, expanding QA engineers' capabilities.",
-      source: 'Cypress Blog',
-      date: '2025-06-28',
-      category: 'tools',
-      url: 'https://www.cypress.io/blog/2024/06/28/cypress-13-7-0/',
-    },
-    {
-      id: 23,
-      title:
-        language === 'ru'
-          ? 'AI Testing Summit 2025: тренды автономного тестирования'
-          : 'AI Testing Summit 2025: Autonomous Testing Trends',
-      summary:
-        language === 'ru'
-          ? 'На июньской конференции обсуждались перспективы self-healing тестов, внедрение LLM и автономных QA-решений.'
-          : 'The June summit discussed the future of self-healing tests, LLM adoption, and autonomous QA solutions.',
-      source: 'DEV.to',
-      date: '2025-06-20',
-      category: 'industry',
-      url: 'https://dev.to/vaibhavkuls/beyond-automation-the-rise-of-autonomous-testing-in-2025-15fk',
-    },
-    {
-      id: 24,
-      title:
-        language === 'ru'
-          ? 'DevSecOps: новые стандарты интеграции security-тестов'
-          : 'DevSecOps: New Standards for Security Test Integration',
-      summary:
-        language === 'ru'
-          ? 'Вышли обновлённые рекомендации по интеграции security-тестов в CI/CD для крупных IT-компаний.'
-          : 'New guidelines released for integrating security tests into CI/CD for large IT companies.',
-      source: 'DevSecOps Magazine',
-      date: '2025-07-01',
-      category: 'methodology',
-      url: 'https://www.devsecops.org/blog/',
-    },
-    {
-      id: 25,
-      title:
-        language === 'ru'
-          ? 'Автоматизация тестирования мобильных приложений: опыт 2025 года'
-          : 'Mobile App Test Automation: 2025 Experience',
-      summary:
-        language === 'ru'
-          ? 'Эксперты делятся кейсами по внедрению автоматизации тестирования мобильных приложений с помощью AI-инструментов.'
-          : 'Experts share case studies on implementing mobile app test automation using AI tools.',
-      source: 'BrowserStack Blog',
-      date: '2025-06-15',
-      category: 'automation',
-      url: 'https://www.browserstack.com/blog/mobile-app-testing/',
-    },
-    {
-      id: 1,
-      title:
-        language === 'ru'
-          ? 'Playwright 1.45: Революционные изменения в автоматизации тестирования'
-          : 'Playwright 1.45: Revolutionary Changes in Test Automation',
-      summary:
-        language === 'ru'
-          ? 'Вышла новая версия Playwright с поддержкой AI-powered тестирования и улучшенной интеграцией с CI/CD.'
-          : 'New Playwright version released with AI-powered testing support and improved CI/CD integration.',
-      source: 'Playwright Official Blog',
-      date: '2025-07-05',
-      category: 'tools',
-      url: 'https://playwright.dev/blog/announcing-playwright-v1.45/',
-    },
-    {
-      id: 2,
-      title:
-        language === 'ru'
-          ? 'Claude Sonnet 4 в тестировании: Новые возможности ИИ'
-          : 'Claude Sonnet 4 in Testing: New AI Capabilities',
-      summary:
-        language === 'ru'
-          ? 'Как использовать Claude Sonnet 4 для генерации тестовых сценариев и автоматизации тестирования.'
-          : 'How to use Claude Sonnet 4 for test scenario generation and test automation.',
-      source: 'Anthropic Blog',
-      date: '2025-07-03',
-      category: 'industry',
-      url: 'https://www.anthropic.com/news/claude-2-launch',
-    },
-    {
-      id: 3,
-      title:
-        language === 'ru'
-          ? 'Cypress 15.0: Поддержка Web Components и улучшенная отладка'
-          : 'Cypress 15.0: Web Components Support and Enhanced Debugging',
-      summary:
-        language === 'ru'
-          ? 'Новая версия Cypress с поддержкой современных Web Components и улучшенными инструментами отладки.'
-          : 'New Cypress version with modern Web Components support and enhanced debugging tools.',
-      source: 'Cypress Blog',
-      date: '2025-07-01',
-      category: 'tools',
-      url: 'https://www.cypress.io/blog/2024/07/01/cypress-15-0-release/',
-    },
-    {
-      id: 4,
-      title:
-        language === 'ru'
-          ? 'DevSecOps в тестировании: Интеграция безопасности в CI/CD'
-          : 'DevSecOps in Testing: Security Integration in CI/CD',
-      summary:
-        language === 'ru'
-          ? 'Как интегрировать тестирование безопасности в процесс непрерывной разработки и развертывания.'
-          : 'How to integrate security testing into continuous development and deployment processes.',
-      source: 'DevSecOps Magazine',
-      date: '2025-06-28',
-      category: 'methodology',
-      url: 'https://www.devsecops.org/blog/',
-    },
-    {
-      id: 5,
-      title:
-        language === 'ru'
-          ? 'Тестирование AR/VR приложений: Новые вызовы и решения'
-          : 'AR/VR App Testing: New Challenges and Solutions',
-      summary:
-        language === 'ru'
-          ? 'Специфика тестирования приложений дополненной и виртуальной реальности в 2025 году.'
-          : 'Specifics of testing augmented and virtual reality applications in 2025.',
-      source: 'XR Today',
-      date: '2025-06-25',
-      category: 'industry',
-      url: 'https://www.xrtoday.com/virtual-reality/ar-vr-testing-challenges/',
-    },
-    {
-      id: 6,
-      title:
-        language === 'ru'
-          ? 'Тестирование квантовых приложений: Будущее уже здесь'
-          : 'Quantum App Testing: The Future is Here',
-      summary:
-        language === 'ru'
-          ? 'Первые подходы к тестированию квантовых вычислений и квантовых алгоритмов.'
-          : 'First approaches to testing quantum computing and quantum algorithms.',
-      source: 'Quantum Computing Report',
-      date: '2025-06-22',
-      category: 'methodology',
-      url: 'https://quantumcomputingreport.com/quantum-app-testing/',
-    },
-    {
-      id: 7,
-      title:
-        language === 'ru'
-          ? 'Selenium 5.0: Полная переработка архитектуры'
-          : 'Selenium 5.0: Complete Architecture Overhaul',
-      summary:
-        language === 'ru'
-          ? 'Новая мажорная версия Selenium с полностью переработанной архитектурой и улучшенной производительностью.'
-          : 'New major Selenium version with completely redesigned architecture and improved performance.',
-      source: 'Selenium Blog',
-      date: '2025-06-20',
-      category: 'tools',
-      url: 'https://selenium.dev/blog/2025/selenium-5-0-released/',
-    },
-    {
-      id: 8,
-      title:
-        language === 'ru'
-          ? 'Тестирование в эпоху Web3: Блокчейн и смарт-контракты'
-          : 'Testing in Web3 Era: Blockchain and Smart Contracts',
-      summary:
-        language === 'ru'
-          ? 'Современные подходы к тестированию блокчейн-приложений и смарт-контрактов.'
-          : 'Modern approaches to testing blockchain applications and smart contracts.',
-      source: 'Web3 Foundation Blog',
-      date: '2025-06-18',
-      category: 'methodology',
-      url: 'https://web3.foundation/blog/blockchain-testing/',
-    },
-    {
-      id: 9,
-      title:
-        language === 'ru'
-          ? 'Тестирование с помощью GPT-5: Следующий уровень автоматизации'
-          : 'Testing with GPT-5: Next Level of Automation',
-      summary:
-        language === 'ru'
-          ? 'Как GPT-5 революционизирует процесс тестирования и автоматизации в 2025 году.'
-          : 'How GPT-5 is revolutionizing the testing and automation process in 2025.',
-      source: 'OpenAI Blog',
-      date: '2025-06-15',
-      category: 'industry',
-      url: 'https://openai.com/blog/gpt-5-testing/',
-    },
-    {
-      id: 10,
-      title:
-        language === 'ru'
-          ? 'Тестирование в метавселенной: Новые парадигмы'
-          : 'Testing in Metaverse: New Paradigms',
-      summary:
-        language === 'ru'
-          ? 'Специфика тестирования приложений метавселенной и виртуальных миров.'
-          : 'Specifics of testing metaverse applications and virtual worlds.',
-      source: 'Metaverse Insider',
-      date: '2025-06-12',
-      category: 'industry',
-      url: 'https://metaverseinsider.tech/2025/06/12/metaverse-testing-paradigms/',
-    },
-    {
-      id: 11,
-      title:
-        language === 'ru'
-          ? 'Бесплатный курс по автоматизации тестирования: От новичка до эксперта'
-          : 'Free Test Automation Course: From Beginner to Expert',
-      summary:
-        language === 'ru'
-          ? 'Комплексный курс по автоматизации тестирования с практическими заданиями и реальными проектами.'
-          : 'Comprehensive test automation course with practical assignments and real projects.',
-      source: 'QA Academy',
-      date: '2025-06-10',
-      category: 'automation',
-      url: 'https://qaacademy.com/free-automation-course/',
-    },
-    {
-      id: 12,
-      title:
-        language === 'ru'
-          ? 'Мастер-класс: Тестирование API с помощью Postman'
-          : 'Workshop: API Testing with Postman',
-      summary:
-        language === 'ru'
-          ? 'Практический мастер-класс по тестированию API с использованием Postman и современных подходов.'
-          : 'Practical workshop on API testing using Postman and modern approaches.',
-      source: 'Postman Blog',
-      date: '2025-06-08',
-      category: 'automation',
-      url: 'https://blog.postman.com/api-testing-workshop/',
-    },
-    {
-      id: 13,
-      title:
-        language === 'ru'
-          ? 'Онлайн-конференция: Будущее тестирования в 2025 году'
-          : 'Online Conference: Future of Testing in 2025',
-      summary:
-        language === 'ru'
-          ? 'Международная конференция с участием ведущих экспертов в области тестирования программного обеспечения.'
-          : 'International conference with leading software testing experts.',
-      source: 'Testing Conference Hub',
-      date: '2025-06-05',
-      category: 'automation',
-      url: 'https://testingconferencehub.com/future-2025/',
-    },
+    // 1. Grok 4 Announced
     {
       id: 26,
       title:
@@ -337,6 +68,71 @@ export default function News() {
       category: 'industry',
       url: 'https://www.testingcatalog.com/grok-4-set-for-july-9-debut-as-xai-plans-expanded-model-lineup/',
     },
+    // 2. The Real QA Automation Struggles
+    {
+      id: 41,
+      title:
+        language === 'ru'
+          ? 'The Real QA Automation Struggles: как победить рутину?'
+          : 'The Real QA Automation Struggles (and How to Finally Get Ahead)',
+      summary:
+        language === 'ru'
+          ? 'Автоматизация тестирования обещала революцию, но многие команды до сих пор сталкиваются с хрупкими скриптами, сложной поддержкой и интеграцией в CI/CD. Новые AI-инструменты, такие как Aurick, предлагают автономное тестирование, самовосстанавливающиеся тесты и минимизацию рутины.'
+          : 'Automation promised to revolutionize QA, but many teams still struggle with brittle scripts, maintenance, and CI/CD integration. New AI tools like Aurick offer autonomous testing, self-healing tests, and less routine.',
+      source: 'DEV.to',
+      date: '2025-07-08',
+      category: 'automation',
+      url: 'https://dev.to/esha_suchana_3514f571649c/the-real-qa-automation-struggles-and-how-to-finally-get-ahead-1bdi',
+    },
+    // 3. Testsigma AI Agents
+    {
+      id: 21,
+      title:
+        language === 'ru'
+          ? 'Testsigma внедряет автономное тестирование с AI-агентами'
+          : 'Testsigma launches autonomous testing with AI agents',
+      summary:
+        language === 'ru'
+          ? 'В июле 2025 Testsigma представила платформу, где AI-агенты сами генерируют, запускают и анализируют тесты, ускоряя релизы и повышая качество.'
+          : 'In July 2025, Testsigma introduced a platform where AI agents autonomously generate, run, and analyze tests, speeding up releases and improving quality.',
+      source: 'Testsigma News',
+      date: '2025-07-05',
+      category: 'automation',
+      url: 'https://www.globenewswire.com/news-release/2025/05/07/3076024/0/en/Testsigma-announces-autonomous-testing-capabilities-ushering-in-the-era-of-agentic-AI.html',
+    },
+    // 4. Testing AI Systems: New Rules
+    {
+      id: 40,
+      title:
+        language === 'ru'
+          ? 'Testing AI Systems: новые правила для эпохи ИИ'
+          : 'Testing AI Systems: New Rules for a New Era',
+      summary:
+        language === 'ru'
+          ? 'В 2025 году тестирование ИИ-систем требует новых подходов: проверка на предвзятость, устойчивость к атакам, объяснимость решений и мониторинг деградации моделей. Появляются специализированные инструменты для тестирования ИИ, такие как DeepChecks, WhyLabs, Fiddler AI.'
+          : 'In 2025, testing AI systems requires new approaches: bias checking, adversarial robustness, explainability, and model decay monitoring. Specialized tools like DeepChecks, WhyLabs, and Fiddler AI are emerging.',
+      source: 'DEV.to',
+      date: '2025-07-03',
+      category: 'methodology',
+      url: 'https://dev.to/vaibhavkuls/testing-ai-systems-new-rules-for-a-new-era-33d1',
+    },
+    // 5. Testing for Accessibility
+    {
+      id: 42,
+      title:
+        language === 'ru'
+          ? 'Testing for Accessibility: доступность ПО в 2025 году'
+          : 'Testing for Accessibility: Building Inclusive Software in 2025',
+      summary:
+        language === 'ru'
+          ? 'Доступность (a11y) становится обязательной частью QA. В 2025 году автоматизированные и ручные инструменты (Axe, Lighthouse, WAVE) интегрируются в CI/CD, а компании всё чаще тестируют продукты с реальными пользователями с ограниченными возможностями.'
+          : 'Accessibility (a11y) is now a must-have in QA. In 2025, automated and manual tools (Axe, Lighthouse, WAVE) are integrated into CI/CD, and companies increasingly test with real users with disabilities.',
+      source: 'DEV.to',
+      date: '2025-07-02',
+      category: 'methodology',
+      url: 'https://dev.to/vaibhavkuls/testing-for-accessibility-building-inclusive-software-in-2025-1lam',
+    },
+    // 6. Nokia & WEART XR Haptics
     {
       id: 27,
       title:
@@ -352,80 +148,149 @@ export default function News() {
       category: 'industry',
       url: 'https://www.xrtoday.com/mixed-reality/nokia-weart-to-revolutionize-virtual-interaction-with-thermal-haptics/',
     },
+    // 7. Playwright 1.45
     {
-      id: 30,
+      id: 1,
       title:
         language === 'ru'
-          ? 'The Real QA Automation Struggles: как победить рутину?'
-          : 'The Real QA Automation Struggles (and How to Finally Get Ahead)',
+          ? 'Playwright 1.45: Революционные изменения в автоматизации тестирования'
+          : 'Playwright 1.45: Revolutionary Changes in Test Automation',
       summary:
         language === 'ru'
-          ? 'Автоматизация тестирования обещала революцию, но многие команды до сих пор сталкиваются с хрупкими скриптами, сложной поддержкой и интеграцией в CI/CD. Новые AI-инструменты, такие как Aurick, предлагают автономное тестирование, самовосстанавливающиеся тесты и минимизацию рутины.'
-          : 'Automation promised to revolutionize QA, but many teams still struggle with brittle scripts, maintenance, and CI/CD integration. New AI tools like Aurick offer autonomous testing, self-healing tests, and less routine.',
-      source: 'DEV.to',
-      date: '2025-07-08',
-      category: 'automation',
-      url: 'https://dev.to/esha_suchana_3514f571649c/the-real-qa-automation-struggles-and-how-to-finally-get-ahead-1bdi',
+          ? 'Вышла новая версия Playwright с поддержкой AI-powered тестирования и улучшенной интеграцией с CI/CD.'
+          : 'New Playwright version released with AI-powered testing support and improved CI/CD integration.',
+      source: 'Playwright Official Blog',
+      date: '2025-07-05',
+      category: 'tools',
+      url: 'https://playwright.dev/blog/announcing-playwright-v1.45/',
     },
+    // 8. Cypress 16
     {
-      id: 31,
+      id: 22,
       title:
         language === 'ru'
-          ? 'Testing AI Systems: новые правила для эпохи ИИ'
-          : 'Testing AI Systems: New Rules for a New Era',
+          ? 'Cypress 16: поддержка тестирования WebAssembly'
+          : 'Cypress 16: WebAssembly Testing Support',
       summary:
         language === 'ru'
-          ? 'Тестирование ИИ-систем требует новых подходов: проверка на предвзятость, устойчивость к атакам, объяснимость решений и мониторинг деградации моделей. Появляются специализированные инструменты для тестирования ИИ, такие как DeepChecks, WhyLabs, Fiddler AI.'
-          : 'Testing AI systems requires new approaches: bias checking, adversarial robustness, explainability, and model decay monitoring. Specialized tools like DeepChecks, WhyLabs, and Fiddler AI are emerging.',
-      source: 'DEV.to',
-      date: '2025-07-03',
+          ? 'Cypress выпустил обновление с поддержкой автотестов для WebAssembly-приложений, расширяя возможности QA-инженеров.'
+          : "Cypress released an update with automated testing support for WebAssembly apps, expanding QA engineers' capabilities.",
+      source: 'Cypress Blog',
+      date: '2025-06-28',
+      category: 'tools',
+      url: 'https://www.cypress.io/blog/2024/06/28/cypress-13-7-0/',
+    },
+    // 9. DevSecOps: Security Test Integration
+    {
+      id: 24,
+      title:
+        language === 'ru'
+          ? 'DevSecOps: новые стандарты интеграции security-тестов'
+          : 'DevSecOps: New Standards for Security Test Integration',
+      summary:
+        language === 'ru'
+          ? 'Вышли обновлённые рекомендации по интеграции security-тестов в CI/CD для крупных IT-компаний.'
+          : 'New guidelines released for integrating security tests into CI/CD for large IT companies.',
+      source: 'DevSecOps Magazine',
+      date: '2025-07-01',
       category: 'methodology',
-      url: 'https://dev.to/vaibhavkuls/testing-ai-systems-new-rules-for-a-new-era-33d1',
+      url: 'https://www.devsecops.org/blog/',
     },
+    // 10. Claude Sonnet 4
     {
-      id: 32,
+      id: 2,
       title:
         language === 'ru'
-          ? 'Testing for Accessibility: доступность ПО в 2025 году'
-          : 'Testing for Accessibility: Building Inclusive Software in 2025',
+          ? 'Claude Sonnet 4 в тестировании: Новые возможности ИИ'
+          : 'Claude Sonnet 4 in Testing: New AI Capabilities',
       summary:
         language === 'ru'
-          ? 'Доступность (a11y) становится обязательной частью QA. В 2025 году автоматизированные и ручные инструменты (Axe, Lighthouse, WAVE) интегрируются в CI/CD, а компании всё чаще тестируют продукты с реальными пользователями с ограниченными возможностями.'
-          : 'Accessibility (a11y) is now a must-have in QA. In 2025, automated and manual tools (Axe, Lighthouse, WAVE) are integrated into CI/CD, and companies increasingly test with real users with disabilities.',
-      source: 'DEV.to',
-      date: '2025-07-02',
-      category: 'methodology',
-      url: 'https://dev.to/vaibhavkuls/testing-for-accessibility-building-inclusive-software-in-2025-1lam',
-    },
-    {
-      id: 33,
-      title:
-        language === 'ru'
-          ? 'Учёные впервые смоделировали отказоустойчивый квантовый код'
-          : 'Scientists simulated fault-tolerant quantum code for the first time',
-      summary:
-        language === 'ru'
-          ? 'Международная команда разработала алгоритм, позволяющий на обычных компьютерах имитировать работу отказоустойчивых квантовых схем, что открывает новые возможности для тестирования будущих квантовых компьютеров.'
-          : 'An international team developed an algorithm that allows conventional computers to simulate fault-tolerant quantum circuits, opening new opportunities for testing future quantum computers.',
-      source: 'ScienceDaily',
+          ? 'Как использовать Claude Sonnet 4 для генерации тестовых сценариев и автоматизации тестирования.'
+          : 'How to use Claude Sonnet 4 for test scenario generation and test automation.',
+      source: 'Anthropic Blog',
       date: '2025-07-03',
       category: 'industry',
-      url: 'https://www.sciencedaily.com/releases/2025/07/250702214157.htm',
+      url: 'https://www.anthropic.com/news/claude-2-launch',
     },
+    // 11. AI Testing Summit 2025
     {
-      id: 34,
+      id: 23,
       title:
         language === 'ru'
-          ? 'Индустриальный метавселенная: рынок $600 млрд к 2032 году'
-          : 'The Industrial Metaverse: A $600 Billion Horizon by 2032',
+          ? 'AI Testing Summit 2025: тренды автономного тестирования'
+          : 'AI Testing Summit 2025: Autonomous Testing Trends',
       summary:
         language === 'ru'
-          ? 'Аналитики прогнозируют, что к 2032 году рынок индустриального метавселенной достигнет $600 млрд, что открывает новые возможности для IT и QA.'
-          : 'Analysts predict the industrial metaverse market will reach $600 billion by 2032, opening new opportunities for IT and QA.',
+          ? 'На июньской конференции обсуждались перспективы self-healing тестов, внедрение LLM и автономных QA-решений.'
+          : 'The June summit discussed the future of self-healing tests, LLM adoption, and autonomous QA solutions.',
+      source: 'DEV.to',
+      date: '2025-06-20',
+      category: 'industry',
+      url: 'https://dev.to/vaibhavkuls/beyond-automation-the-rise-of-autonomous-testing-in-2025-15fk',
+    },
+    // 12. Quantum App Testing
+    {
+      id: 6,
+      title:
+        language === 'ru'
+          ? 'Тестирование квантовых приложений: Будущее уже здесь'
+          : 'Quantum App Testing: The Future is Here',
+      summary:
+        language === 'ru'
+          ? 'Первые подходы к тестированию квантовых вычислений и квантовых алгоритмов.'
+          : 'First approaches to testing quantum computing and quantum algorithms.',
+      source: 'Quantum Computing Report',
+      date: '2025-06-22',
+      category: 'methodology',
+      url: 'https://quantumcomputingreport.com/quantum-app-testing/',
+    },
+    // 13. Selenium 5.0
+    {
+      id: 7,
+      title:
+        language === 'ru'
+          ? 'Selenium 5.0: Полная переработка архитектуры'
+          : 'Selenium 5.0: Complete Architecture Overhaul',
+      summary:
+        language === 'ru'
+          ? 'Новая мажорная версия Selenium с полностью переработанной архитектурой и улучшенной производительностью.'
+          : 'New major Selenium version with completely redesigned architecture and improved performance.',
+      source: 'Selenium Blog',
+      date: '2025-06-20',
+      category: 'tools',
+      url: 'https://selenium.dev/blog/2025/selenium-5-0-released/',
+    },
+    // 14. AR/VR App Testing
+    {
+      id: 5,
+      title:
+        language === 'ru'
+          ? 'Тестирование AR/VR приложений: Новые вызовы и решения'
+          : 'AR/VR App Testing: New Challenges and Solutions',
+      summary:
+        language === 'ru'
+          ? 'Специфика тестирования приложений дополненной и виртуальной реальности в 2025 году.'
+          : 'Specifics of testing augmented and virtual reality applications in 2025.',
       source: 'XR Today',
-      date: '2025-07-02',
+      date: '2025-06-25',
       category: 'industry',
-      url: 'https://www.xrtoday.com/mixed-reality/the-industrial-metaverse-a-600-billion-horizon-by-2032/',
+      url: 'https://www.xrtoday.com/virtual-reality/ar-vr-testing-challenges/',
+    },
+    // 15. DevSecOps в тестировании
+    {
+      id: 4,
+      title:
+        language === 'ru'
+          ? 'DevSecOps в тестировании: Интеграция безопасности в CI/CD'
+          : 'DevSecOps in Testing: Security Integration in CI/CD',
+      summary:
+        language === 'ru'
+          ? 'Как интегрировать тестирование безопасности в процесс непрерывной разработки и развертывания.'
+          : 'How to integrate security testing into continuous development and deployment processes.',
+      source: 'DevSecOps Magazine',
+      date: '2025-06-28',
+      category: 'methodology',
+      url: 'https://www.devsecops.org/blog/',
     },
   ];
 

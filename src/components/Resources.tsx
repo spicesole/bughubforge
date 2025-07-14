@@ -92,104 +92,10 @@ export default function Resources() {
 
   const resourcesData: ResourceItem[] = [
     // Книги
-    {
-      id: 1,
-      title: language === 'ru' ? 'Тестирование программного обеспечения' : 'Software Testing',
-      description:
-        language === 'ru'
-          ? 'Классическая книга Рона Паттона по основам тестирования программного обеспечения.'
-          : 'Classic book by Ron Patton on software testing fundamentals.',
-      url: 'https://www.amazon.com/Software-Testing-Ron-Patton/dp/0672327988',
-      category: 'fundamentals',
-      type: 'book',
-      difficulty: 'beginner',
-      language: 'en',
-    },
-    {
-      id: 2,
-      title:
-        language === 'ru'
-          ? 'Автоматизация тестирования с Selenium'
-          : 'Test Automation with Selenium',
-      description:
-        language === 'ru'
-          ? 'Практическое руководство по автоматизации тестирования веб-приложений.'
-          : 'Practical guide to web application test automation.',
-      url: 'https://www.amazon.com/Test-Automation-Selenium-Practical-Guide/dp/1782162703',
-      category: 'automation',
-      type: 'book',
-      difficulty: 'intermediate',
-      language: 'en',
-    },
-    {
-      id: 3,
-      title: language === 'ru' ? 'Тестирование производительности' : 'Performance Testing',
-      description:
-        language === 'ru'
-          ? 'Глубокое погружение в тестирование производительности и нагрузочное тестирование.'
-          : 'Deep dive into performance testing and load testing.',
-      url: 'https://www.amazon.com/Performance-Testing-Microsoft-Developer-Reference/dp/0735625666',
-      category: 'performance',
-      type: 'book',
-      difficulty: 'advanced',
-      language: 'en',
-    },
-
+    // Удалены: Amazon (id: 1, 2, 3)
     // Курсы
-    {
-      id: 4,
-      title: language === 'ru' ? 'Основы тестирования ПО' : 'Software Testing Fundamentals',
-      description:
-        language === 'ru'
-          ? 'Бесплатный курс на Coursera по основам тестирования программного обеспечения.'
-          : 'Free Coursera course on software testing fundamentals.',
-      url: 'https://www.coursera.org/learn/software-testing',
-      category: 'fundamentals',
-      type: 'course',
-      difficulty: 'beginner',
-      language: 'en',
-    },
-    {
-      id: 5,
-      title: language === 'ru' ? 'Автоматизация тестирования на Python' : 'Python Test Automation',
-      description:
-        language === 'ru'
-          ? 'Курс по автоматизации тестирования с использованием Python и Selenium.'
-          : 'Course on test automation using Python and Selenium.',
-      url: 'https://www.udemy.com/course/python-selenium-automation/',
-      category: 'automation',
-      type: 'course',
-      difficulty: 'intermediate',
-      language: 'en',
-    },
-    {
-      id: 6,
-      title: language === 'ru' ? 'Тестирование мобильных приложений' : 'Mobile App Testing',
-      description:
-        language === 'ru'
-          ? 'Специализированный курс по тестированию мобильных приложений.'
-          : 'Specialized course on mobile application testing.',
-      url: 'https://www.pluralsight.com/courses/mobile-app-testing',
-      category: 'mobile',
-      type: 'course',
-      difficulty: 'intermediate',
-      language: 'en',
-    },
-
+    // Удалены: Udemy (id: 5), Pluralsight (id: 6)
     // Статьи
-    {
-      id: 7,
-      title: language === 'ru' ? 'Руководство по тестированию API' : 'API Testing Guide',
-      description:
-        language === 'ru'
-          ? 'Подробное руководство по тестированию REST API с примерами.'
-          : 'Comprehensive guide to REST API testing with examples.',
-      url: 'https://www.guru99.com/testing-rest-api-manually.html',
-      category: 'api',
-      type: 'article',
-      difficulty: 'intermediate',
-      language: 'en',
-    },
     {
       id: 8,
       title: language === 'ru' ? 'Основы тестирования безопасности' : 'Security Testing Basics',
@@ -201,37 +107,10 @@ export default function Resources() {
       category: 'security',
       type: 'article',
       difficulty: 'intermediate',
-      language: 'en',
+      language: 'both',
     },
-
     // Видео
-    {
-      id: 9,
-      title: language === 'ru' ? 'Введение в тестирование ПО' : 'Introduction to Software Testing',
-      description:
-        language === 'ru'
-          ? 'Видеокурс по основам тестирования программного обеспечения.'
-          : 'Video course on software testing fundamentals.',
-      url: 'https://www.youtube.com/watch?v=goaZTAzsLMk',
-      category: 'fundamentals',
-      type: 'video',
-      difficulty: 'beginner',
-      language: 'en',
-    },
-    {
-      id: 10,
-      title: language === 'ru' ? 'Автоматизация с Playwright' : 'Automation with Playwright',
-      description:
-        language === 'ru'
-          ? 'Практическое руководство по автоматизации с Playwright.'
-          : 'Practical guide to automation with Playwright.',
-      url: 'https://www.youtube.com/watch?v=7iyIdeoAP04',
-      category: 'automation',
-      type: 'video',
-      difficulty: 'intermediate',
-      language: 'en',
-    },
-
+    // Удалены: YouTube (id: 9, 10)
     // Инструменты
     {
       id: 11,
@@ -325,19 +204,6 @@ export default function Resources() {
       language: 'both',
     },
     {
-      id: 18,
-      title: 'OWASP ZAP',
-      description:
-        language === 'ru'
-          ? 'Бесплатный инструмент для автоматизированного тестирования безопасности.'
-          : 'Free automated security testing tool.',
-      url: 'https://owasp.org/www-project-zap/',
-      category: 'security',
-      type: 'tool',
-      difficulty: 'intermediate',
-      language: 'both',
-    },
-    {
       id: 19,
       title: 'Katalon Studio',
       description:
@@ -346,19 +212,6 @@ export default function Resources() {
           : 'Comprehensive test automation platform with GUI.',
       url: 'https://katalon.com/',
       category: 'automation',
-      type: 'tool',
-      difficulty: 'beginner',
-      language: 'both',
-    },
-    {
-      id: 20,
-      title: 'TestRail',
-      description:
-        language === 'ru'
-          ? 'Система управления тестированием и отслеживания результатов.'
-          : 'Test case management and result tracking system.',
-      url: 'https://www.gurock.com/testrail/',
-      category: 'taskManagement',
       type: 'tool',
       difficulty: 'beginner',
       language: 'both',
@@ -416,21 +269,6 @@ export default function Resources() {
       language: 'both',
     },
     {
-      id: 25,
-      title: 'ClickUp',
-      description:
-        language === 'ru'
-          ? 'Универсальная платформа для управления проектами и задачами.'
-          : 'All-in-one project and task management platform.',
-      url: 'https://clickup.com/',
-      category: 'taskManagement',
-      type: 'tool',
-      difficulty: 'beginner',
-      language: 'both',
-    },
-
-    // Сообщества
-    {
       id: 26,
       title: language === 'ru' ? 'QA Stack Overflow' : 'QA Stack Overflow',
       description:
@@ -441,7 +279,7 @@ export default function Resources() {
       category: 'fundamentals',
       type: 'community',
       difficulty: 'all',
-      language: 'en',
+      language: 'both',
     },
     {
       id: 27,
@@ -454,9 +292,8 @@ export default function Resources() {
       category: 'fundamentals',
       type: 'community',
       difficulty: 'all',
-      language: 'en',
+      language: 'both',
     },
-
     // Задачи для тестирования
     {
       id: 28,
@@ -469,7 +306,7 @@ export default function Resources() {
       category: 'testingTasks',
       type: 'task',
       difficulty: 'beginner',
-      language: 'en',
+      language: 'both',
     },
     {
       id: 29,
@@ -482,7 +319,7 @@ export default function Resources() {
       category: 'testingTasks',
       type: 'task',
       difficulty: 'beginner',
-      language: 'en',
+      language: 'both',
     },
     {
       id: 30,
@@ -495,7 +332,7 @@ export default function Resources() {
       category: 'testingTasks',
       type: 'task',
       difficulty: 'intermediate',
-      language: 'en',
+      language: 'both',
     },
     {
       id: 31,
@@ -508,7 +345,7 @@ export default function Resources() {
       category: 'testingTasks',
       type: 'task',
       difficulty: 'intermediate',
-      language: 'en',
+      language: 'both',
     },
     {
       id: 32,
@@ -521,7 +358,7 @@ export default function Resources() {
       category: 'testingTasks',
       type: 'task',
       difficulty: 'intermediate',
-      language: 'en',
+      language: 'both',
     },
     {
       id: 33,
@@ -534,7 +371,7 @@ export default function Resources() {
       category: 'testingTasks',
       type: 'task',
       difficulty: 'advanced',
-      language: 'en',
+      language: 'both',
     },
     {
       id: 34,
@@ -547,23 +384,7 @@ export default function Resources() {
       category: 'testingTasks',
       type: 'task',
       difficulty: 'advanced',
-      language: 'en',
-    },
-    {
-      id: 35,
-      title:
-        language === 'ru'
-          ? 'AI для тестировщиков: бесплатный курс от Test Automation University'
-          : 'AI for Testers: Free Course by Test Automation University',
-      description:
-        language === 'ru'
-          ? 'Курс о применении искусственного интеллекта в тестировании ПО, примеры и практические задания.'
-          : 'Course on applying AI in software testing, with examples and hands-on tasks.',
-      url: 'https://testautomationu.applitools.com/ai-for-testers/',
-      category: 'automation',
-      type: 'course',
-      difficulty: 'intermediate',
-      language: 'en',
+      language: 'both',
     },
     {
       id: 36,
@@ -579,7 +400,7 @@ export default function Resources() {
       category: 'automation',
       type: 'video',
       difficulty: 'intermediate',
-      language: 'en',
+      language: 'both',
     },
     {
       id: 37,
@@ -611,42 +432,10 @@ export default function Resources() {
       category: 'fundamentals',
       type: 'community',
       difficulty: 'all',
-      language: 'ru',
-    },
-    {
-      id: 39,
-      title:
-        language === 'ru'
-          ? 'AI Test Generation: генерация тест-кейсов с помощью GPT'
-          : 'AI Test Generation: Test Cases with GPT',
-      description:
-        language === 'ru'
-          ? 'Статья о генерации тест-кейсов с помощью GPT и интеграции с CI/CD.'
-          : 'Article on generating test cases with GPT and CI/CD integration.',
-      url: 'https://medium.com/test-automation/ai-test-case-generation-gpt-2024-5e2b1c7e7b2a',
-      category: 'automation',
-      type: 'article',
-      difficulty: 'advanced',
-      language: 'en',
-    },
-    {
-      id: 40,
-      title:
-        language === 'ru'
-          ? 'Тестирование мобильных приложений: чек-лист 2025'
-          : 'Mobile App Testing: 2025 Checklist',
-      description:
-        language === 'ru'
-          ? 'Практический чек-лист для тестирования мобильных приложений на Android и iOS.'
-          : 'Practical checklist for testing mobile apps on Android and iOS.',
-      url: 'https://www.browserstack.com/mobile-app-testing-checklist',
-      category: 'mobile',
-      type: 'article',
-      difficulty: 'intermediate',
       language: 'both',
     },
     {
-      id: 41,
+      id: 40,
       title:
         language === 'ru'
           ? 'Книга: "Тестирование программного обеспечения. Базовый курс" (2024)'
@@ -659,7 +448,7 @@ export default function Resources() {
       category: 'fundamentals',
       type: 'book',
       difficulty: 'beginner',
-      language: 'ru',
+      language: 'both',
     },
     {
       id: 42,
@@ -707,7 +496,43 @@ export default function Resources() {
       category: 'automation',
       type: 'community',
       difficulty: 'all',
-      language: 'ru',
+      language: 'both',
+    },
+    {
+      id: 1001,
+      title: language === 'ru' ? 'Reddit: r/softwaretesting' : 'Reddit: r/softwaretesting',
+      description: language === 'ru'
+        ? 'Международное сообщество по ручному и автоматизированному тестированию ПО.'
+        : 'Global community for manual and automated software testing.',
+      url: 'https://www.reddit.com/r/softwaretesting/',
+      category: 'fundamentals',
+      type: 'community',
+      difficulty: 'all',
+      language: 'both',
+    },
+    {
+      id: 1002,
+      title: language === 'ru' ? 'Reddit: r/testautomation' : 'Reddit: r/testautomation',
+      description: language === 'ru'
+        ? 'Обсуждение автоматизации тестирования, инструментов и best practices.'
+        : 'Discussion of test automation, tools, and best practices.',
+      url: 'https://www.reddit.com/r/testautomation/',
+      category: 'fundamentals',
+      type: 'community',
+      difficulty: 'all',
+      language: 'both',
+    },
+    {
+      id: 1003,
+      title: language === 'ru' ? 'Reddit: r/selenium' : 'Reddit: r/selenium',
+      description: language === 'ru'
+        ? 'Всё о Selenium и автоматизации тестирования.'
+        : 'All about Selenium and test automation.',
+      url: 'https://www.reddit.com/r/selenium/',
+      category: 'fundamentals',
+      type: 'community',
+      difficulty: 'all',
+      language: 'both',
     },
   ];
 

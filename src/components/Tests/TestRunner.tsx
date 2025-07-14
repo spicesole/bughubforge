@@ -108,38 +108,36 @@ const TestRunner: React.FC<TestRunnerProps> = ({
           <strong>{t.explanation}:</strong> {question.explanation[lang]}
         </div>
       )}
-      <div className="flex gap-2 justify-between items-center mt-4">
+      <div className="mt-4 flex flex-col sm:flex-row gap-2">
         <button
-          className="px-4 py-2 rounded-lg bg-gray-500 text-white font-semibold hover:bg-gray-600 transition-colors"
+          className="px-4 py-2 rounded-lg bg-gray-500 text-white font-semibold hover:bg-gray-600 transition-colors w-full sm:w-auto"
           onClick={onBack}
         >
           {t.backToTests}
         </button>
         <button
           onClick={() => setShowExplanation(!showExplanation)}
-          className="px-4 py-2 rounded-lg bg-yellow-500 text-white font-semibold hover:bg-yellow-600 transition-colors"
+          className="px-4 py-2 rounded-lg bg-yellow-500 text-white font-semibold hover:bg-yellow-600 transition-colors w-full sm:w-auto"
         >
           {t.explanation}
         </button>
-        <div className="flex gap-2 ml-auto">
-          {!isLast ? (
-            <button
-              onClick={handleNext}
-              disabled={selectedAnswer === null}
-              className="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50"
-            >
-              {t.next}
-            </button>
-          ) : (
-            <button
-              onClick={handleFinish}
-              disabled={selectedAnswer === null}
-              className="px-4 py-2 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition-colors disabled:opacity-50"
-            >
-              {t.finish}
-            </button>
-          )}
-        </div>
+        {!isLast ? (
+          <button
+            onClick={handleNext}
+            disabled={selectedAnswer === null}
+            className="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 w-full sm:w-auto sm:ml-auto"
+          >
+            {t.next}
+          </button>
+        ) : (
+          <button
+            onClick={handleFinish}
+            disabled={selectedAnswer === null}
+            className="px-4 py-2 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition-colors disabled:opacity-50 w-full sm:w-auto sm:ml-auto"
+          >
+            {t.finish}
+          </button>
+        )}
       </div>
     </div>
   );

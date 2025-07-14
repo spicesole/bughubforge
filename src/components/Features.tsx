@@ -128,7 +128,8 @@ export default function Features() {
               <Link
                 key={index}
                 href={feature.url}
-                className="card text-center hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer group"
+                className={`card text-center hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer group
+                  ${features.length === 3 && index === 2 ? 'sm:col-span-2 lg:col-span-1 mx-auto' : ''}`}
               >
                 <div className="w-10 h-10 md:w-12 md:h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mx-auto mb-3 md:mb-4 group-hover:bg-primary-200 dark:group-hover:bg-primary-800 transition-colors">
                   {getIcon(feature.icon)}
